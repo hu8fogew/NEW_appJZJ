@@ -107,6 +107,7 @@
 		04DF32E21DEEC07D00B36424 /* ywydSelectS.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DF32E01DEEC07D00B36424 /* ywydSelectS.png */; };
 		04DF32E31DEEC07E00B36424 /* ywydSelectF.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DF32E11DEEC07D00B36424 /* ywydSelectF.png */; };
 		04DF32E81DEEDA0A00B36424 /* cellImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DF32E71DEEDA0A00B36424 /* cellImage.png */; };
+		04DF38A11DF0257B00B36424 /* QuestionDescCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF38A01DF0257B00B36424 /* QuestionDescCell.m */; };
 		04E09F941DD3137800CD8F6D /* discover_highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E09F8C1DD3137800CD8F6D /* discover_highlighted.png */; };
 		04E09F951DD3137800CD8F6D /* discover_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E09F8D1DD3137800CD8F6D /* discover_normal.png */; };
 		04E09F961DD3137800CD8F6D /* home_highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E09F8E1DD3137800CD8F6D /* home_highlighted.png */; };
@@ -461,6 +462,8 @@
 		04DF32E01DEEC07D00B36424 /* ywydSelectS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ywydSelectS.png; sourceTree = "<group>"; };
 		04DF32E11DEEC07D00B36424 /* ywydSelectF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ywydSelectF.png; sourceTree = "<group>"; };
 		04DF32E71DEEDA0A00B36424 /* cellImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellImage.png; sourceTree = "<group>"; };
+		04DF389F1DF0257B00B36424 /* QuestionDescCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionDescCell.h; sourceTree = "<group>"; };
+		04DF38A01DF0257B00B36424 /* QuestionDescCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionDescCell.m; sourceTree = "<group>"; };
 		04E09F8C1DD3137800CD8F6D /* discover_highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discover_highlighted.png; sourceTree = "<group>"; };
 		04E09F8D1DD3137800CD8F6D /* discover_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discover_normal.png; sourceTree = "<group>"; };
 		04E09F8E1DD3137800CD8F6D /* home_highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_highlighted.png; sourceTree = "<group>"; };
@@ -1946,6 +1949,8 @@
 				9E90F0D11DF00C150027F7A7 /* TeacherTableViewCell.m */,
 				9E90F0D21DF00C150027F7A7 /* TextQuestionView.h */,
 				9E90F0D31DF00C150027F7A7 /* TextQuestionView.m */,
+				04DF389F1DF0257B00B36424 /* QuestionDescCell.h */,
+				04DF38A01DF0257B00B36424 /* QuestionDescCell.m */,
 			);
 			path = "有问有答";
 			sourceTree = "<group>";
@@ -2346,6 +2351,7 @@
 				04FDBC591DD3010500D788FC /* README.md in Sources */,
 				9E90F0DD1DF00C150027F7A7 /* TeacherOfDescCell.m in Sources */,
 				04FDBC281DD3010400D788FC /* AFNetworkReachabilityManager.m in Sources */,
+				04DF38A11DF0257B00B36424 /* QuestionDescCell.m in Sources */,
 				04FDBC5B1DD3010500D788FC /* MJRefreshAutoFooter.m in Sources */,
 				04FDBC731DD3010500D788FC /* RESideMenu.m in Sources */,
 				9E319D901DD458D8000C3178 /* MessageViewController.m in Sources */,

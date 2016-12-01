@@ -34,6 +34,7 @@
 
 #define searchViewHeight SCREEN_WIDTH*0.15
 
+#define marginLRWidth 10
 
 
 //打印NSLog的另一种写法

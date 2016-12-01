@@ -38,7 +38,7 @@
 @implementation WenDaViewController
 id selecteCell = nil;
 
-
+int selectWDcellHeight = 0;
 
 #pragma mark /************懒加载***********/
 /*选择按钮的信息数组*/
@@ -128,7 +128,7 @@ id selecteCell = nil;
     self.seleBarArr = @[@"最新问题",@"在线老师"];
     [self createSelecteActivityWithArr:self.seleArr];
     [self createAdsPageWithArr:self.seleArr];
-    self.cellId = @"最新问题";
+    self.cellId = @"精选问答";
     [self createSelectCellView];
     
 }
@@ -163,13 +163,15 @@ id selecteCell = nil;
     if (sender.tag == 0) {
      
         HWLog(@"精选问答");
-        
+        self.cellId = @"精选问答";
+        [self.wdTableView reloadData];
     }
     
     if (sender.tag == 1) {
         
         HWLog(@"专家一对一");
-        
+        self.cellId = @"专家一对一";
+        [self.wdTableView reloadData];
     }
     
     
@@ -274,16 +276,29 @@ id selecteCell = nil;
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"identifier";
-//    if ([self.cellId isEqualToString:@"在线老师"]) {
-//        
-//        
-//        
-//    }
-//    if ([self.cellId isEqualToString:@"最新问题"]) {
+    if ([self.cellId isEqualToString:@"精选问答"]) {
+        
+        QuestionDescCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (cell == nil) {
+            cell = [[QuestionDescCell alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.53)];
+            selecteCell = cell;
+            cell.quesImage.image = [UIImage imageNamed:@"teacherImage"];
+            cell.userNameText.text = @"匿名用户";
+            cell.timeText.text = @"6小时前";
+            cell.questionText.text = @"孩子不合群，总是喜欢一个人待着怎么办？";
+            cell.descQuesText.text = @"学生啊差点把崔不然被 u吃醋会回味承认我i 人合唱无此恨我才能日湖 以为的气氛让回去访问 UI恶化为求佛；玩儿去凤凰瑞汽车今日开启了超过瑞气氛让我去了古街舞人欺负车无爱恶化； 测绘如汽车热核武器UI淬炼入出";
+            cell.descQuesText.numberOfLines = 3;
+            cell.anserOfNum.text = @"100个回答";
+            
+            
+        }
+    }
+    if ([self.cellId isEqualToString:@"专家一对一"]) {
     
         TeacherOfDescCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
             cell = [[TeacherOfDescCell alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.55)];
+            selecteCell = cell;
             cell.teacherName.text = @"曹雪芹";
             cell.teachKind.text = @"／家庭教育指导师";
             cell.requireNum.text =@"33";
@@ -293,9 +308,9 @@ id selecteCell = nil;
             cell.areaText.text = @"西安";
             cell.mapImage.image = [UIImage imageNamed:@"map_image"];
         }
-//    }
+    }
     
-       return cell;
+       return selecteCell;
 }
 
 
@@ -306,7 +321,17 @@ id selecteCell = nil;
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return SCREEN_WIDTH*0.55;
+    if ([self.cellId isEqualToString:@"精选问答"]) {
+        
+        selectWDcellHeight = SCREEN_WIDTH*0.53;
+    }
+    
+    if ([self.cellId isEqualToString:@"专家一对一"]) {
+     
+        selectWDcellHeight = SCREEN_WIDTH*0.55;
+    }
+    
+    return selectWDcellHeight;
 }
 
 /*TableViewcell的点击事件*/
