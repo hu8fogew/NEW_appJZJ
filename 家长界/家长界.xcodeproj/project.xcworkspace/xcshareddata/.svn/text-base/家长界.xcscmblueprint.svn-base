@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F25A72157E609F1B477EE6F6B8D5F1CCD0B1199A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F9BECEF9D6339274528B86E614F07E029D78E7AE" : 9223372036854775807,
+    "1C01A93FA1C9180DFD46A26665078362F6A2EFE2" : 9223372036854775807,
+    "17BD24571F6069C9E8E6F8D5A45714D938D74AFD" : 9223372036854775807,
+    "F25A72157E609F1B477EE6F6B8D5F1CCD0B1199A" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "74C3D563-53A8-41B3-B1EC-BC5553A467C7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F9BECEF9D6339274528B86E614F07E029D78E7AE" : "largerHomeAPP\/",
+    "1C01A93FA1C9180DFD46A26665078362F6A2EFE2" : "",
+    "17BD24571F6069C9E8E6F8D5A45714D938D74AFD" : "App_qipintong\/",
+    "F25A72157E609F1B477EE6F6B8D5F1CCD0B1199A" : "APP_sisi\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "家长界",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "家长界\/家长界.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/hu8fogew\/App_qipintong.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "17BD24571F6069C9E8E6F8D5A45714D938D74AFD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/hu8fogew\/-masterHome.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1C01A93FA1C9180DFD46A26665078362F6A2EFE2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/hu8fogew\/APP_sisi.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F25A72157E609F1B477EE6F6B8D5F1CCD0B1199A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/hu8fogew\/largerHomeAPP.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F9BECEF9D6339274528B86E614F07E029D78E7AE"
+    }
+  ]
+}

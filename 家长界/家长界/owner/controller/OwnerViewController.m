@@ -9,6 +9,7 @@
 #import "OwnerViewController.h"
 #import "Masonry.h"
 #import "JWShareView.h"
+
 @interface OwnerViewController ()
 
 @end
@@ -188,17 +189,24 @@
 
 //点击登录按钮
 -(void)clickLoginBtn{
-    HWLog(@"点击了按钮");
+    MemberCenterViewController *memberVC = [MemberCenterViewController new];
+    [self.navigationController pushViewController:memberVC animated:YES
+     ];
 }
 
 //点击找回密码
 -(void)clickRetrievePwd{
-    HWLog(@"点击了按钮");
+    RetrievePwdViewController *memberVC = [RetrievePwdViewController new];
+    [self.navigationController pushViewController:memberVC animated:YES
+     ];
+
 }
 
 //点击用户注册
 -(void)clickRetgisterBtn{
-    HWLog(@"点击了按钮");
+    RegisterViewController *memberVC = [RegisterViewController new];
+    [self.navigationController pushViewController:memberVC animated:YES
+     ];
 }
 
 //点击其他方式登录

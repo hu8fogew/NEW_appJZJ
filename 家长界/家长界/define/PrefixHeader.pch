@@ -58,8 +58,14 @@
 #import "AnswerQuestion.h"
 #import "DescTeacherCell.h"
 #import "TeacherOfDescCell.h"
-
-//企聘通
+#import "RetrievePwdViewController.h"
+#import "RegisterViewController.h"
+#import "MemberCenterViewController.h"
+#import "TeacherDetailView.h"
+#import "teacherHeaderView.h"
+#import "teacherHomeTableViewCell.h"
+#import "teacherCosultTableViewCell.h"
+#import "teacherDynamicTableViewCell.h"
 
 /**
  *  消息
