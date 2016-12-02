@@ -52,6 +52,7 @@
         imageV.userInteractionEnabled = YES;
         
         [imageV addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewGestureAction:)]];
+//        [imageV addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewLongGestureAction:)]];
         
         [self.scrollView addSubview:imageV];
     }
@@ -76,7 +77,15 @@
 //    self.imageActionBlock(tap.view.tag - 10000);
     
     [self.delegate pushViewController:tap.view.tag];
+    
+    
 }
+
+
+//-(void)imageViewLongGestureAction:(UILongPressGestureRecognizer *)tap
+//{
+//    [self.timer setFireDate:[NSDate distantFuture]];
+//}
 
 - (void)createPageControlWithFrame:(CGRect)rect WithSuperView:(UIView *)superView WithPageNum:(NSInteger)pageNum WithCurrentColor:(UIColor *)currentColor WithTintColor:(UIColor *)tintColor{
     

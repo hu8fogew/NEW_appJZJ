@@ -22,20 +22,21 @@
         [self addSubview:vi];
         
         //图标
-        _quesImage = [[UIImageView alloc]initWithFrame:CGRectMake(marginLRWidth, 10+(vi.height*0.15)/3, (vi.height*0.15)/3, (vi.height*0.15)/3)];
-        _quesImage.layer.cornerRadius = (vi.height*0.15)/6;
+        _quesImage = [[UIImageView alloc]initWithFrame:CGRectMake(marginLRWidth, 10, vi.height*0.15, vi.height*0.15)];
+        _quesImage.layer.cornerRadius = (vi.height*0.15)/2;
+        _quesImage.layer.masksToBounds = YES;
         [vi addSubview:_quesImage];
         //用户名
-        _userNameText = [self createLabelWithFrame:CGRectMake(_quesImage.x+_quesImage.width+3, 10, 80, vi.height*0.15) andTextColor:HWColor(153, 153, 153) andTextSize:13 andSView:vi];
+        _userNameText = [self createLabelWithFrame:CGRectMake(_quesImage.x+_quesImage.width+3, 10, 80, vi.height*0.15) andTextColor:HWColor(153, 153, 153) andTextSize:14 andSView:vi];
         //用户发布时间
-        _timeText = [self createLabelWithFrame:CGRectMake(_userNameText.x+_userNameText.width, _userNameText.y, 80, _userNameText.height) andTextColor:HWColor(153, 153, 153) andTextSize:13 andSView:vi];
+        _timeText = [self createLabelWithFrame:CGRectMake(_userNameText.x+_userNameText.width, _userNameText.y, 80, _userNameText.height) andTextColor:HWColor(153, 153, 153) andTextSize:14 andSView:vi];
         //问题
         _questionText = [self createLabelWithFrame:CGRectMake(_quesImage.x, _userNameText.y+_userNameText.height, SCREEN_WIDTH-20, vi.height*0.16) andTextColor:HWColor(51, 51, 51) andTextSize:16 andSView:vi];
         
         //回答详解
         _descQuesText = [self createLabelWithFrame:CGRectMake(_questionText.x, _questionText.y+_questionText.height, _questionText.width, vi.height*0.4) andTextColor:HWColor(153, 153, 153) andTextSize:15 andSView:vi];
         
-        _anserOfNum = [self createLabelWithFrame:CGRectMake(vi.width-70, _descQuesText.y+_descQuesText.height, vi.width/2, vi.height*0.15) andTextColor:HWColor(153, 153, 153) andTextSize:13 andSView:vi];
+        _anserOfNum = [self createLabelWithFrame:CGRectMake(vi.width/2, _descQuesText.y+_descQuesText.height, vi.width/2-10, vi.height*0.15) andTextColor:HWColor(153, 153, 153) andTextSize:13 andSView:vi];
         _anserOfNum.textAlignment = NSTextAlignmentRight;
         
     }

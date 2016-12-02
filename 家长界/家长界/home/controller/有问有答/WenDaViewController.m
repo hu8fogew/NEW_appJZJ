@@ -286,7 +286,17 @@ int selectWDcellHeight = 0;
             cell.userNameText.text = @"匿名用户";
             cell.timeText.text = @"6小时前";
             cell.questionText.text = @"孩子不合群，总是喜欢一个人待着怎么办？";
-            cell.descQuesText.text = @"学生啊差点把崔不然被 u吃醋会回味承认我i 人合唱无此恨我才能日湖 以为的气氛让回去访问 UI恶化为求佛；玩儿去凤凰瑞汽车今日开启了超过瑞气氛让我去了古街舞人欺负车无爱恶化； 测绘如汽车热核武器UI淬炼入出";
+//            cell.descQuesText.text = @"学生";
+            NSString *str = @"从业十余年，精通婚姻关系和亲子关系领域，咨询师鲜有的跨界能力，长期活跃于专业和公众领域，创立心理类网络节目《世道胡说》，点击量超过310万，引发公众对心理观念的强烈讨论和关注。以心理专家的身份，参与备受关注的青少年真人秀《变形记》，并写出同名书籍，教导父母面对最头疼的问题";
+            NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:str];
+            NSMutableParagraphStyle *paragraphSytle = [[NSMutableParagraphStyle alloc]init];
+            [paragraphSytle setLineSpacing:8];
+            [attributedStr addAttribute:NSParagraphStyleAttributeName value:paragraphSytle range:NSMakeRange(0, [str length])];
+            cell.descQuesText.numberOfLines = 3;
+            [cell.descQuesText setAttributedText:attributedStr];
+            cell.descQuesText.lineBreakMode = UILineBreakModeTailTruncation;
+//            [cell.descQuesText sizeToFit];
+            
             cell.descQuesText.numberOfLines = 3;
             cell.anserOfNum.text = @"100个回答";
             
