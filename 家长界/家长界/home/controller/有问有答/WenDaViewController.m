@@ -87,6 +87,7 @@ int selectWDcellHeight = 0;
         _wdTableView.dataSource = self;
         _wdTableView.tableHeaderView = self.wdHeaderView;
         _wdTableView.tableHeaderView.height = self.selecteCellView.y+self.selecteCellView.height;
+        _wdTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _wdTableView;
 }
@@ -120,7 +121,7 @@ int selectWDcellHeight = 0;
     
     [self.view addSubview:self.wdTableView];
     
-    
+    [self createRequireButton];
     [self.wdHeaderView addSubview:self.selectedBtnView];
     [self.wdHeaderView addSubview:self.selecteCellView];
     
@@ -132,6 +133,36 @@ int selectWDcellHeight = 0;
     [self createSelectCellView];
     
 }
+
+#pragma mark  /*******创建我来回答悬浮按钮********/
+-(void)createRequireButton
+{
+    
+    UIView *vi = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH*5/6, SCREEN_HEIGHT*8/9, SCREEN_WIDTH/6-10, SCREEN_WIDTH/6-10)];
+//    vi.backgroundColor = [UIColor redColor];
+    vi.layer.cornerRadius = (SCREEN_WIDTH/6-10)/2;
+    vi.layer.masksToBounds = YES;
+    UIImageView *image = [[UIImageView alloc]initWithFrame:vi.bounds];
+    image.image = [UIImage imageNamed:@"require_image"];
+    image.userInteractionEnabled = YES;
+    
+    [image addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(requireCkickBtn:)]];
+    
+    
+    [vi addSubview:image];
+    [self.view addSubview:vi];
+    
+}
+
+-(void)requireCkickBtn:(UITapGestureRecognizer *)tap
+{
+    AnswerEidttingView *vc = [[AnswerEidttingView alloc]init];
+    
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
 
 #pragma mark  /***********添加选择cell的按钮**************/
 -(void)createSelectCellView
@@ -350,12 +381,12 @@ int selectWDcellHeight = 0;
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if ([selecteCell isMemberOfClass:[QuestionTableViewCell class]]) {
+    if ([selecteCell isMemberOfClass:[QuestionDescCell class]]) {
         AnswerTeacherQuestion *vc = [[AnswerTeacherQuestion alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
         
     }
-    if([selecteCell isMemberOfClass:[TeacherTableViewCell class]])
+    if([selecteCell isMemberOfClass:[TeacherOfDescCell class]])
     {
     
         TeacherDetailViewController *teacherVC = [TeacherDetailViewController new];

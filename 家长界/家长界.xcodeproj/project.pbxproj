@@ -33,6 +33,9 @@
 		042420A81DE0531A002BDA40 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 042420A71DE0531A002BDA40 /* comment.png */; };
 		042808C61DE2A46100B2FB09 /* qzImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 042808C51DE2A46100B2FB09 /* qzImage.png */; };
 		042808CB1DE2FC0900B2FB09 /* teacherImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 042808CA1DE2FC0900B2FB09 /* teacherImage.png */; };
+		043D4C011DF1471400294BEB /* require_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 043D4C001DF1471400294BEB /* require_image.png */; };
+		043D4C031DF14E1800294BEB /* answer_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 043D4C021DF14E1800294BEB /* answer_image.png */; };
+		043D4C051DF15C5500294BEB /* award_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 043D4C041DF15C5500294BEB /* award_image.png */; };
 		044D105D1DE82F39004D7F53 /* cacalogdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 044D105B1DE82F39004D7F53 /* cacalogdown.png */; };
 		044D105E1DE82F39004D7F53 /* cacalogup.png in Resources */ = {isa = PBXBuildFile; fileRef = 044D105C1DE82F39004D7F53 /* cacalogup.png */; };
 		046742A11DD57A5200E5F858 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 046742801DD57A5200E5F858 /* MKAnnotationView+WebCache.m */; };
@@ -353,6 +356,9 @@
 		042420A71DE0531A002BDA40 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
 		042808C51DE2A46100B2FB09 /* qzImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qzImage.png; sourceTree = "<group>"; };
 		042808CA1DE2FC0900B2FB09 /* teacherImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teacherImage.png; sourceTree = "<group>"; };
+		043D4C001DF1471400294BEB /* require_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = require_image.png; sourceTree = "<group>"; };
+		043D4C021DF14E1800294BEB /* answer_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = answer_image.png; sourceTree = "<group>"; };
+		043D4C041DF15C5500294BEB /* award_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = award_image.png; sourceTree = "<group>"; };
 		044D105B1DE82F39004D7F53 /* cacalogdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cacalogdown.png; sourceTree = "<group>"; };
 		044D105C1DE82F39004D7F53 /* cacalogup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cacalogup.png; sourceTree = "<group>"; };
 		0467427F1DD57A5200E5F858 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -1051,6 +1057,9 @@
 		04E09F8B1DD3137800CD8F6D /* imageIcon */ = {
 			isa = PBXGroup;
 			children = (
+				043D4C021DF14E1800294BEB /* answer_image.png */,
+				043D4C041DF15C5500294BEB /* award_image.png */,
+				043D4C001DF1471400294BEB /* require_image.png */,
 				04DF32E71DEEDA0A00B36424 /* cellImage.png */,
 				04DF32DC1DEE6A6600B36424 /* pull.png */,
 				04DF32E01DEEC07D00B36424 /* ywydSelectS.png */,
@@ -2069,9 +2078,11 @@
 				046742BB1DD5B80E00E5F858 /* 3.png in Resources */,
 				04057EA71DDC32400039B4CD /* back.png in Resources */,
 				04A5CD8E1DE58FE300E4115C /* checkboxselect.png in Resources */,
+				043D4C051DF15C5500294BEB /* award_image.png in Resources */,
 				04E09F981DD3137800CD8F6D /* message_highlighted.png in Resources */,
 				9E319D981DD458F3000C3178 /* MessageTableViewCell.xib in Resources */,
 				04DF32DF1DEE6A6600B36424 /* push.png in Resources */,
+				043D4C011DF1471400294BEB /* require_image.png in Resources */,
 				04A5CDE31DE5C5D500E4115C /* icon_play_hl@3x.png in Resources */,
 				9E319DAF1DD45AB1000C3178 /* sns_icon_weibo.png in Resources */,
 				04DF32DE1DEE6A6600B36424 /* pull.png in Resources */,
@@ -2161,6 +2172,7 @@
 				046742B31DD5B34A00E5F858 /* newsBottomImage.png in Resources */,
 				9E319DAA1DD45AB1000C3178 /* sns_icon_5.png in Resources */,
 				04E09F9A1DD3137800CD8F6D /* owner_highlighted.png in Resources */,
+				043D4C031DF14E1800294BEB /* answer_image.png in Resources */,
 				04E09F971DD3137800CD8F6D /* home_normal.png in Resources */,
 				049FBAB01DEBDFED0018018A /* ycymSearch.png in Resources */,
 				046742B91DD5B80E00E5F858 /* 1.png in Resources */,

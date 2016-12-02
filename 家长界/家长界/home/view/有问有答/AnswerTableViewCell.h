@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+//@class PlaceholderTextView;
 
 @interface AnswerTableViewCell : UITableViewCell
 /*老师头像*/
@@ -20,10 +21,15 @@
 @property(nonatomic,strong)UILabel *number;
 
 /*问题主标题*/
-@property(nonatomic,strong)UILabel *mainLabel;
+@property(nonatomic,strong)UILabel *timeLabel;
 
 /*问题详情*/
-@property(nonatomic,strong)UILabel *detialLabel;
+@property(nonatomic,strong)UIView *textEditView;
+@property(nonatomic,strong)UILabel *textView;
+
+//打赏
+@property(nonatomic,strong)UIView *awradView;
+@property(nonatomic,strong)UIButton *awardBtn;
 
 -(instancetype)initWithFrame:(CGRect)frame;
 

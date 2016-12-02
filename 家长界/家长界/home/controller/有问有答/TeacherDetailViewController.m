@@ -94,6 +94,7 @@ static const int backViewHeight = 240;
 -(UIView *)bottomView{
     if (!_bottomView) {
         _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - bottomViewHeight, SCREEN_WIDTH, bottomViewHeight)];
+        _bottomView.backgroundColor = [UIColor clearColor];
     }
     return _bottomView;
 }

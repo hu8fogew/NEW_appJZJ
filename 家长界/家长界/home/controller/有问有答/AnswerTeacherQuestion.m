@@ -50,7 +50,7 @@ static const int answerHeight = 80;
 {
     if (!_answerView) {
         _answerView = [[UIView alloc]initWithFrame:CGRectMake(0, self.questionTable.height, SCREEN_WIDTH, answerHeight)];
-        _answerView.backgroundColor = [UIColor whiteColor];
+//        _answerView.backgroundColor = [UIColor clearColor];
     }
     return _answerView;
 }
@@ -104,12 +104,13 @@ static const int answerHeight = 80;
 -(UITableView *)questionTable
 {
     if (!_questionTable) {
-        _questionTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-answerHeight)];
+        _questionTable = [[UITableView alloc]initWithFrame:self.view.bounds];
         _questionTable.delegate = self;
         _questionTable.dataSource = self;
         _questionTable.tableHeaderView = self.headerOfQuestion;
-        _questionTable.allowsSelection = NO;
+//        _questionTable.allowsSelection = NO;
         _questionTable.tableHeaderView.height = self.titleView.y+self.titleView.height;
+        _questionTable.separatorStyle = UITableViewCellSeparatorStyleNone;
         
     }
     return _questionTable;
@@ -118,6 +119,7 @@ static const int answerHeight = 80;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     [self createView];
     [self createNotifictionCenter];
@@ -147,31 +149,53 @@ static const int answerHeight = 80;
 {
     
     [self.view addSubview:self.questionTable];
-    [self.view addSubview:self.answerView];
+   
+    [self createRequireButton];
     
-    UIButton *answerBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    [answerBtn addTarget:self action:@selector(answerQuestionClick) forControlEvents:UIControlEventTouchUpInside];
-    answerBtn.frame = CGRectMake(SCREEN_WIDTH/8, self.answerView.height/4, SCREEN_WIDTH-SCREEN_WIDTH/4, self.answerView.height/2);
-    answerBtn.backgroundColor = HWColor(107, 160, 220);
-    [answerBtn setTitle:@"我来回答" forState:UIControlStateNormal];
-    [answerBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    answerBtn.titleLabel.font = [UIFont systemFontOfSize:18];
-    [self.answerView addSubview:answerBtn];
     [self.headerOfQuestion addSubview:self.mainQuestionView];
     
     [self.headerOfQuestion addSubview:self.titleView];
     
 }
 
+
+#pragma mark  /*******创建我来回答悬浮按钮********/
+-(void)createRequireButton
+{
+    
+    UIView *vi = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH*5/6, SCREEN_HEIGHT*8/9, SCREEN_WIDTH/6-10, SCREEN_WIDTH/6-10)];
+    //    vi.backgroundColor = [UIColor redColor];
+    vi.layer.cornerRadius = (SCREEN_WIDTH/6-10)/2;
+    vi.layer.masksToBounds = YES;
+    UIImageView *image = [[UIImageView alloc]initWithFrame:vi.bounds];
+    image.image = [UIImage imageNamed:@"answer_image"];
+    image.userInteractionEnabled = YES;
+    
+    [image addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(requireCkickBtn:)]];
+    
+    
+    [vi addSubview:image];
+    [self.view addSubview:vi];
+    
+}
+
+-(void)requireCkickBtn:(UITapGestureRecognizer *)tap
+{
+    AnswerQuestion *answer = [[AnswerQuestion alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT*2/3, SCREEN_WIDTH, SCREEN_HEIGHT/3)andSuperView:self.view];
+    answer.answerText.frame = CGRectMake(20, 30, answer.width-40, answer.height*2/3-15);
+    
+    answer.commitBtn.frame = CGRectMake(answer.width-70, answer.height-40, 60, 30);
+}
+
+
+
+
 #pragma mark 我来回答的点击事件
 -(void)answerQuestionClick
 {
  
-#warning mark  老师和家长实现的方法不一样
-/*
-    AnswerEidttingView *vc = [[AnswerEidttingView alloc]init];
-    [self presentViewController:vc animated:YES completion:nil];
- */
+
+
     AnswerQuestion *answer = [[AnswerQuestion alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT*2/3, SCREEN_WIDTH, SCREEN_HEIGHT/3)andSuperView:self.view];
     answer.answerText.frame = CGRectMake(20, 30, answer.width-40, answer.height*2/3-15);
     
@@ -203,25 +227,45 @@ static const int answerHeight = 80;
     AnswerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
         cell = [[AnswerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, cell.height)];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.teacherImage.image = [UIImage imageNamed:@"teacherImage"];
         
         cell.teacherName.text = @"韩雪冬";
         cell.smallImage.image = [UIImage imageNamed:@"good"];
-        cell.number.text = @"38";
-        cell.mainLabel.text = @"2016-11-25 09:45";
-        NSString *str = @"这里有各种创意心理应用，通过有趣的方式体验心理学的乐趣。如果你有压力，就来试试“放空一分钟”吧";
-        NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:str];
-        NSMutableParagraphStyle *paragraphSytle = [[NSMutableParagraphStyle alloc]init];
-        [paragraphSytle setLineSpacing:4];
-        [attributedStr addAttribute:NSParagraphStyleAttributeName value:paragraphSytle range:NSMakeRange(0, [str length])];
-        [cell.detialLabel setAttributedText:attributedStr];
-        [cell.detialLabel sizeToFit];
         
+        
+        NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:14],};
+        NSString *str = @"38";
+        CGSize labSize = [str boundingRectWithSize:CGSizeMake(100, 100) options:NSStringDrawingTruncatesLastVisibleLine attributes:attribute context:nil].size;
+        cell.number.width = labSize.width;
+        cell.number.text = str;
+        [cell.number sizeToFit];
+        cell.number.textAlignment = NSTextAlignmentRight;
+        cell.smallImage.x = cell.number.x-cell.teacherName.height/2;
+        cell.timeLabel.text = @"6小时之前";
+        NSString *strDesc = @"哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈";
+        
+        NSDictionary *attributes = @{NSFontAttributeName : [UIFont systemFontOfSize:15]};
+        CGSize descSize = [strDesc boundingRectWithSize:CGSizeMake(50, 50) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+        cell.textView.text = strDesc;
+        
+        cell.textView.backgroundColor = HWColor(100, 50, 100);
+        cell.textView.height = descSize.height;
+        cell.textEditView.height = descSize.height;
     }
     
     return cell;
     
 }
+
+////修改cell的高度
+//-(void)textViewDidChange:(UITextView *)textView
+//{
+//    
+//    
+//    
+//}
+
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
