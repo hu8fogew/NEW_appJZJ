@@ -26,4 +26,5 @@
 +(NSMutableArray *)addSeleBarArray;
 /*企聘通的首页选择按钮*/
 +(NSMutableArray *)addQptSeleBarArray;
++(NSMutableArray *)addAdverArray;
 @end

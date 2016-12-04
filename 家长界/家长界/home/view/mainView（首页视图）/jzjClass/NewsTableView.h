@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-@class NewsTableView;
-@protocol NewsTableViewDelegate <NSObject>
 
--(void)tableView:(UITableView*)table didSelectRowAtIndexPath:(NSIndexPath*)indexPath;
-
-@end
 
 @interface NewsTableView : UIView
 
-@property(nonatomic,strong)UITableView *newsTableView;
-@property(nonatomic,assign)id<NewsTableViewDelegate>delegate;
+
+@property(nonatomic,strong)UIView *animationVi;
+//赋值方法
+
+-(void)setViewWithMainQues:(NSString *)quesText andSecondText:(NSString *)sText andCommentText:(NSString *)numText;
+
+
+
 @end

@@ -26,7 +26,7 @@
 #import "HeaderView.h"
 #import "DataBase.h"
 #import "NewsTableView.h"
-#import "NewsTableViewCell.h"
+#import "ScrollAdView.h"
 #import "NewsCollectionViewCell.h"
 #import "NewsCellView.h"
 #import "NewsSecondCollectionViewCell.h"
@@ -91,6 +91,7 @@
  */
 //segument选择条目
 #import "SGSegmentedControl.h"
+#import "CCPScrollView.h"
 #import "AdvertisingColumn.h"
 #import "UIImageView+WebCache.h"
 #import "WYAutoCarusel.h"

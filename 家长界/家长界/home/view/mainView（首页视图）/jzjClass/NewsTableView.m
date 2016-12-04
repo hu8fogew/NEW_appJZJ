@@ -7,7 +7,16 @@
 //
 
 #import "NewsTableView.h"
-@interface NewsTableView()<UITableViewDelegate,UITableViewDataSource>
+@interface NewsTableView()
+//点
+@property(nonatomic,strong)UIImageView*img;
+
+//主标题
+@property(nonatomic,strong)UILabel *mainlabText;
+//副标题
+@property(nonatomic,strong)UILabel *secondText;
+//评论
+@property(nonatomic,strong)UILabel *commentText;
 
 @end
 @implementation NewsTableView
@@ -17,15 +26,10 @@
     
     self = [super initWithFrame: frame];
     if (self) {
-        UITableView *tableView = [[UITableView alloc]initWithFrame:self.bounds];
-        tableView.delegate = self;
-        tableView.dataSource = self;
-        self.newsTableView = tableView;
-        tableView.showsVerticalScrollIndicator = NO;
-        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
-        [self addSubview:tableView];
-        
+        self.width = SCREEN_WIDTH*4/5;
+        self.height = SCREEN_WIDTH/6;
+        self.backgroundColor = HWRandomColor;
+        [self createView];
         
     }
     
@@ -33,47 +37,66 @@
     return self;
 }
 
-
-
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//创建视图
+-(void)createView
 {
     
-    return 1;
+//    UIView *vi = [[UIView alloc]initWithFrame:self.bounds];
+//    vi.backgroundColor = [UIColor redColor];
+////    self.animationVi = vi;
+//    [self addSubview:vi];
+    
+    _img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.width/10, self.width/10)];
+    _img.image = [UIImage imageNamed:@""];
+    
+    [self addSubview:_img];
+    
+    //主标题
+    _mainlabText = [[UILabel alloc]initWithFrame:CGRectMake(_img.x+_img.width+5, 0, self.width*2/3, self.height/2)];
+    _mainlabText.textColor = HWColor(53, 53, 53);
+    _mainlabText.font = [UIFont systemFontOfSize:16];
+    _mainlabText.textAlignment = NSTextAlignmentLeft;
+    _mainlabText.backgroundColor = [UIColor whiteColor];
+    [self addSubview:_mainlabText];
+    
+    //副标题
+    _secondText = [[UILabel alloc]initWithFrame:CGRectMake(_mainlabText.x, _mainlabText.y+_mainlabText.height, _mainlabText.width, self.height/2)];
+    _secondText.font = [UIFont systemFontOfSize:14];
+    _secondText.textColor = HWColor(153, 153, 153);
+    _secondText.textAlignment = NSTextAlignmentLeft;
+    _secondText.backgroundColor = [UIColor whiteColor];
+    [self addSubview:_secondText];
+    
+    UIView *vo = [[UIView alloc]initWithFrame:CGRectMake(_secondText.x+_secondText.width, 10, 2, self.height-20)];
+    vo.backgroundColor = HWColor(241, 241, 241);
+    [self addSubview:vo];
+    //评论
+    _commentText = [[UILabel alloc]initWithFrame:CGRectMake(_mainlabText.x+_mainlabText.width+1.5, self.height/4, self.width-(_mainlabText.x+_mainlabText.width+15.5), self.height/2)];
+    _commentText.font = [UIFont systemFontOfSize:15];
+    _commentText.textColor = HWColor(153, 153, 153);
+    _commentText.textAlignment = NSTextAlignmentRight;
+    _commentText.backgroundColor = [UIColor whiteColor];
+    [self addSubview:_commentText];
+    
+    
+    
+    
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+
+
+//跟新数据
+-(void)setViewWithMainQues:(NSString *)quesText andSecondText:(NSString *)sText andCommentText:(NSString *)numText
 {
-    return 10;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *identifier = @"identifier";
-     [tableView registerNib:[UINib nibWithNibName:@"NewsTableViewCell" bundle:nil] forCellReuseIdentifier:@"identifier"];
-    NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
-    cell.newsMLableText.text = @"孩子为什么”不合群“？不为人知的背后消息";
-    cell.newsDLableText.text = @"让孩子进行户外活动！";
+    self.mainlabText.text = quesText;
+    self.secondText.text = sText;
+    self.commentText.text = numText;
     
-    cell.titleImg.image = [UIImage imageNamed:@"tableImage"];
-    cell.commentLableText.text = @"0评";
-    
-    return cell;
     
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"newsTableScrollView" object:nil userInfo:nil];
-    HWLog(@"只是第%zd行",indexPath.row);
-}
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return 76;
-}
 
 
 

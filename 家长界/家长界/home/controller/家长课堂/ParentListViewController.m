@@ -165,57 +165,29 @@ static const int cellHeight = ParentCellHeight;
 
 -(void)clickBtnSift:(UIButton *)sender
 {
-//    self.ListTable.userInteractionEnabled = NO;
-//    _ListTable.tableHeaderView.height = self.vc.y +self.vc.height;
-    
     sender.selected = !sender.selected;
     
     if (sender.tag == 0) {
         self.vi.btnS.selected = NO;
         self.vi.btnT.selected = NO;
-//        [self.pSecondTable removeFromSuperview];
-//        self.vc.x = 0;
-//        self.pSecondTable.x = self.vc.x+self.vc.width;
-//        [self.headerView addSubview:self.pSecondTable];
-//        if (self.vi.btnF.selected == YES) {
-//            [self firstSelect];
-//        }else
-//        {
-//            [self secondSelect];
-//        }
-        [self addBackgroundView:self.view];
-        [self.view addSubview:self.vc];
-        [self.view addSubview:self.pSecondTable];
+
+        
     }
     
     if (sender.tag == 1) {
-        self.vc.x = SCREEN_WIDTH/3;
-        self.pSecondTable.x = self.vc.x+self.vc.width;
+        
         
         self.vi.btnF.selected = NO;
         self.vi.btnT.selected = NO;
-        [self.pSecondTable removeFromSuperview];
-        if (self.vi.btnS.selected == YES) {
-            [self firstSelect];
-        }else
-        {
-            [self secondSelect];
-        }
+      
     }
     
     if (sender.tag == 2) {
         
-        self.vc.x = SCREEN_WIDTH*2/3;
-        self.pSecondTable.x = SCREEN_WIDTH/3;
+        
         self.vi.btnS.selected = NO;
         self.vi.btnF.selected = NO;
-        [self.pSecondTable removeFromSuperview];
-        if (self.vi.btnT.selected == YES) {
-            [self firstSelect];
-        }else
-        {
-            [self secondSelect];
-        }
+       
     }
     
 

@@ -8,9 +8,13 @@
 
 #import "HomeViewController.h"
 
-@interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource, WYAutoCaruselDelegate,NewsTableViewDelegate>
+@interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource, WYAutoCaruselDelegate>
 
 @property(nonatomic, nonnull,strong)NSMutableArray *imageArr;
+
+@property(nonatomic,strong)NSArray *arrAd;
+
+@property(nonatomic,strong)CCPScrollView *ccScrollView;
 
 @end
 
@@ -22,6 +26,14 @@
 
 
 #pragma mark --------懒加载----------
+
+-(NSArray *)arrAd
+{
+    if (!_arrAd) {
+        _arrAd = [DataBase addAdverArray];
+    }
+    return _arrAd;
+}
 
 -(NSMutableArray *)imageArr
 {
@@ -41,21 +53,18 @@
     if (!_newsTopView) {
         _newsTopView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 123)];
         _newsTopView.backgroundColor = [UIColor whiteColor];
+        
+        _ccScrollView = [[CCPScrollView alloc]initWithFrame:CGRectMake(self.topImageView.x+self.topImageView.width, self.topImageView.y, _newsTopView.width-(self.topImageView.x+self.topImageView.width+10), self.topImageView.height)];
+//        vc.backgroundColor = [UIColor greenColor];
+        _ccScrollView.titleArray = self.arrAd;
+        [_newsTopView addSubview:_ccScrollView];
+        
     }
     return _newsTopView;
 }
 
 
--(NewsTableView *)newsTable
-{
-    if (!_newsTable) {
-        _newsTable = [[NewsTableView alloc]initWithFrame:CGRectMake(86,20,self.newsTopView.frame.size.width-100  ,76)];
-        _newsTable.delegate = self;
-        
-    }
-    
-    return _newsTable;
-}
+
 
 -(UIImageView *)topImageView
 {
@@ -95,7 +104,6 @@
         _newsView = [[UIView alloc]initWithFrame:CGRectMake(0, lunBoheight+selecteButtonHeight+DistanceForCell, SCREEN_WIDTH, 250)];
         _newsView.backgroundColor = HWColor(242, 242, 242);
         
-        
     }
     return _newsView;
 }
@@ -109,7 +117,6 @@
         _vidioView0.str = @"热门课堂";
 //        _vidioView0.selfView = self;
     }
-    
     return _vidioView0;
 }
 
@@ -184,7 +191,13 @@
     [self.newsView addSubview:self.newsBottomView];
     [self.newsBottomView addSubview:self.bottonImageView];
     [self.newsTopView addSubview:self.topImageView];
-    [self.newsTopView addSubview:self.newsTable];
+    
+    [self.ccScrollView clickTitleLabel:^(NSInteger index, NSString *titleString) {
+       
+        HWLog(@"%zd",index);
+        
+    }];
+    
     
     [self.jzjHeaderView addSubview:self.vidioView0];
     [self.jzjHeaderView addSubview:self.vidioView1];

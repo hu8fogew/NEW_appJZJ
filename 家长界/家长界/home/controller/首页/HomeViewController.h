@@ -36,7 +36,7 @@
 
 
 
-@property(nonatomic,strong)NewsTableView *newsTable;
+
 
 
 

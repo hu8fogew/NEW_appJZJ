@@ -19,6 +19,9 @@
 /*筛选条*/
 @property(nonatomic,strong)UIView *QZSiftView;
 
+/*sift*/
+@property(nonatomic,strong)SiftView *sv;
+
 /*轮播图的假数据*/
 @property(nonatomic,strong)NSMutableArray *arr;
 @end
@@ -88,28 +91,53 @@ static const int LBTOSIFT_height = 12;
     [self.view addSubview:self.Qintable];
     [self createAdsPageWithArr:self.arr];
     
-    NSArray *arr = @[@"区域",@"年龄段",@"主题特色"];
-    [self.headerView addSubview:self.QZSiftView];
-    SiftView *vi = [[SiftView alloc]initWithFrame:self.QZSiftView.bounds andArr:arr andAction:@selector(clickSiftAction:) andTaget:self];
     
-    [self.QZSiftView addSubview:vi];
+    [self.headerView addSubview:self.QZSiftView];
+    
+    
+    [self createSiftView];
 }
 
 
-/*筛选条的点击事件*/
--(void)clickSiftAction:(UIButton *)sender
+#pragma mark  筛选条件的按钮执行方法
+
+-(void)createSiftView
+{
+    NSArray *arr = @[@"区域",@"年龄段",@"主题特色"];
+    self.sv = [[SiftView alloc]initWithFrame:self.QZSiftView.bounds andArr:arr andAction:@selector(clickBtnSift:) andTaget:self];
+    [self.QZSiftView addSubview:self.sv];
+}
+
+
+-(void)clickBtnSift:(UIButton *)sender
 {
     sender.selected = !sender.selected;
+    
     if (sender.tag == 0) {
-        HWLog(@"0");
+        self.sv.btnS.selected = NO;
+        self.sv.btnT.selected = NO;
+        
+        
     }
     
     if (sender.tag == 1) {
-        HWLog(@"1");
+        
+        
+        self.sv.btnF.selected = NO;
+        self.sv.btnT.selected = NO;
+        
     }
+    
     if (sender.tag == 2) {
-        HWLog(@"2");
+        
+        
+        self.sv.btnS.selected = NO;
+        self.sv.btnF.selected = NO;
+        
     }
+    
+    
+    
 }
 
 
