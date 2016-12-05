@@ -28,7 +28,7 @@
     if (self) {
         self.width = SCREEN_WIDTH*4/5;
         self.height = SCREEN_WIDTH/6;
-        self.backgroundColor = HWRandomColor;
+//        self.backgroundColor = HWRandomColor;
         [self createView];
         
     }
@@ -46,15 +46,16 @@
 ////    self.animationVi = vi;
 //    [self addSubview:vi];
     
-    _img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.width/10, self.width/10)];
-    _img.image = [UIImage imageNamed:@""];
-    
+    _img = [[UIImageView alloc]initWithFrame:CGRectMake(self.width/30, self.height/6, self.width/30, self.width/30)];
+    _img.image = [UIImage imageNamed:@"dian_image"];
+    _img.layer.cornerRadius = self.width/60;
+    _img.layer.masksToBounds = YES;
     [self addSubview:_img];
     
     //主标题
-    _mainlabText = [[UILabel alloc]initWithFrame:CGRectMake(_img.x+_img.width+5, 0, self.width*2/3, self.height/2)];
+    _mainlabText = [[UILabel alloc]initWithFrame:CGRectMake(self.width/10+5, 0, self.width*2/3, self.height/2)];
     _mainlabText.textColor = HWColor(53, 53, 53);
-    _mainlabText.font = [UIFont systemFontOfSize:16];
+    _mainlabText.font = [UIFont systemFontOfSize:18];
     _mainlabText.textAlignment = NSTextAlignmentLeft;
     _mainlabText.backgroundColor = [UIColor whiteColor];
     [self addSubview:_mainlabText];

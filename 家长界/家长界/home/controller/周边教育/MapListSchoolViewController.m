@@ -30,7 +30,7 @@
 {
     
     if (!_listHeaderView) {
-        _listHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, siftHeight)];
+        _listHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, siftHeight)];
         
     }
     return _listHeaderView;
@@ -40,20 +40,21 @@
 {
     if (!_mapListTable) {
         
-        _mapListTable = [[UITableView alloc]initWithFrame:self.view.bounds];
+        _mapListTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 64+siftHeight, SCREEN_WIDTH, SCREEN_HEIGHT-64-siftHeight)];
         
         _mapListTable.delegate = self;
         _mapListTable.dataSource = self;
         
-        _mapListTable.tableHeaderView = self.listHeaderView;
-        
-        _mapListTable.tableHeaderView.height = self.listHeaderView.y+self.listHeaderView.height;
+       
     }
     return _mapListTable;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.title = @"周边教育列表";
+    
     
     self.view.backgroundColor = HWColor(242, 242, 242);
     [self createView];
@@ -65,12 +66,15 @@
 /*添加视图*/
 -(void)createView
 {
-    UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
-    but.frame =CGRectMake(0,0, 60, 44);
-    [but setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
-    [but addTarget:self action:@selector(popView:)forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem  *barBut = [[UIBarButtonItem alloc]initWithCustomView:but];
-    self.navigationItem.leftBarButtonItem = barBut;
+//    UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
+//    but.frame =CGRectMake(0,0, 60, 44);
+//    [but setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+//    [but addTarget:self action:@selector(popView:)forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem  *barBut = [[UIBarButtonItem alloc]initWithCustomView:but];
+//    self.navigationItem.leftBarButtonItem = barBut;
+    
+    
+    [self.view addSubview:self.listHeaderView];
     [self.view addSubview:self.mapListTable];
     
     NSArray *arr = @[@"区域",@"类别",@"全部"];
@@ -180,7 +184,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return DistanceForCell;
+    return 3;
 }
 
 

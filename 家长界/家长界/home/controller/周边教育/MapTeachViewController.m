@@ -57,7 +57,8 @@
 -(UIView *)selecteButtonView
 {
     if (!_selecteButtonView) {
-        _selecteButtonView = [[UIView alloc]initWithFrame:CGRectMake(0, lunBoheight, SCREEN_WIDTH, SCREEN_WIDTH*2/3)];
+        _selecteButtonView = [[UIView alloc]initWithFrame:CGRectMake(0, lunBoheight, SCREEN_WIDTH, selecteButtonHeight*2)];
+        _selecteButtonView.backgroundColor = [UIColor whiteColor];
         [self createSelecteActivityWithArr:self.selecteButtonArr];
     }
     
@@ -227,25 +228,31 @@
     for (NSDictionary *dic in source) {
         UIView *vi = [[UIView alloc]init];
         //        if (i<2) {
-        vi.frame = CGRectMake((((SCREEN_WIDTH-4)/3.0) * i)+i*2, 0, SCREEN_WIDTH/3.0, 110);
+        vi.frame = CGRectMake(10+((SCREEN_WIDTH-20)/3.0) * i, 0, (SCREEN_WIDTH-20)/3.0, selecteButtonHeight);
         //        }
         
         if(i>2){
-            vi.frame = CGRectMake((((SCREEN_WIDTH-4)/3.0) * (i-3))+(i-3)*2, 110.8, SCREEN_WIDTH/3.0, 110);
+            vi.frame = CGRectMake(10+((SCREEN_WIDTH-20)/3.0) * (i-3), selecteButtonHeight, (SCREEN_WIDTH-20)/3.0, selecteButtonHeight);
             
         }
         vi.backgroundColor = [UIColor whiteColor];
+        
+        //            vi.backgroundColor = HWRandomColor;
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setFrame:CGRectMake(vi.frame.size.width/2-35, 0, 70, 70)];
-        [button setBackgroundImage:[UIImage imageNamed:dic[@"slecteImg"]] forState:UIControlStateNormal];
+        button.backgroundColor = HWRandomColor;
+        [button setFrame:CGRectMake(vi.width/3+3, vi.height/6, selecteButtonHeight*1/3, selecteButtonHeight*1/3)];
+        button.layer.cornerRadius = selecteButtonHeight*1/6;
+        button.layer.masksToBounds = YES;
+        //            [button setBackgroundImage:[UIImage imageNamed:dic[@"slecteImg"]] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(clickSeleceAction:) forControlEvents:UIControlEventTouchUpInside];
         button.tag = i;
         [vi addSubview:button];
+        
         //添加文字
-        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 70, SCREEN_WIDTH/3.0, 20)];
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, button.y+button.height+15, vi.width, 20)];
         label.text = dic[@"labTitle"];
-        label.font = [UIFont systemFontOfSize:16];
-        label.textColor = HWColor(80, 80, 80);
+        label.font = [UIFont systemFontOfSize:18];
+        label.textColor = HWColor(51, 51, 51);
         label.textAlignment = NSTextAlignmentCenter;
         [vi addSubview:label];
         [self.selecteButtonView addSubview:vi];
@@ -277,7 +284,7 @@
     WYAutoCarusel *aut = [[WYAutoCarusel alloc]init];
     [aut createCaruselWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, lunBoheight) WithSuperView:self.headerView WithImageUrlArr:arr WithPlaceholderImageName:@"1" WithInterval:2];
     
-    [aut createPageControlWithFrame:CGRectMake(Kwidth-60, 100, 30, 20) WithSuperView:self.headerView WithPageNum:arr.count WithCurrentColor:HWColor(248, 114, 1) WithTintColor:[UIColor whiteColor]];
+    [aut createPageControlWithFrame:CGRectMake(SCREEN_WIDTH-60, lunBoheight-30, 30, 20) WithSuperView:self.headerView WithPageNum:arr.count WithCurrentColor:HWColor(248, 114, 1) WithTintColor:[UIColor whiteColor]];
     
     aut.delegate = self;
 }

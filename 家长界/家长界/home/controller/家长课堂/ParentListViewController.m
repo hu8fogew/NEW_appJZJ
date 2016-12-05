@@ -38,9 +38,9 @@ static const int cellHeight = ParentCellHeight;
 {
     
     if (!_headerView) {
-        _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, siftHeight)];
-        _headerView.backgroundColor = HWColor(217, 217, 217);
-        
+        _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, siftHeight)];
+//        _headerView.backgroundColor = HWColor(217, 217, 217);
+        _headerView.backgroundColor = [UIColor redColor];
     }
     
     return _headerView;
@@ -49,7 +49,9 @@ static const int cellHeight = ParentCellHeight;
 /*筛选列表*/
 -(ParentFirstTable *)vc{
     if (!_vc) {
-        _vc = [[ParentFirstTable alloc]initWithFrame:CGRectMake(0, siftHeight+64+1.5, SCREEN_WIDTH/3, SCREEN_HEIGHT/3)];
+        _vc = [[ParentFirstTable alloc] init];
+        _vc.width = SCREEN_WIDTH;
+        _vc.height = SCREEN_HEIGHT/3;
         _vc.backgroundColor = [UIColor whiteColor];
     }
     
@@ -66,17 +68,27 @@ static const int cellHeight = ParentCellHeight;
 }
 
 
+-(UIView *)backGroundView
+{
+    if (!_backGroundView) {
+        _backGroundView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT/3+siftHeight+64, SCREEN_WIDTH, SCREEN_HEIGHT*2/3-siftHeight-64)];
+        _backGroundView.backgroundColor = [UIColor blackColor];
+        _backGroundView.alpha = 0.4;
+    }
+    return _backGroundView;
+}
+
 /*TableView的懒加载*/
 
 -(UITableView *)ListTable
 {
     if (!_ListTable) {
-        _ListTable = [[UITableView alloc]initWithFrame:self.view.bounds];
+        _ListTable = [[UITableView alloc]initWithFrame:CGRectMake(0, siftHeight+64, SCREEN_WIDTH, SCREEN_HEIGHT-siftHeight)];
         _ListTable.delegate = self;
         _ListTable.dataSource = self;
         
-        _ListTable.tableHeaderView = self.headerView;
-        _ListTable.tableHeaderView.height = siftHeight;
+//        _ListTable.tableHeaderView = self.headerView;
+//        _ListTable.tableHeaderView.height = siftHeight;
     }
     
     return _ListTable;
@@ -84,7 +96,13 @@ static const int cellHeight = ParentCellHeight;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    
+    self.navigationItem.title = @"视频列表";
+    
+    self.navigationController.navigationBar.backgroundColor = HWColor(242, 242, 242);
+    
+    [self.view addSubview:self.headerView];
     [self.view addSubview:self.ListTable];
     
     
@@ -103,19 +121,28 @@ static const int cellHeight = ParentCellHeight;
 /*添加父视图*/
 -(void)addBackgroundView:(UIView *)superView
 {
-    _backGroundView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT/3+64+siftHeight, SCREEN_WIDTH, SCREEN_HEIGHT-64-siftHeight)];
-    _backGroundView.backgroundColor = [UIColor blackColor];
-    _backGroundView.alpha = 0.4;
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
+    [animation setDuration:0.5f];
+    animation.fromValue = [NSValue valueWithCGPoint:CGPointMake(SCREEN_WIDTH/2, siftHeight+64)];
+    animation.toValue = [NSValue valueWithCGPoint:CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/6+siftHeight+64)];
+    
+    [self.vc.layer addAnimation:animation forKey:@"position"];
+    [self.view addSubview:self.vc];
+    
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cancleBtnAction)];
-    [_backGroundView addGestureRecognizer:tap];
-    [superView addSubview:_backGroundView];
+    [self.backGroundView addGestureRecognizer:tap];
+    [superView addSubview:self.backGroundView];
 }
 
 -(void)cancleBtnAction
 {
-    [_backGroundView removeFromSuperview];
-    _backGroundView = nil;
+    self.vi.btnF.selected = NO;
+    self.vi.btnS.selected = NO;
+    self.vi.btnT.selected = NO;
+    [self.backGroundView removeFromSuperview];
+    self.backGroundView = nil;
     [UIView animateWithDuration:0.1 animations:^{
         
         CGRect sf = self.vc.frame;
@@ -124,7 +151,6 @@ static const int cellHeight = ParentCellHeight;
         CGRect sS = self.pSecondTable.frame;
         sS.origin.y = 64+siftHeight+1.5;
         self.pSecondTable.frame = sf;
-        
         
     }completion:^(BOOL finished) {
         [self.vc removeFromSuperview];
@@ -165,12 +191,19 @@ static const int cellHeight = ParentCellHeight;
 
 -(void)clickBtnSift:(UIButton *)sender
 {
+    
+    
+    
     sender.selected = !sender.selected;
+    
     
     if (sender.tag == 0) {
         self.vi.btnS.selected = NO;
         self.vi.btnT.selected = NO;
-
+        [self addBackgroundView:self.view];
+        if (sender.selected == NO) {
+            [self cancleBtnAction];
+        }
         
     }
     
@@ -190,27 +223,13 @@ static const int cellHeight = ParentCellHeight;
        
     }
     
-
+    
+    
     
 }
 
 
--(void)firstSelect
-{
-    [self.headerView addSubview:self.vc];
-    self.ListTable.tableHeaderView.height = self.vc.y+self.vc.height;
-    self.ListTable.scrollEnabled = NO;
-    [self.ListTable reloadData];
-}
 
--(void)secondSelect
-{
-    [self.vc removeFromSuperview];
-    [self.pSecondTable removeFromSuperview];
-    self.ListTable.tableHeaderView.height = siftHeight;
-    self.ListTable.scrollEnabled = YES;
-    [self.ListTable reloadData];
-}
 
 #pragma mark tableView的代理协议方法
 
@@ -258,7 +277,7 @@ static const int cellHeight = ParentCellHeight;
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return DistanceForCell;
+    return 3;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

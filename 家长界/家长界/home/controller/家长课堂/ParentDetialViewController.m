@@ -375,6 +375,12 @@ int count = 0;
 }
 
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    
+    [[XCAVPlayerView shareManager] pause];
+}
+
 
 
 #pragma mark 创建选择栏按钮

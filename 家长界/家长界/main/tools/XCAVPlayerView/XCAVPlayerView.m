@@ -400,7 +400,7 @@
         self.progressView.progressSlider.currentProgress = self.currentPlayTime;
         self.progressView.currentTimeLabel.text = [self convertTimeToString:self.currentPlayTime];
     }
-    NSLog(@"current playTime:%f－－status:%d",self.currentPlayTime,self.playerItem.status);
+    NSLog(@"current playTime:%f－－status:%zd",self.currentPlayTime,self.playerItem.status);
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(currentXCPlayerTime) object:nil];
     [self performSelector:@selector(currentXCPlayerTime) withObject:nil afterDelay:0.5];
 }

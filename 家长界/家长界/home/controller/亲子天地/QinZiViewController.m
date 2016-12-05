@@ -19,15 +19,17 @@
 /*筛选条*/
 @property(nonatomic,strong)UIView *QZSiftView;
 
+
+
 /*sift*/
 @property(nonatomic,strong)SiftView *sv;
-
+@property(nonatomic,strong)UIView *backgroundSiftView;
 /*轮播图的假数据*/
 @property(nonatomic,strong)NSMutableArray *arr;
 @end
 
 @implementation QinZiViewController
-static const int LBTOSIFT_height = 12;
+
 
 #pragma mark /*******懒加载*******/
 //假数据
@@ -45,7 +47,7 @@ static const int LBTOSIFT_height = 12;
 {
     if (!_headerView) {
         _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, siftHeight)];
-        _headerView.backgroundColor = HWColor(242, 242, 242);
+        _headerView.backgroundColor = HWColor(241, 241, 241);
     }
     
     return _headerView;
@@ -55,7 +57,7 @@ static const int LBTOSIFT_height = 12;
 -(UIView *)QZSiftView
 {
     if (!_QZSiftView) {
-        _QZSiftView = [[UIView alloc]initWithFrame:CGRectMake(0, lunBoheight+LBTOSIFT_height, SCREEN_WIDTH, siftHeight)];
+        _QZSiftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, siftHeight)];
 //        _QZSiftView.backgroundColor = [UIColor greenColor];
     }
     
@@ -71,12 +73,22 @@ static const int LBTOSIFT_height = 12;
         _Qintable.delegate = self;
         _Qintable.dataSource =self;
         _Qintable.tableHeaderView = self.headerView;
-        _Qintable.tableHeaderView.height = self.QZSiftView.y+self.QZSiftView.height;
+        _Qintable.tableHeaderView.height =lunBoheight;
     }
     
     return _Qintable;
     
 }
+
+
+-(UIView *)backgroundSiftView
+{
+    if (!_backgroundSiftView) {
+        _backgroundSiftView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, siftHeight)];
+    }
+    return _backgroundSiftView;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -85,18 +97,62 @@ static const int LBTOSIFT_height = 12;
     [self createView];
 }
 
-
+#pragma mark /********加载页面**********/
 -(void)createView
 {
+    
+    //添加tableView
     [self.view addSubview:self.Qintable];
+    //添加轮播图
     [self createAdsPageWithArr:self.arr];
-    
-    
-    [self.headerView addSubview:self.QZSiftView];
-    
-    
+    //添加筛选条目
     [self createSiftView];
+    //监听tableview的偏移量变化
+    [self createObserverObject];
 }
+
+
+#pragma mark /*********监听tableView的头部高度**********/
+-(void)createObserverObject
+{
+    //添加监听者
+    [self.Qintable addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    
+    
+}
+
+//监听的回调方法
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    
+    CGFloat offset = self.Qintable.contentOffset.y;
+    
+    if (offset > lunBoheight-64-siftHeight ) {
+//        HWLog(@"开始显示");
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.view addSubview:self.backgroundSiftView];
+            
+            [self.Qintable reloadData];
+            [self.backgroundSiftView addSubview:self.QZSiftView];
+        }];
+    }
+    if (0<offset && offset<lunBoheight-64-siftHeight) {
+        [UIView animateWithDuration:0.1 animations:^{
+            
+            [self.backgroundSiftView removeFromSuperview];
+            self.backgroundSiftView = nil;
+            [self.Qintable reloadData];
+        }];
+        
+    }
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.Qintable removeObserver:self forKeyPath:@"contentOffset"];
+}
+
 
 
 #pragma mark  筛选条件的按钮执行方法
@@ -211,7 +267,7 @@ static const int LBTOSIFT_height = 12;
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 3;
+    return DistanceForCell/2;
 }
 
 #pragma mark 轮播图的实现
@@ -225,7 +281,7 @@ static const int LBTOSIFT_height = 12;
     WYAutoCarusel *aut = [[WYAutoCarusel alloc]init];
     [aut createCaruselWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, lunBoheight) WithSuperView:self.headerView WithImageUrlArr:arr WithPlaceholderImageName:@"1" WithInterval:2];
     
-    [aut createPageControlWithFrame:CGRectMake(Kwidth-60, 100, 30, 20) WithSuperView:self.headerView WithPageNum:arr.count WithCurrentColor:HWColor(248, 114, 1) WithTintColor:[UIColor whiteColor]];
+    [aut createPageControlWithFrame:CGRectMake(SCREEN_WIDTH-60, lunBoheight-30, 30, 20) WithSuperView:self.headerView WithPageNum:arr.count WithCurrentColor:HWColor(248, 114, 1) WithTintColor:[UIColor whiteColor]];
     
     aut.delegate = self;
 }

@@ -21,7 +21,7 @@
 /*轮播条目的高度*/
 #define lunBoheight SCREEN_HEIGHT*0.22
 /*选择按钮的一行高度*/
-#define selecteButtonHeight SCREEN_WIDTH*0.32
+#define selecteButtonHeight SCREEN_WIDTH*0.28
 
 /*问题主标题的高度*/
 #define quesMainTextView 70

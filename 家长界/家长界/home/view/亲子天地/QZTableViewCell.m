@@ -16,7 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.backgroundColor = HWColor(242, 242, 242);
+        self.backgroundColor = HWColor(241, 241, 241);
         
         UIView *vi = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, ParentCellHeight-DistanceForCell)];
         vi.backgroundColor = [UIColor whiteColor];

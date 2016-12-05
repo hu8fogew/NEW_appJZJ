@@ -135,7 +135,8 @@
 {
     if (!_selecteView) {
         _selecteView = [[UIView alloc]initWithFrame:CGRectMake(0, lunBoheight, SCREEN_WIDTH, selecteButtonHeight)];
-        _selecteView.backgroundColor = HWColor(242, 242, 242);
+//        _selecteView.backgroundColor = HWColor(242, 242, 242);
+        _selecteView.backgroundColor = [UIColor whiteColor];
     }
     return _selecteView;
     
@@ -195,6 +196,10 @@
     [self.ccScrollView clickTitleLabel:^(NSInteger index, NSString *titleString) {
        
         HWLog(@"%zd",index);
+        
+        AdverViewController *vc = [[AdverViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
         
     }];
     
@@ -350,20 +355,23 @@
         int i = 0;
         for (NSDictionary *dic in source) {
             
-            UIView *vi = [[UIView alloc]initWithFrame:CGRectMake((((SCREEN_WIDTH-4)/3.0) * i)+i*2, 0, SCREEN_WIDTH/3.0, 110)];
-            vi.backgroundColor = [UIColor whiteColor];
+            UIView *vi = [[UIView alloc]initWithFrame:CGRectMake(10+((SCREEN_WIDTH-20)/3.0) * i, 0, (SCREEN_WIDTH-20)/3.0, selecteButtonHeight)];
+//            vi.backgroundColor = HWRandomColor;
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            [button setFrame:CGRectMake(vi.frame.size.width/2-35, 0, 70, 70)];
-            [button setBackgroundImage:[UIImage imageNamed:dic[@"slecteImg"]] forState:UIControlStateNormal];
+            button.backgroundColor = HWRandomColor;
+            [button setFrame:CGRectMake(vi.width/3+3, vi.height/6, selecteButtonHeight*1/3, selecteButtonHeight*1/3)];
+            button.layer.cornerRadius = selecteButtonHeight*1/6;
+            button.layer.masksToBounds = YES;
+//            [button setBackgroundImage:[UIImage imageNamed:dic[@"slecteImg"]] forState:UIControlStateNormal];
             [button addTarget:self action:@selector(SeleceAction:) forControlEvents:UIControlEventTouchUpInside];
             button.tag = i;
             [vi addSubview:button];
             
             //添加文字
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 70, SCREEN_WIDTH/3.0, 20)];
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, button.y+button.height+15, vi.width, 20)];
             label.text = dic[@"labTitle"];
             label.font = [UIFont systemFontOfSize:18];
-            label.textColor = HWColor(80, 80, 80);
+            label.textColor = HWColor(51, 51, 51);
             label.textAlignment = NSTextAlignmentCenter;
             [vi addSubview:label];
             [self.selecteView addSubview:vi];
