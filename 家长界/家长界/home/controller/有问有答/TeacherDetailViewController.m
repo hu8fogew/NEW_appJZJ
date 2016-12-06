@@ -45,6 +45,7 @@ static const int backViewHeight = 240;
     [self createTableView];
     [self.view addSubview:self.bottomView];
     [self createView];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.backView addSubview:self.seleBar];
     [self.backView addSubview:self.headerView];
     self.seleBarArr = @[@"主页",@"咨询",@"动态"];
@@ -202,7 +203,9 @@ static const int backViewHeight = 240;
             teacherHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             if (cell == nil) {
                 cell = [[teacherHomeTableViewCell alloc]initWithFrame:cell.bounds];
-                cell.iconImage.image = [UIImage imageNamed:@"icon"];
+                cell.iconImage.image = [UIImage imageNamed:@"teacherImage"];
+                cell.dzImage.image = [UIImage imageNamed:@"good"];
+                cell.numOfPeople.text = @"25";
                 cell.titleLabel.text = @"taylorzhang";
                 cell.timeLabel.text = @"2016-11-23 12:00";
                 cell.questionLabel.text = @"谢谢老师，很专业，很有收获，必要时会再咨询,等你发的楼房的离开父母看来谢谢老师，很专业，很有收谢谢老师，很专业，很有收获";

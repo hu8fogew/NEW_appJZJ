@@ -13,6 +13,11 @@
 /*老师图像*/
 @property (strong,nonatomic) UIImageView *iconImage;
 
+/*点赞图片*/
+@property(nonatomic,strong)UIImageView *dzImage;
+/*点赞人数*/
+@property(nonatomic,strong)UILabel *numOfPeople;
+
 /*名称*/
 @property (strong,nonatomic) UILabel *titleLabel;
 

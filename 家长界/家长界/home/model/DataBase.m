@@ -28,19 +28,19 @@
 {
     NSMutableArray *arr = [NSMutableArray array];
     NSDictionary *dic1 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"4",@"slecteImg",
+                          @"JzKt_icon",@"slecteImg",
                           @"家长课堂",@"labTitle",
                           @"1",@"lunboImg",
                           nil];
     
     NSDictionary *dic2 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"5",@"slecteImg",
+                          @"YwYd_icon",@"slecteImg",
                           @"有问有答",@"labTitle",
                           @"2",@"lunboImg",
                           nil];
     
     NSDictionary *dic3 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"6",@"slecteImg",
+                          @"QzTd_icon",@"slecteImg",
                           @"亲子天地",@"labTitle",
                           @"3",@"lunboImg",
                           nil];
@@ -56,34 +56,34 @@
 {
     NSMutableArray *arr = [NSMutableArray array];
     NSDictionary *dic1 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"11",@"slecteImg",
+                          @"Wh_icon",@"slecteImg",
                           @"文化",@"labTitle",
                           
                           nil];
     
     NSDictionary *dic2 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"12",@"slecteImg",
+                          @"Ys_icon",@"slecteImg",
                           @"艺术",@"labTitle",
 
                           nil];
     
     NSDictionary *dic3 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"13",@"slecteImg",
+                          @"Ty_icon",@"slecteImg",
                           @"体育",@"labTitle",
                           
                           nil];
     NSDictionary *dic4 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"14",@"slecteImg",
+                          @"Kj_icon",@"slecteImg",
                           @"科技",@"labTitle",
                           
                           nil];
     NSDictionary *dic5 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"15",@"slecteImg",
+                          @"Tg_icon",@"slecteImg",
                           @"托管",@"labTitle",
                           
                           nil];
     NSDictionary *dic6 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"16",@"slecteImg",
+                          @"Jy_icon",@"slecteImg",
                           @"特色教育",@"labTitle",
                           
                           nil];
@@ -167,19 +167,19 @@
 {
     NSMutableArray *arr = [NSMutableArray array];
     NSDictionary *dic1 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"4",@"slecteImg",
+                          @"homeTeach_icon",@"slecteImg",
                           @"家长教育",@"labTitle",
                           @"1",@"lunboImg",
                           nil];
     
     NSDictionary *dic2 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"5",@"slecteImg",
+                          @"learn_icon",@"slecteImg",
                           @"学习烦恼",@"labTitle",
                           @"2",@"lunboImg",
                           nil];
     
     NSDictionary *dic3 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"6",@"slecteImg",
+                          @"body_icon",@"slecteImg",
                           @"生理健康",@"labTitle",
                           @"3",@"lunboImg",
                           nil];

@@ -42,6 +42,8 @@
 
 /*播放器*/
 @property(nonatomic,strong)XCAVPlayerView *playerView;
+@property(nonatomic,strong)UIImageView *backImage;
+
 @end
 
 @implementation ParentDetialViewController
@@ -180,10 +182,11 @@ int count = 0;
         
         _playVidioView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, playViewHeight)];
         _playVidioView.backgroundColor = [UIColor whiteColor];
+        _backImage = [[UIImageView alloc]initWithFrame:_playVidioView.bounds];
         
         
         
-        
+        [_playVidioView addSubview:_backImage];
     }
     
     return _playVidioView;
@@ -245,15 +248,12 @@ int count = 0;
     [self.DetailheaderView addSubview:self.discView];
     [self createCacalogView];
     
-    //客服
-    UIButton *requireBtn = [self createBottomButtonWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*2/5, bottomViewHeight) andTarget:self andImage:@"require" andTitle:@"客服" andBackgroundColor:HWColor(245, 245, 245) andAction:@selector(bottomButtonClick:) andTag:1 andTitleColor:HWColor(128, 128, 128) andTitleEdge:UIEdgeInsetsMake(bottomViewHeight/4, bottomViewHeight*5/9, bottomViewHeight/4, SCREEN_WIDTH*2/21)  andImageEdge:UIEdgeInsetsMake(bottomViewHeight/4, -bottomViewHeight*2/13, bottomViewHeight/4, bottomViewHeight*5/9)];
-    requireBtn.tintColor = HWColor(128, 128, 128);
-    //播放
-    UIButton *playBtn = [self createBottomButtonWithFrame:CGRectMake(SCREEN_WIDTH*2/5, 0, SCREEN_WIDTH*3/5, bottomViewHeight) andTarget:self andImage:@"" andTitle:@"立即播放" andBackgroundColor:HWColor(104, 157, 221) andAction:@selector(bottomButtonClick:) andTag:2 andTitleColor:[UIColor whiteColor] andTitleEdge: UIEdgeInsetsMake(bottomViewHeight/4, SCREEN_WIDTH/5+bottomViewHeight/4, bottomViewHeight/4, SCREEN_WIDTH*2/15) andImageEdge: UIEdgeInsetsMake(bottomViewHeight/4, -SCREEN_WIDTH/5, bottomViewHeight/4, SCREEN_WIDTH/5)];
-    [self.bottomPriceView addSubview:requireBtn];
-    [self.bottomPriceView addSubview:playBtn];
+    [self createBottomView];
     /*添加播放器*/
-    [self addPlayerVidio];
+//    [self addPlayerVidio];
+    
+    //音频播放
+    [self createVidioView];
     
     
     NSArray *titleArr = @[@"介绍",@"目录",@"评价"];
@@ -261,6 +261,42 @@ int count = 0;
     
 }
 
+#pragma mark /******添加底部视图******/
+
+-(void)createBottomView
+{
+    //客服
+    UIButton *requireBtn = [self createBottomButtonWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*2/5, bottomViewHeight) andTarget:self andImage:@"require" andTitle:@"客服" andBackgroundColor:HWColor(245, 245, 245) andAction:@selector(bottomButtonClick:) andTag:1 andTitleColor:HWColor(128, 128, 128) andTitleEdge:UIEdgeInsetsMake(bottomViewHeight/4, bottomViewHeight*5/9, bottomViewHeight/4, SCREEN_WIDTH*2/21)  andImageEdge:UIEdgeInsetsMake(bottomViewHeight/4, -bottomViewHeight*2/13, bottomViewHeight/4, bottomViewHeight*5/9)];
+    requireBtn.tintColor = HWColor(128, 128, 128);
+    //播放
+    UIButton *playBtn = [self createBottomButtonWithFrame:CGRectMake(SCREEN_WIDTH*2/5, 0, SCREEN_WIDTH*3/5, bottomViewHeight) andTarget:self andImage:@"" andTitle:@"立即播放" andBackgroundColor:HWColor(104, 157, 221) andAction:@selector(bottomButtonClick:) andTag:2 andTitleColor:[UIColor whiteColor] andTitleEdge: UIEdgeInsetsMake(bottomViewHeight/4, SCREEN_WIDTH/5+bottomViewHeight/4, bottomViewHeight/4, SCREEN_WIDTH*2/15) andImageEdge: UIEdgeInsetsMake(bottomViewHeight/4, -SCREEN_WIDTH/5, bottomViewHeight/4, SCREEN_WIDTH/5)];
+    [self.bottomPriceView addSubview:requireBtn];
+    [self.bottomPriceView addSubview:playBtn];
+}
+
+#pragma mark  /*********创建音频播放器**********/
+
+-(void)createVidioView
+{
+    
+    self.backImage.image = [UIImage imageNamed:@"cellImage"];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+#pragma mark /*******创建目录视图********/
 /*创建目录视图*/
 -(void)createCacalogView
 {
@@ -489,17 +525,18 @@ int count = 0;
     }
     if ([self.segStr isEqualToString:@"评价"]) {
         
-        ParentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        teacherHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
-            cell = [[ParentTableViewCell alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, cellHeight)];
-            cell.PimageLogo.image = [UIImage imageNamed:@"classImage"];
-            cell.PmainLabel.text = @"初中物理知识点课程";
-            cell.Plabel1.text = @"讲师：李翠芝";
-            cell.plabel2.text =@"192人观看";
-            cell.PkindLabel.text = @"家庭教育";
-            cell.priceLable.text = @"¥9.99";
+            cell = [[teacherHomeTableViewCell alloc]initWithFrame:cell.bounds];
+            cell.iconImage.image = [UIImage imageNamed:@"teacherImage"];
+            cell.dzImage.image = [UIImage imageNamed:@"good"];
+            cell.numOfPeople.text = @"25";
+            cell.titleLabel.text = @"taylorzhang";
+            cell.timeLabel.text = @"2016-11-23 12:00";
+            cell.questionLabel.text = @"谢谢老师，很专业，很有收获，必要时会再咨询,等你发的楼房的离开父母看来谢谢老师，很专业，很有收谢谢老师，很专业，很有收获";
+        
             allCell = cell;
-            
+        
         }
         
     }
@@ -517,8 +554,10 @@ int count = 0;
     }
     if([self.segStr isEqualToString:@"评价"])
     {
-        cellHeight = 100;
+        cellHeight = 130;
+        
     }
+    
     return cellHeight;
 }
 

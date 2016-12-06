@@ -31,6 +31,7 @@
 		042420A41DE0466C002BDA40 /* ParentCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042420A31DE0466C002BDA40 /* ParentCommentView.m */; };
 		042420A61DE04D43002BDA40 /* rightImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 042420A51DE04D43002BDA40 /* rightImage.png */; };
 		042420A81DE0531A002BDA40 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 042420A71DE0531A002BDA40 /* comment.png */; };
+		0424F3841DF696E000A3EA2B /* XCAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0424F3831DF696E000A3EA2B /* XCAudioPlayer.m */; };
 		042808C61DE2A46100B2FB09 /* qzImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 042808C51DE2A46100B2FB09 /* qzImage.png */; };
 		042808CB1DE2FC0900B2FB09 /* teacherImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 042808CA1DE2FC0900B2FB09 /* teacherImage.png */; };
 		042D020C1DF501C00004F01E /* dian_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 042D020B1DF501C00004F01E /* dian_image.png */; };
@@ -355,6 +356,8 @@
 		042420A31DE0466C002BDA40 /* ParentCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentCommentView.m; sourceTree = "<group>"; };
 		042420A51DE04D43002BDA40 /* rightImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightImage.png; sourceTree = "<group>"; };
 		042420A71DE0531A002BDA40 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
+		0424F3821DF696E000A3EA2B /* XCAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCAudioPlayer.h; sourceTree = "<group>"; };
+		0424F3831DF696E000A3EA2B /* XCAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCAudioPlayer.m; sourceTree = "<group>"; };
 		042808C51DE2A46100B2FB09 /* qzImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qzImage.png; sourceTree = "<group>"; };
 		042808CA1DE2FC0900B2FB09 /* teacherImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teacherImage.png; sourceTree = "<group>"; };
 		042D020B1DF501C00004F01E /* dian_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dian_image.png; sourceTree = "<group>"; };
@@ -986,6 +989,8 @@
 				04A5CDC31DE5C5D400E4115C /* imagsSource */,
 				04A5CDD21DE5C5D400E4115C /* XCAVPlayerView.h */,
 				04A5CDD31DE5C5D400E4115C /* XCAVPlayerView.m */,
+				0424F3821DF696E000A3EA2B /* XCAudioPlayer.h */,
+				0424F3831DF696E000A3EA2B /* XCAudioPlayer.m */,
 				04A5CDD41DE5C5D400E4115C /* XCMarqueeView.h */,
 				04A5CDD51DE5C5D400E4115C /* XCMarqueeView.m */,
 				04A5CDD61DE5C5D400E4115C /* XCSlideView.h */,
@@ -2256,6 +2261,7 @@
 				9E90F0DE1DF00C150027F7A7 /* TeacherTableViewCell.m in Sources */,
 				04A5CDE91DE5C5D500E4115C /* XCMarqueeView.m in Sources */,
 				04CF92911DDE9E910088C211 /* QZTableViewCell.m in Sources */,
+				0424F3841DF696E000A3EA2B /* XCAudioPlayer.m in Sources */,
 				04A5CD871DE5728800E4115C /* PlaceholderTextView.m in Sources */,
 				046742AC1DD57A5300E5F858 /* UIImage+MultiFormat.m in Sources */,
 				04A5CD7B1DE453A000E4115C /* UILabel+LinesDistance.m in Sources */,

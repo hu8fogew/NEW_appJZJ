@@ -12,7 +12,8 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+        self.backgroundColor = HWColor(241, 241, 241);
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 130-2)];
         view.backgroundColor = [UIColor whiteColor];
         [self addSubview:view];
         
@@ -35,6 +36,30 @@
             make.left.equalTo(self.iconImage.mas_right).with.offset(7.5);
             make.top.equalTo(view).with.offset(10);
         }];
+        
+        _dzImage = [[UIImageView alloc]init];
+        [view addSubview:_dzImage];
+        [_dzImage mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(view).with.offset(10);
+//            make.centerY.equalTo(_iconImage);
+            make.right.equalTo(view).with.offset(-40);
+            make.width.mas_equalTo(20);
+            make.height.mas_equalTo(20);
+        }];
+        
+        
+        
+        _numOfPeople = [[UILabel alloc]init];
+        _numOfPeople.font = [UIFont systemFontOfSize:18];
+        _numOfPeople.textColor = HWColor(153, 153, 153);
+        [view addSubview:_numOfPeople];
+        [_numOfPeople mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_dzImage).with.offset(20);
+            make.top.equalTo(view).with.offset(8);
+            make.width.mas_equalTo(25);
+            make.height.mas_equalTo(25);
+        }];
+        
         
         self.timeLabel = [UILabel new];
         self.timeLabel.font = [UIFont systemFontOfSize:13.5];

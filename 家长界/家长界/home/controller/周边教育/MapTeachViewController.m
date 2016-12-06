@@ -239,11 +239,11 @@
         
         //            vi.backgroundColor = HWRandomColor;
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.backgroundColor = HWRandomColor;
+//        button.backgroundColor = HWRandomColor;
         [button setFrame:CGRectMake(vi.width/3+3, vi.height/6, selecteButtonHeight*1/3, selecteButtonHeight*1/3)];
         button.layer.cornerRadius = selecteButtonHeight*1/6;
         button.layer.masksToBounds = YES;
-        //            [button setBackgroundImage:[UIImage imageNamed:dic[@"slecteImg"]] forState:UIControlStateNormal];
+                    [button setBackgroundImage:[UIImage imageNamed:dic[@"slecteImg"]] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(clickSeleceAction:) forControlEvents:UIControlEventTouchUpInside];
         button.tag = i;
         [vi addSubview:button];

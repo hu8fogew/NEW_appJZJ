@@ -280,6 +280,15 @@ static const int answerHeight = 80;
     return 0;
 }
 
+
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    
+//    TeacherDetailViewController *vc = [[TeacherDetailViewController alloc]init];
+//    [self.navigationController pushViewController:vc animated:YES];
+//    
+//}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

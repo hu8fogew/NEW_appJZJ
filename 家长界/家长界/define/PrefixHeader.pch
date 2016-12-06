@@ -105,7 +105,9 @@
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "XCAVPlayerView.h"
-
+#import "XZPlayProgressView.h"
+#import "XCMarqueeView.h"
+#import "XCSlideView.h"
 /**
  *  其他
  */
