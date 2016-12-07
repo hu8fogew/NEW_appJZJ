@@ -29,7 +29,7 @@
 
 //打赏
 @property(nonatomic,strong)UIView *awradView;
-@property(nonatomic,strong)UIButton *awardBtn;
+@property(nonatomic,strong)UIImageView *awardBtn;
 
 -(instancetype)initWithFrame:(CGRect)frame;
 

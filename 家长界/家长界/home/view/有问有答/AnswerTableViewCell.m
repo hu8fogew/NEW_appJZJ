@@ -58,9 +58,7 @@
         self.timeLabel.font = [UIFont systemFontOfSize:14];
         self.timeLabel.textAlignment = NSTextAlignmentLeft;
         
-        self.awardBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.awardBtn addTarget:self action:@selector(awardClick) forControlEvents:UIControlEventTouchUpInside];
-        [self.awardBtn setBackgroundImage:[UIImage imageNamed:@"award_image"] forState:UIControlStateNormal];
+        self.awardBtn = [[UIImageView alloc]init];
         self.awardBtn.layer.cornerRadius = 4;
         self.awardBtn.layer.masksToBounds = YES;
         self.awardBtn.frame = CGRectMake(self.awradView.width*5/6, self.awradView.height*1/10, self.awradView.width/6, self.awradView.height*4/5);

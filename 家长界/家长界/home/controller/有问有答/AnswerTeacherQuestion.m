@@ -191,21 +191,15 @@ static const int answerHeight = 80;
 
 
 #pragma mark 我来回答的点击事件
+/*
 -(void)answerQuestionClick
 {
- 
-
-
     AnswerQuestion *answer = [[AnswerQuestion alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT*2/3, SCREEN_WIDTH, SCREEN_HEIGHT/3)andSuperView:self.view];
     answer.answerText.frame = CGRectMake(20, 30, answer.width-40, answer.height*2/3-15);
-    
     answer.commitBtn.frame = CGRectMake(answer.width-70, answer.height-40, 60, 30);
-
-    
     HWLog(@"我来回答");
-    
 }
-
+*/
 
 
 
@@ -232,7 +226,10 @@ static const int answerHeight = 80;
         cell.teacherImage.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClickBtn:)];
         [cell.teacherImage addGestureRecognizer:tap];
-        
+        cell.awardBtn.image = [UIImage imageNamed:@"award_image"];
+        cell.awardBtn.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapF = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapDSClickBtn:)];
+        [cell.awardBtn addGestureRecognizer:tapF];
         cell.teacherName.text = @"韩雪冬";
         cell.smallImage.image = [UIImage imageNamed:@"good"];
         
@@ -272,14 +269,31 @@ static const int answerHeight = 80;
 #pragma mark/****************跳转至老师的详情页面
 -(void)tapClickBtn:(UITapGestureRecognizer *)tap
 {
-    
     HWLog(@"老师详情");
     TeacherDetailViewController *vc = [[TeacherDetailViewController alloc]init];
     
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark /////////////打赏
+-(void)tapDSClickBtn:(UITapGestureRecognizer *)tap
+{
+    
+    HWLog(@"打赏");
+    AwardView *answer = [[AwardView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT*2/3, SCREEN_WIDTH, SCREEN_HEIGHT/3)andSuperView:self.view];
+    UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(60, 40, 50, 40)];
+    lab.backgroundColor = [UIColor whiteColor];
+    lab.font = [UIFont systemFontOfSize:18];
+    lab.textAlignment = NSTextAlignmentRight;
+    lab.textColor = HWColor(153, 153, 153);
+    lab.text = @"通币";
+    [answer addSubview:lab];
+    answer.awardText.frame = CGRectMake(lab.x+lab.width, lab.y, answer.width-lab.width-lab.x-10, answer.height*1/5);
+    answer.awardBtn.frame = CGRectMake(0, answer.awardText.y+answer.awardText.height+30 ,answer.width , 50);
     
     
 }
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

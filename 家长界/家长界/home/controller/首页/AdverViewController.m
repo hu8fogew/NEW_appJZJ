@@ -53,8 +53,7 @@ static const int bottomViewHeight = 50;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-
-    
+    self.navigationItem.title = @"每日必读";
     [self creatView];
 }
 
@@ -66,6 +65,12 @@ static const int bottomViewHeight = 50;
     
     [self.view addSubview:self.bottomView];
     
+    
+    NSString *str = @"http://www.baidu.com";
+    
+    NSURL *url = [NSURL URLWithString:str];
+    
+    [self.webView loadRequest: [NSURLRequest requestWithURL:url]];
     
 }
 
@@ -84,12 +89,13 @@ static const int bottomViewHeight = 50;
 
 -(void)webViewDidStartLoad:(UIWebView *)webView
 {
+    HWLog(@"开始");
     
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    
+    HWLog(@"结束");
 }
 
 

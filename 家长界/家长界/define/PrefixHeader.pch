@@ -68,7 +68,7 @@
 #import "teacherDynamicTableViewCell.h"
 #import "QuestionDescCell.h"
 #import "TeachOfCompany.h"
-
+#import "AwardView.h"
 /**
  *  消息
  */
