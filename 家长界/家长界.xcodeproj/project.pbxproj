@@ -109,6 +109,9 @@
 		04CF92A21DDEFF2F0088C211 /* ParentSecondTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CF92A11DDEFF2F0088C211 /* ParentSecondTable.m */; };
 		04CF92A51DDF0C4B0088C211 /* AdverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CF92A41DDF0C4B0088C211 /* AdverViewController.m */; };
 		04CF92A81DDF172D0088C211 /* SiftView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CF92A71DDF172D0088C211 /* SiftView.m */; };
+		04D8867E1DF7B16600277465 /* comment_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D8867C1DF7B16600277465 /* comment_icon.png */; };
+		04D8867F1DF7B16600277465 /* relay_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D8867D1DF7B16600277465 /* relay_icon.png */; };
+		04D886821DF7B80100277465 /* TeachOfCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D886811DF7B80100277465 /* TeachOfCompany.m */; };
 		04DF32DE1DEE6A6600B36424 /* pull.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DF32DC1DEE6A6600B36424 /* pull.png */; };
 		04DF32DF1DEE6A6600B36424 /* push.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DF32DD1DEE6A6600B36424 /* push.png */; };
 		04DF32E21DEEC07D00B36424 /* ywydSelectS.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DF32E01DEEC07D00B36424 /* ywydSelectS.png */; };
@@ -472,6 +475,10 @@
 		04CF92A41DDF0C4B0088C211 /* AdverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdverViewController.m; sourceTree = "<group>"; };
 		04CF92A61DDF172D0088C211 /* SiftView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiftView.h; sourceTree = "<group>"; };
 		04CF92A71DDF172D0088C211 /* SiftView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiftView.m; sourceTree = "<group>"; };
+		04D8867C1DF7B16600277465 /* comment_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment_icon.png; sourceTree = "<group>"; };
+		04D8867D1DF7B16600277465 /* relay_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = relay_icon.png; sourceTree = "<group>"; };
+		04D886801DF7B80100277465 /* TeachOfCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeachOfCompany.h; sourceTree = "<group>"; };
+		04D886811DF7B80100277465 /* TeachOfCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeachOfCompany.m; sourceTree = "<group>"; };
 		04DF32DC1DEE6A6600B36424 /* pull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pull.png; sourceTree = "<group>"; };
 		04DF32DD1DEE6A6600B36424 /* push.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = push.png; sourceTree = "<group>"; };
 		04DF32E01DEEC07D00B36424 /* ywydSelectS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ywydSelectS.png; sourceTree = "<group>"; };
@@ -1075,6 +1082,8 @@
 			isa = PBXGroup;
 			children = (
 				042D020B1DF501C00004F01E /* dian_image.png */,
+				04D8867C1DF7B16600277465 /* comment_icon.png */,
+				04D8867D1DF7B16600277465 /* relay_icon.png */,
 				043D4C021DF14E1800294BEB /* answer_image.png */,
 				043D4C041DF15C5500294BEB /* award_image.png */,
 				043D4C001DF1471400294BEB /* require_image.png */,
@@ -1915,6 +1924,8 @@
 				9E88B53E1DDD461A00EE92D0 /* MapListSchoolViewController.m */,
 				9E88B53F1DDD461A00EE92D0 /* MapTeachViewController.h */,
 				9E88B5401DDD461A00EE92D0 /* MapTeachViewController.m */,
+				04D886801DF7B80100277465 /* TeachOfCompany.h */,
+				04D886811DF7B80100277465 /* TeachOfCompany.m */,
 			);
 			path = "周边教育";
 			sourceTree = "<group>";
@@ -2146,11 +2157,13 @@
 				041067F61DD6150E001E83C5 /* 6.png in Resources */,
 				04E09F9B1DD3137800CD8F6D /* owner_normal.png in Resources */,
 				04FDBC3F1DD3010500D788FC /* LICENSE in Resources */,
+				04D8867E1DF7B16600277465 /* comment_icon.png in Resources */,
 				04FDBC4E1DD3010500D788FC /* LICENSE in Resources */,
 				04A5CDDC1DE5C5D500E4115C /* icon_full@2x.png in Resources */,
 				9E319DAB1DD45AB1000C3178 /* sns_icon_6.png in Resources */,
 				04F2EF291DE9B6EA00DB0990 /* qpt_map_image.png in Resources */,
 				044D105E1DE82F39004D7F53 /* cacalogup.png in Resources */,
+				04D8867F1DF7B16600277465 /* relay_icon.png in Resources */,
 				04CF92951DDEE0060088C211 /* down.png in Resources */,
 				049FBAAB1DEBC6F50018018A /* ycymHeaderImage.png in Resources */,
 				04FDBC2D1DD3010400D788FC /* LICENSE in Resources */,
@@ -2346,6 +2359,7 @@
 				04FDBC3E1DD3010500D788FC /* FMResultSet.m in Sources */,
 				048378831DD47CB50056148F /* WYAutoCarusel.m in Sources */,
 				04FDBC6C1DD3010500D788FC /* UIScrollView+MJExtension.m in Sources */,
+				04D886821DF7B80100277465 /* TeachOfCompany.m in Sources */,
 				04FDBC471DD3010500D788FC /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				04FDBC681DD3010500D788FC /* MJRefreshStateHeader.m in Sources */,
 				04B9865E1DEDBBFB009E854F /* QPTSearchView.m in Sources */,

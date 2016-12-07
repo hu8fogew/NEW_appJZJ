@@ -67,6 +67,7 @@
 #import "teacherCosultTableViewCell.h"
 #import "teacherDynamicTableViewCell.h"
 #import "QuestionDescCell.h"
+#import "TeachOfCompany.h"
 
 /**
  *  消息

@@ -229,6 +229,9 @@ static const int answerHeight = 80;
         cell = [[AnswerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, cell.height)];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.teacherImage.image = [UIImage imageNamed:@"teacherImage"];
+        cell.teacherImage.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClickBtn:)];
+        [cell.teacherImage addGestureRecognizer:tap];
         
         cell.teacherName.text = @"韩雪冬";
         cell.smallImage.image = [UIImage imageNamed:@"good"];
@@ -266,7 +269,17 @@ static const int answerHeight = 80;
 //    
 //}
 
-
+#pragma mark/****************跳转至老师的详情页面
+-(void)tapClickBtn:(UITapGestureRecognizer *)tap
+{
+    
+    HWLog(@"老师详情");
+    TeacherDetailViewController *vc = [[TeacherDetailViewController alloc]init];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

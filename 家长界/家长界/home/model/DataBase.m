@@ -194,39 +194,39 @@
 {
     NSMutableArray *arr = [NSMutableArray array];
     NSDictionary *dic1 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"哈偶次不如我v 人 vv 认为 vu 人",@"mainTitle",
-                          @"孩子上学不上进怎么办，上学总是逃课",@"smallTitle",
+                          @"张苗是如何变美丽的？",@"mainTitle",
+                          @"百度知道",@"smallTitle",
                           @"0评",@"commentTitle",
                           nil];
     
     NSDictionary *dic2 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"聂 uvi 被 uivrewire此饿哦 v 别人",@"mainTitle",
-                          @"你好饿你微博为 vui 让我把 v",@"smallTitle",
+                          @"张苗胖一斤？",@"mainTitle",
+                          @"因为吃了老张家油糕",@"smallTitle",
                           @"1评",@"commentTitle",
                           
                           nil];
     
     NSDictionary *dic3 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"u 认为 i 哦博瑞强哦 v 被 v",@"mainTitle",
-                          @"UI为 v 哦吧瑞 v 哦 v 背后 v",@"smallTitle",
+                          @"张苗瘦四斤？",@"mainTitle",
+                          @"因为喝老王家瘦身药水！",@"smallTitle",
                           @"2评",@"commentTitle",
                           
                           nil];
     NSDictionary *dic4 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"u 开发愉快 v 湖 v 看愉快 v 鱼u 看",@"mainTitle",
-                          @"v 愉快 v 贺绿汀日产途营销人员",@"smallTitle",
+                          @"张苗的美丽是如何炼成的？",@"mainTitle",
+                          @"每天爬16楼，一口气！能做到吗？",@"smallTitle",
                           @"3评",@"commentTitle",
                           
                           nil];
     NSDictionary *dic5 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"v 预防梯电梯开发有太多太容易哭",@"mainTitle",
-                          @"铁道游击队以后，投入大图看的人通常光滑",@"smallTitle",
+                          @"愿天堂没有肥胖，只有苗条！",@"mainTitle",
+                          @"要么胖死，要么漂亮",@"smallTitle",
                           @"4评",@"commentTitle",
                           
                           nil];
     NSDictionary *dic6 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"反对托卡耶夫遇到风雨里放一到体育课",@"mainTitle",
-                          @"为她额头好想发图的停车费",@"smallTitle",
+                          @"张苗老师教你如何变瘦",@"mainTitle",
+                          @"请百度张苗老师，付款知道哦！",@"smallTitle",
                           @"5评",@"commentTitle",
                           
                           nil];

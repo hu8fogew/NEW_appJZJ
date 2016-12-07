@@ -20,6 +20,7 @@
         self.iconImage = [UIImageView new];
         self.iconImage.layer.masksToBounds = YES;
         self.iconImage.layer.cornerRadius = 21;
+        
         [view addSubview:self.iconImage];
         [self.iconImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(view).with.offset(15);
@@ -27,6 +28,8 @@
             make.width.mas_equalTo(42);
             make.height.mas_equalTo(42);
         }];
+        
+        
         
         self.titleLabel = [UILabel new];
         self.titleLabel.font = [UIFont systemFontOfSize:18];
@@ -86,6 +89,10 @@
     }
     return self;
 }
+
+
+
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];

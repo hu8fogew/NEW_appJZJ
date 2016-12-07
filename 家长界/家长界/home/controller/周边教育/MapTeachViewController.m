@@ -205,7 +205,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    MapListSchoolViewController *vc = [[MapListSchoolViewController alloc]init];
+    TeachOfCompany *vc = [[TeachOfCompany alloc]init];
     
     [self.navigationController pushViewController:vc animated:YES];
     

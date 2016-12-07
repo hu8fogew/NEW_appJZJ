@@ -8,10 +8,10 @@
 
 #import "AdverViewController.h"
 
-@interface AdverViewController ()<UITextViewDelegate>
+@interface AdverViewController ()<UIWebViewDelegate>
 
 /*textView*/
-@property(nonatomic,strong)UITextView *textView;
+@property(nonatomic,strong)UIWebView *webView;
 
 /*评论、点赞、转发的视图*/
 @property(nonatomic,strong)UIView *bottomView;
@@ -23,14 +23,14 @@ static const int bottomViewHeight = 50;
 #pragma mark /**********懒加载************/
 
 /*textView*/
--(UITextView *)textView
+-(UIWebView *)webView
 {
     
-    if (!_textView) {
-        _textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-bottomViewHeight)];
-        _textView.delegate = self;
+    if (!_webView) {
+        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-bottomViewHeight)];
+        _webView.delegate = self;
     }
-    return _textView;
+    return _webView;
     
 }
 
@@ -62,7 +62,7 @@ static const int bottomViewHeight = 50;
 -(void)creatView
 {
     
-    [self.view addSubview:self.textView];
+    [self.view addSubview:self.webView];
     
     [self.view addSubview:self.bottomView];
     
@@ -82,9 +82,15 @@ static const int bottomViewHeight = 50;
 
 #pragma mark textViewDelegate代理方法
 
+-(void)webViewDidStartLoad:(UIWebView *)webView
+{
+    
+}
 
-
-
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    
+}
 
 
 

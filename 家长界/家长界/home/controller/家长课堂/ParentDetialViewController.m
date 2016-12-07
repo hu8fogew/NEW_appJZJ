@@ -201,7 +201,7 @@ int count = 0;
         _DetialTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-bottomViewHeight)];
         _DetialTable.delegate = self;
         _DetialTable.dataSource = self;
-        
+        _DetialTable.separatorStyle = UITableViewCellSeparatorStyleNone;
         _DetialTable.tableHeaderView = self.DetailheaderView;
         _DetialTable.tableHeaderView.height = self.descView.y+self.descView.height;
         
@@ -259,7 +259,23 @@ int count = 0;
     NSArray *titleArr = @[@"介绍",@"目录",@"评价"];
     [self createSeleBarViewWithArr:titleArr];
     
+    // 添加通知中心
+    [self createNotificationCenter];
+    
+    
 }
+
+
+#pragma mark /*****添加通知中心*****/
+
+-(void)createNotificationCenter
+{
+#warning =============空的通知中心
+    
+    
+}
+
+
 
 #pragma mark /******添加底部视图******/
 
@@ -280,15 +296,6 @@ int count = 0;
 {
     
     self.backImage.image = [UIImage imageNamed:@"cellImage"];
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
 
@@ -453,8 +460,9 @@ int count = 0;
         self.segStr = @"评价";
         
         self.cacalogView.hidden = YES;
-        self.descView.y = self.segumentView.y+self.segumentView.height +DistanceForCell;
-        self.DetialTable.tableHeaderView.height = self.descView.y +self.descView.height;
+        self.descView.hidden = YES;
+//        self.descView.y = self.segumentView.y+self.segumentView.height +DistanceForCell;
+        self.DetialTable.tableHeaderView.height = self.segumentView.y +self.segumentView.height+2;
         [self.DetialTable reloadData];
     }
 }
@@ -465,7 +473,7 @@ int count = 0;
     self.cacalogView.hidden = NO;
     self.cacalogView.height = 120;
     self.cacalogBtn.selected = NO;
-    self.descView.y = self.cacalogView.y+self.cacalogView.height+10;
+    self.descView.hidden = NO;
     self.cacalogBtn.y = self.cacalogView.height-30;
     self.textCacalog.height = self.cacalogView.height-30;
     self.descView.y = self.cacalogView.y+self.cacalogView.height+DistanceForCell;
@@ -509,7 +517,11 @@ int count = 0;
         DescTeacherCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
             cell = [[DescTeacherCell alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, cellHeight+50)];
+            cell.selectionStyle = UITableViewCellAccessoryNone;
             cell.teacherHeaderImage.image = [UIImage imageNamed:@"teacherImage"];
+            cell.teacherHeaderImage.userInteractionEnabled = YES;
+            UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(gestureClickBtn:)];
+            [cell.teacherHeaderImage addGestureRecognizer:gesture];
             cell.descTeacherName.text = @"张宇杰";
             cell.descKind.text = @"资深心理咨询师";
             NSString *str = @"从业十余年，精通婚姻关系和亲子关系领域，咨询师鲜有的跨界能力，长期活跃于专业和公众领域，创立心理类网络节目《世道胡说》，点击量超过310万，引发公众对心理观念的强烈讨论和关注。以心理专家的身份，参与备受关注的青少年真人秀《变形记》，并写出同名书籍，教导父母面对最头疼的问题";
@@ -528,7 +540,9 @@ int count = 0;
         teacherHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
             cell = [[teacherHomeTableViewCell alloc]initWithFrame:cell.bounds];
+            cell.selectionStyle = UITableViewCellAccessoryNone;
             cell.iconImage.image = [UIImage imageNamed:@"teacherImage"];
+            
             cell.dzImage.image = [UIImage imageNamed:@"good"];
             cell.numOfPeople.text = @"25";
             cell.titleLabel.text = @"taylorzhang";
@@ -562,13 +576,16 @@ int count = 0;
 }
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    HWLog(@"%zd",@(indexPath.row).intValue);
-}
+#pragma mark  ／／／／跳转至老师的详情页
 
+-(void)gestureClickBtn:(UITapGestureRecognizer *)tap
+{
+    
+    HWLog(@"老师主页的跳转");
+    TeacherDetailViewController *vc = [[TeacherDetailViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {

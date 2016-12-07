@@ -39,6 +39,8 @@ static const int bottomViewHeight = 50;
 static const int imgViewHeight = 250;
 static const int backViewHeight = 240;
 
+id DescCell = nil;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -161,6 +163,9 @@ static const int backViewHeight = 240;
     }
     else{
         self.segStr = @"动态";
+        self.headerView.hidden = YES;
+        self.headerView.y = self.seleBar.y+self.seleBar.height;
+        self.tableView.tableHeaderView.height = self.seleBar.y+self.seleBar.height;
         [self.tableView reloadData];
  
     }
@@ -203,6 +208,8 @@ static const int backViewHeight = 240;
             teacherHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             if (cell == nil) {
                 cell = [[teacherHomeTableViewCell alloc]initWithFrame:cell.bounds];
+                DescCell = cell;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.iconImage.image = [UIImage imageNamed:@"teacherImage"];
                 cell.dzImage.image = [UIImage imageNamed:@"good"];
                 cell.numOfPeople.text = @"25";
@@ -210,39 +217,59 @@ static const int backViewHeight = 240;
                 cell.timeLabel.text = @"2016-11-23 12:00";
                 cell.questionLabel.text = @"谢谢老师，很专业，很有收获，必要时会再咨询,等你发的楼房的离开父母看来谢谢老师，很专业，很有收谢谢老师，很专业，很有收获";
             }
-            return cell;
+        
     }
     else if ([self.segStr isEqualToString:@"咨询"]){
         
             teacherCosultTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             if (cell == nil) {
                 cell = [[teacherCosultTableViewCell alloc]initWithFrame:cell.bounds];
-                cell.imgView.image = [UIImage imageNamed:@"icon"];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                DescCell = cell;
+                cell.imgView.image = [UIImage imageNamed:@"teacherImage"];
+                cell.iconImage.image = [UIImage imageNamed:@"good"];
                 cell.nameLabel.text = @"taylorzhang";
                 cell.numberLabel.text = @"23";
                 cell.questionLabel.text = @"如何做出生命中最重要的决定？";
                 cell.answerLabel.text = @"发现情况限制隐约显示高度的零表视图单元格的内容视图。我们考虑到意外崩溃,转而使用标准的高度";
             }
-            return cell;
+        
     }
     else{
 
     teacherDynamicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
         cell = [[teacherDynamicTableViewCell alloc]initWithFrame:cell.bounds];
-        cell.imgView.image = [UIImage imageNamed:@"icon"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        DescCell = cell;
+        cell.imgView.image = [UIImage imageNamed:@"teacherImage"];
         cell.nameLabel.text = @"张老师";
         cell.timeLabel.text = @"2016-11-23";
         cell.phoneLabel.text = @"来自iPhone6";
         cell.dynamicLabel.text = @"下雪后的天空没有雾霾，一片蓝天白云,的纠纷数量的积分魅力的空间 ";
         cell.sendNoLabel.text = @"5万";
+        cell.praiseImage.image = [UIImage imageNamed:@"good"];
+        cell.commentImage.image = [UIImage imageNamed:@"comment_icon"];
+        cell.sendImage.image = [UIImage imageNamed:@"relay_icon"];
         cell.commentNoLabel.text = @"3万";
         cell.praiseNoLabel.text = @"72万";
     }
-         return cell;
+        
     }
+    return DescCell;
+}
+
+
+/*
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    HWLog(@"%zd",@(indexPath.row).intValue);
     
 }
+
+*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

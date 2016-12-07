@@ -19,6 +19,8 @@
 
 /*选择按钮*/
 @property(nonatomic,strong)UIView *selectedBtnView;
+//选择按钮传的字符串
+@property(nonatomic,copy)NSString *selectedString;
 
 /*tableView*/
 @property(nonatomic,strong)UITableView *wdTableView;
@@ -31,6 +33,8 @@
 
 /*选择性cell的实现筛选条件*/
 @property(nonatomic, copy)NSString *cellId;
+
+
 
 
 @end
@@ -112,7 +116,7 @@ int selectWDcellHeight = 0;
    //加载页面
     [self loadViewData];
     
-    
+    self.selectedString = @"家庭教育";
 }
 #pragma mark 加载页面
 
@@ -274,19 +278,24 @@ int selectWDcellHeight = 0;
 {
     if (sender.tag == 0) {
         HWLog(@"=======0");
-        self.seleBarArr = @[@"最新问题",@"在线老师"];
-//        [self createSeleBarViewWithArr:self.seleBarArr];
+        self.selectedString = @"家长教育";
+        
+        
     }
     if (sender.tag == 1) {
         HWLog(@"=====1");
-        self.seleBarArr = @[@"最新问题",@"推荐老师"];
-//        [self createSeleBarViewWithArr:self.seleBarArr];
-        [self.wdTableView reloadData];
+        
+        self.selectedString = @"学习烦恼";
+        
     }
     
     if (sender.tag == 2) {
         HWLog(@"2");
+         self.selectedString = @"生理健康";
+        
     }
+    
+    [self.wdTableView reloadData];
 }
 
 
@@ -309,6 +318,20 @@ int selectWDcellHeight = 0;
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"identifier";
+    
+//    if ([self.selectedString isEqualToString:@"家长教育"]) {
+//        
+//        
+//    }
+//    if ([self.selectedString isEqualToString:@"学习烦恼"]) {
+//        
+//        
+//    }
+//    if ([self.selectedString isEqualToString:@"生理健康"]) {
+//        
+//        
+//    }
+    
     if ([self.cellId isEqualToString:@"精选问答"]) {
         
         QuestionDescCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -316,7 +339,7 @@ int selectWDcellHeight = 0;
             cell = [[QuestionDescCell alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.53)];
             selecteCell = cell;
             cell.quesImage.image = [UIImage imageNamed:@"teacherImage"];
-            cell.userNameText.text = @"匿名用户";
+            cell.userNameText.text = self.selectedString;
             cell.timeText.text = @"6小时前";
             cell.questionText.text = @"孩子不合群，总是喜欢一个人待着怎么办？";
 //            cell.descQuesText.text = @"学生";
