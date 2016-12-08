@@ -8,6 +8,6 @@
 
 #import "TeacherDetailView.h"
 
-@interface TeachOfCompany : TeacherDetailViewController
+@interface TeachOfCompany : UIViewController
 
 @end

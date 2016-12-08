@@ -69,6 +69,7 @@
 #import "QuestionDescCell.h"
 #import "TeachOfCompany.h"
 #import "AwardView.h"
+#import "PhotoViewCell.h"
 /**
  *  消息
  */

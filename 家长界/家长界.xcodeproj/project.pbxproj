@@ -18,6 +18,9 @@
 		041067F41DD6150E001E83C5 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 041067F11DD6150E001E83C5 /* 4.png */; };
 		041067F51DD6150E001E83C5 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 041067F21DD6150E001E83C5 /* 5.png */; };
 		041067F61DD6150E001E83C5 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 041067F31DD6150E001E83C5 /* 6.png */; };
+		0411E61F1DF9798F0076FC69 /* PhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0411E61E1DF9798E0076FC69 /* PhotoViewCell.m */; };
+		0411E6211DF981340076FC69 /* child_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0411E6201DF981340076FC69 /* child_icon.jpg */; };
+		0411E6231DF9813A0076FC69 /* zm_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0411E6221DF9813A0076FC69 /* zm_icon.jpg */; };
 		0424208A1DDFFB24002BDA40 /* ParentDetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042420891DDFFB24002BDA40 /* ParentDetailTopView.m */; };
 		0424208F1DE01E87002BDA40 /* relayHeigh.png in Resources */ = {isa = PBXBuildFile; fileRef = 0424208B1DE01E87002BDA40 /* relayHeigh.png */; };
 		042420901DE01E87002BDA40 /* relaynomal.png in Resources */ = {isa = PBXBuildFile; fileRef = 0424208C1DE01E87002BDA40 /* relaynomal.png */; };
@@ -341,6 +344,10 @@
 		041067F11DD6150E001E83C5 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
 		041067F21DD6150E001E83C5 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		041067F31DD6150E001E83C5 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		0411E61D1DF9798E0076FC69 /* PhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewCell.h; sourceTree = "<group>"; };
+		0411E61E1DF9798E0076FC69 /* PhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewCell.m; sourceTree = "<group>"; };
+		0411E6201DF981340076FC69 /* child_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = child_icon.jpg; sourceTree = "<group>"; };
+		0411E6221DF9813A0076FC69 /* zm_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zm_icon.jpg; sourceTree = "<group>"; };
 		042420881DDFFB24002BDA40 /* ParentDetailTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentDetailTopView.h; sourceTree = "<group>"; };
 		042420891DDFFB24002BDA40 /* ParentDetailTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentDetailTopView.m; sourceTree = "<group>"; };
 		0424208B1DE01E87002BDA40 /* relayHeigh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = relayHeigh.png; sourceTree = "<group>"; };
@@ -1077,6 +1084,8 @@
 			children = (
 				04CF928E1DDE9E910088C211 /* SchoolTableViewCell.h */,
 				04CF928F1DDE9E910088C211 /* SchoolTableViewCell.m */,
+				0411E61D1DF9798E0076FC69 /* PhotoViewCell.h */,
+				0411E61E1DF9798E0076FC69 /* PhotoViewCell.m */,
 			);
 			path = "周边教育";
 			sourceTree = "<group>";
@@ -1084,6 +1093,8 @@
 		04E09F8B1DD3137800CD8F6D /* imageIcon */ = {
 			isa = PBXGroup;
 			children = (
+				0411E6201DF981340076FC69 /* child_icon.jpg */,
+				0411E6221DF9813A0076FC69 /* zm_icon.jpg */,
 				042D020B1DF501C00004F01E /* dian_image.png */,
 				04D8867C1DF7B16600277465 /* comment_icon.png */,
 				04D8867D1DF7B16600277465 /* relay_icon.png */,
@@ -2122,6 +2133,7 @@
 				04DF32DE1DEE6A6600B36424 /* pull.png in Resources */,
 				04F2EF271DE9B66E00DB0990 /* qptHeader.png in Resources */,
 				044D105D1DE82F39004D7F53 /* cacalogdown.png in Resources */,
+				0411E6231DF9813A0076FC69 /* zm_icon.jpg in Resources */,
 				04F650441DDAEA0400DCC09D /* 13.png in Resources */,
 				042D020C1DF501C00004F01E /* dian_image.png in Resources */,
 				9E90F0BA1DEFFD7D0027F7A7 /* FirstRowTableViewCell.xib in Resources */,
@@ -2141,6 +2153,7 @@
 				042808CB1DE2FC0900B2FB09 /* teacherImage.png in Resources */,
 				04F2EF331DE9CC9000DB0990 /* acaImgae.png in Resources */,
 				046742B51DD5B57000E5F858 /* topImageView.png in Resources */,
+				0411E6211DF981340076FC69 /* child_icon.jpg in Resources */,
 				042808C61DE2A46100B2FB09 /* qzImage.png in Resources */,
 				04A5CDDF1DE5C5D500E4115C /* icon_pause@3x.png in Resources */,
 				04F2EF321DE9CC9000DB0990 /* map_image.png in Resources */,
@@ -2333,6 +2346,7 @@
 				9E90F0DF1DF00C150027F7A7 /* TextQuestionView.m in Sources */,
 				046742AE1DD57A5300E5F858 /* UIImageView+HighlightedWebCache.m in Sources */,
 				04CF92A81DDF172D0088C211 /* SiftView.m in Sources */,
+				0411E61F1DF9798F0076FC69 /* PhotoViewCell.m in Sources */,
 				04FDBC5F1DD3010500D788FC /* MJRefreshHeader.m in Sources */,
 				046742A81DD57A5300E5F858 /* SDWebImageManager.m in Sources */,
 				04A5CDEA1DE5C5D500E4115C /* XCSlideView.m in Sources */,
