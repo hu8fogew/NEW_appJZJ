@@ -266,6 +266,8 @@ static const int answerHeight = 80;
 //    
 //}
 
+
+
 #pragma mark/****************跳转至老师的详情页面
 -(void)tapClickBtn:(UITapGestureRecognizer *)tap
 {
@@ -286,7 +288,7 @@ static const int answerHeight = 80;
     lab.font = [UIFont systemFontOfSize:18];
     lab.textAlignment = NSTextAlignmentRight;
     lab.textColor = HWColor(153, 153, 153);
-    lab.text = @"通币";
+    lab.text = @"通币chanshu";
     [answer addSubview:lab];
     answer.awardText.frame = CGRectMake(lab.x+lab.width, lab.y, answer.width-lab.width-lab.x-10, answer.height*1/5);
     answer.awardBtn.frame = CGRectMake(0, answer.awardText.y+answer.awardText.height+30 ,answer.width , 50);

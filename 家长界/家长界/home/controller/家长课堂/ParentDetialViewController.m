@@ -31,7 +31,7 @@
 
 /*创建选择栏*/
 @property(nonatomic,strong)SGSegmentedControl *segment;
-
+@property(nonatomic,strong)UIView *animationViewSeg;
 /*介绍&目录的详情介绍*/
 
 @property(nonatomic,strong)UIView *cacalogView;
@@ -74,6 +74,17 @@ int count = 0;
     return _DetailheaderView;
     
 }
+
+//动态的seg
+-(UIView *)animationViewSeg
+{
+    if (!_animationViewSeg) {
+        _animationViewSeg = [[UIView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, siftHeight)];
+        _animationViewSeg.backgroundColor = [UIColor whiteColor];
+    }
+    return _animationViewSeg;
+}
+
 
 -(UIView *)descView
 {
@@ -262,8 +273,53 @@ int count = 0;
     // 添加通知中心
     [self createNotificationCenter];
     
+    //添加监听者
+    [self addObserveHeaderView];
+}
+
+
+
+
+#pragma mark ++++++++++添加TableView的监听者
+-(void)addObserveHeaderView
+{
+    
+    [self.DetialTable addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
 }
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    
+    CGFloat offset = self.DetialTable.contentOffset.y;
+    
+    if (offset > playViewHeight+self.descView.height+DistanceForCell ) {
+            [self.view addSubview:self.animationViewSeg];
+            self.segumentView.frame = CGRectMake(0, 0, SCREEN_WIDTH, siftHeight);
+            [self.animationViewSeg addSubview:self.segumentView];
+            
+            [self.DetialTable reloadData];
+        
+    }
+    if (0<offset && offset<playViewHeight+self.descView.height+DistanceForCell) {
+            [self.animationViewSeg removeFromSuperview];
+            self.animationViewSeg = nil;
+            
+            self.segumentView.frame = CGRectMake(0, self.discView.y+self.discView.height+DistanceForCell, SCREEN_WIDTH, siftHeight);
+            [self.DetailheaderView addSubview:self.segumentView];
+            [self.DetialTable reloadData];
+
+    }
+}
+
+//视图将要消失
+-(void)viewWillDisappear:(BOOL)animated
+{
+    
+    [[XCAVPlayerView shareManager] pause];
+    [self.DetialTable removeObserver:self forKeyPath:@"contentOffset"];
+}
+
 
 
 #pragma mark /*****添加通知中心*****/
@@ -418,11 +474,7 @@ int count = 0;
 }
 
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    
-    [[XCAVPlayerView shareManager] pause];
-}
+
 
 
 
@@ -501,7 +553,7 @@ int count = 0;
         count = 1;
     }
     if ([self.segStr isEqualToString:@"评价"]) {
-        count = 5;
+        count = 8;
     }
     return count;
     
@@ -591,6 +643,8 @@ int count = 0;
 {
     return 0;
 }
+
+
 
 
 - (void)didReceiveMemoryWarning {
