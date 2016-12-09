@@ -70,6 +70,8 @@
 #import "TeachOfCompany.h"
 #import "AwardView.h"
 #import "PhotoViewCell.h"
+#import "BackGroundListView.h"
+#import "MLLinkLabel.h"
 /**
  *  消息
  */

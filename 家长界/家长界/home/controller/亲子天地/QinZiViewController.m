@@ -136,7 +136,7 @@
             [self.backgroundSiftView addSubview:self.QZSiftView];
         }];
     }
-    if (0<offset && offset<lunBoheight-64-siftHeight) {
+    if ((offset<lunBoheight-64-siftHeight) && (0<=offset)) {
         [UIView animateWithDuration:0.1 animations:^{
             
             [self.backgroundSiftView removeFromSuperview];
@@ -145,6 +145,9 @@
         }];
         
     }
+    
+    
+    
     
 }
 

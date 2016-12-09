@@ -14,14 +14,11 @@
 
 @property(nonatomic,strong)UITableView *ListTable;
 
-/*筛选列表一*/
-@property(nonatomic,strong)ParentFirstTable *vc;
-/*筛选列表二*/
-@property(nonatomic,strong)ParentSecondTable *pSecondTable;
+
 /*筛选按钮*/
 @property(nonatomic,strong)SiftView *vi;
 
-@property(nonatomic,strong)UIView *backGroundView;
+@property(nonatomic,strong)BackGroundListView *groundView;
 
 
 @end
@@ -46,38 +43,6 @@ static const int cellHeight = ParentCellHeight;
     return _headerView;
 }
 
-/*筛选列表*/
--(ParentFirstTable *)vc{
-    if (!_vc) {
-        _vc = [[ParentFirstTable alloc] init];
-        _vc.width = SCREEN_WIDTH;
-        _vc.height = SCREEN_HEIGHT/3;
-        _vc.backgroundColor = [UIColor whiteColor];
-    }
-    
-    return _vc;
-}
-/*二级列表*/
--(ParentSecondTable *)pSecondTable
-{
-    if(!_pSecondTable)
-    {
-        _pSecondTable = [[ParentSecondTable alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/3, siftHeight+64+1.5, SCREEN_WIDTH*2/3, SCREEN_HEIGHT/3)];
-    }
-    return _pSecondTable;
-}
-
-
--(UIView *)backGroundView
-{
-    if (!_backGroundView) {
-        _backGroundView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT/3+siftHeight+64, SCREEN_WIDTH, SCREEN_HEIGHT*2/3-siftHeight-64)];
-        _backGroundView.backgroundColor = [UIColor blackColor];
-        _backGroundView.alpha = 0.4;
-    }
-    return _backGroundView;
-}
-
 /*TableView的懒加载*/
 
 -(UITableView *)ListTable
@@ -93,6 +58,19 @@ static const int cellHeight = ParentCellHeight;
     
     return _ListTable;
 }
+
+//三级列表
+-(BackGroundListView *)groundView
+{
+    if (!_groundView) {
+        
+        _groundView = [[BackGroundListView alloc]initWithFrame:CGRectMake(0, siftHeight+64, SCREEN_WIDTH, SCREEN_HEIGHT/3) andSPView:self.view];
+        _groundView.backGroundView.frame = CGRectMake(0, siftHeight+64, SCREEN_WIDTH, SCREEN_HEIGHT);
+    }
+    
+    return _groundView;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -118,44 +96,7 @@ static const int cellHeight = ParentCellHeight;
     
 }
 
-/*添加父视图*/
--(void)addBackgroundView:(UIView *)superView
-{
-    
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
-    [animation setDuration:0.5f];
-    animation.fromValue = [NSValue valueWithCGPoint:CGPointMake(SCREEN_WIDTH/2, siftHeight+64)];
-    animation.toValue = [NSValue valueWithCGPoint:CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/6+siftHeight+64)];
-    
-    [self.vc.layer addAnimation:animation forKey:@"position"];
-    [self.view addSubview:self.vc];
-    
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cancleBtnAction)];
-    [self.backGroundView addGestureRecognizer:tap];
-    [superView addSubview:self.backGroundView];
-}
 
--(void)cancleBtnAction
-{
-    self.vi.btnF.selected = NO;
-    self.vi.btnS.selected = NO;
-    self.vi.btnT.selected = NO;
-    [self.backGroundView removeFromSuperview];
-    self.backGroundView = nil;
-    [UIView animateWithDuration:0.1 animations:^{
-        
-        CGRect sf = self.vc.frame;
-        sf.origin.y = 64+siftHeight+1.5;
-        self.vc.frame = sf;
-        CGRect sS = self.pSecondTable.frame;
-        sS.origin.y = 64+siftHeight+1.5;
-        self.pSecondTable.frame = sf;
-        
-    }completion:^(BOOL finished) {
-        [self.vc removeFromSuperview];
-    }];
-}
 
 
 #pragma mark 通知中心
@@ -173,9 +114,6 @@ static const int cellHeight = ParentCellHeight;
     HWLog(@"=======%@",userInfo.userInfo[@"isSelec"]);
 //    NSInteger isSelect = userInfo.userInfo[@"isSelec"];
     
-    [self.view addSubview:self.pSecondTable];
-    
-    
 }
 
 
@@ -191,18 +129,14 @@ static const int cellHeight = ParentCellHeight;
 
 -(void)clickBtnSift:(UIButton *)sender
 {
-    
-    
-    
     sender.selected = !sender.selected;
-    
-    
     if (sender.tag == 0) {
         self.vi.btnS.selected = NO;
         self.vi.btnT.selected = NO;
-        [self addBackgroundView:self.view];
+        [self createListBackGroundView];
         if (sender.selected == NO) {
             [self cancleBtnAction];
+            
         }
         
     }
@@ -223,9 +157,34 @@ static const int cellHeight = ParentCellHeight;
        
     }
     
+}
+
+#pragma mark  ---------------创建三级联动列表
+-(void)createListBackGroundView
+{
+    [self.view addSubview:self.groundView];
+    [self.view addSubview:self.groundView.backGroundView];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cancleBtnAction)];
+    [self.groundView.backGroundView addGestureRecognizer:tap];
+}
+
+-(void)cancleBtnAction
+{
+    self.vi.btnF.selected = NO;
+    self.vi.btnS.selected = NO;
+    self.vi.btnT.selected = NO;
     
-    
-    
+    [self.groundView.backGroundView removeFromSuperview];
+    self.groundView.backGroundView = nil;
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        CGRect sf = self.groundView.frame;
+        sf.origin.y = siftHeight+64;
+        self.groundView.frame = sf;
+        
+    }completion:^(BOOL finished) {
+        [self.groundView removeFromSuperview];
+    }];
 }
 
 

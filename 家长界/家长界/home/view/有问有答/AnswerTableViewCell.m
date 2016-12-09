@@ -48,9 +48,13 @@
         [self.textEditView addSubview:self.textView];
         [self addSubview:self.textEditView];
         
+        
+        
+        
+        
+        
+        
         //时间和打赏视图
-        
-        
         self.awradView = [[UIView alloc]initWithFrame:CGRectMake(self.textEditView.x, vi.height*0.75, vi.width-self.textEditView.x-10, vi.height*0.17)];
         self.awradView.userInteractionEnabled = YES;
         self.timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.awradView.width/3, self.awradView.height)];

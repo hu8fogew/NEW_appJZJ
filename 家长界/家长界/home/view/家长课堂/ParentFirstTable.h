@@ -11,7 +11,6 @@
 
 @interface ParentFirstTable : UIView
 @property(nonatomic,strong)ParentListViewController *pVc;
-
 @property(nonatomic,assign)BOOL isSelec;
-
+-(instancetype)initWithFrame:(CGRect)frame;
 @end

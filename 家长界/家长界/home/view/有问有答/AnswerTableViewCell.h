@@ -27,6 +27,9 @@
 @property(nonatomic,strong)UIView *textEditView;
 @property(nonatomic,strong)UILabel *textView;
 
+//展开
+@property(nonatomic,strong)UIButton *openBtn;
+
 //打赏
 @property(nonatomic,strong)UIView *awradView;
 @property(nonatomic,strong)UIImageView *awardBtn;
