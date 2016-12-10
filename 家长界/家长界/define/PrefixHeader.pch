@@ -112,6 +112,7 @@
 #import "XZPlayProgressView.h"
 #import "XCMarqueeView.h"
 #import "XCSlideView.h"
+#import "JSDropDownMenu.h"
 /**
  *  其他
  */

@@ -292,8 +292,6 @@
     
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
-            
-
             cell.textLabel.text = @"发现周边教育";
             cell.imageView.image = [UIImage imageNamed:@"mapImage"];
             

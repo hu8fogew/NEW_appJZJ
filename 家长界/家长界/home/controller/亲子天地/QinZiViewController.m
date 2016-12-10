@@ -24,6 +24,7 @@
 /*sift*/
 @property(nonatomic,strong)SiftView *sv;
 @property(nonatomic,strong)UIView *backgroundSiftView;
+@property(nonatomic,strong)UIView *backGroundView;
 /*轮播图的假数据*/
 @property(nonatomic,strong)NSMutableArray *arr;
 @end
@@ -90,6 +91,25 @@
 }
 
 
+//筛选背景
+-(UIView *)backGroundView
+{
+    if (!_backGroundView) {
+        
+        _backGroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 64+siftHeight, SCREEN_WIDTH, SCREEN_HEIGHT-64-siftHeight)];
+        _backGroundView.backgroundColor = [UIColor blackColor];
+        _backGroundView.alpha = 0.4;
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cancleBtnAction)];
+        [_backGroundView addGestureRecognizer:tap];
+        
+    }
+    
+    return _backGroundView;
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -129,25 +149,22 @@
     
     if (offset > lunBoheight-64-siftHeight ) {
 //        HWLog(@"开始显示");
-        [UIView animateWithDuration:0.5 animations:^{
+//        [UIView animateWithDuration:0.5 animations:^{
             [self.view addSubview:self.backgroundSiftView];
             
             [self.Qintable reloadData];
             [self.backgroundSiftView addSubview:self.QZSiftView];
-        }];
+//        }];
     }
     if ((offset<lunBoheight-64-siftHeight) && (0<=offset)) {
-        [UIView animateWithDuration:0.1 animations:^{
-            
+//        [UIView animateWithDuration:0.1 animations:^{
+        
             [self.backgroundSiftView removeFromSuperview];
             self.backgroundSiftView = nil;
             [self.Qintable reloadData];
-        }];
+//        }];
         
     }
-    
-    
-    
     
 }
 
@@ -162,42 +179,31 @@
 
 -(void)createSiftView
 {
-    NSArray *arr = @[@"区域",@"年龄段",@"主题特色"];
-    self.sv = [[SiftView alloc]initWithFrame:self.QZSiftView.bounds andArr:arr andAction:@selector(clickBtnSift:) andTaget:self];
-    [self.QZSiftView addSubview:self.sv];
+//    NSArray *arr = @[@"区域",@"年龄段",@"主题特色"];
+    self.sv = [[SiftView alloc]initWithSV:self.QZSiftView];
+    
 }
 
 
--(void)clickBtnSift:(UIButton *)sender
+#pragma mark //******背景变成黑色****** /
+/*添加父视图*/
+-(void)addBackgroundView:(UIView *)superView
 {
-    sender.selected = !sender.selected;
+    _backGroundView = [[UIView alloc]initWithFrame:superView.bounds];
+    _backGroundView.backgroundColor = [UIColor blackColor];
+    _backGroundView.alpha = 0.4;
     
-    if (sender.tag == 0) {
-        self.sv.btnS.selected = NO;
-        self.sv.btnT.selected = NO;
-        
-        
-    }
-    
-    if (sender.tag == 1) {
-        
-        
-        self.sv.btnF.selected = NO;
-        self.sv.btnT.selected = NO;
-        
-    }
-    
-    if (sender.tag == 2) {
-        
-        
-        self.sv.btnS.selected = NO;
-        self.sv.btnF.selected = NO;
-        
-    }
-    
-    
-    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cancleBtnAction)];
+    [_backGroundView addGestureRecognizer:tap];
+    [superView addSubview:_backGroundView];
 }
+
+-(void)cancleBtnAction
+{
+    [_backGroundView removeFromSuperview];
+    _backGroundView = nil;
+}
+
 
 
 #pragma mark tableViewDelegate协议方法

@@ -66,50 +66,17 @@
 /*添加视图*/
 -(void)createView
 {
-//    UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
-//    but.frame =CGRectMake(0,0, 60, 44);
-//    [but setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
-//    [but addTarget:self action:@selector(popView:)forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem  *barBut = [[UIBarButtonItem alloc]initWithCustomView:but];
-//    self.navigationItem.leftBarButtonItem = barBut;
-    
-    
     [self.view addSubview:self.listHeaderView];
     [self.view addSubview:self.mapListTable];
     
-    NSArray *arr = @[@"区域",@"类别",@"全部"];
+//    NSArray *arr = @[@"区域",@"类别",@"全部"];
     
-    self.vi = [[SiftView alloc]initWithFrame:self.listHeaderView.bounds andArr:arr andAction:@selector(clickSiftBtn:) andTaget:self];
-    [self.listHeaderView addSubview:self.vi];
-}
-
-
-/*筛选条的点击时间*/
-
--(void)clickSiftBtn:(UIButton *)sender
-
-{
-    sender.selected = !sender.selected;
-    if (sender.tag == 0) {
-        
-        self.vi.btnS.selected = NO;
-        self.vi.btnT.selected = NO;
-        HWLog(@"0");
-    }
-    
-    if (sender.tag == 1) {
-        self.vi.btnF.selected = NO;
-        self.vi.btnT.selected = NO;
-        HWLog(@"1");
-    }
-    
-    if (sender.tag == 2) {
-        self.vi.btnS.selected = NO;
-        self.vi.btnF.selected = NO;
-        HWLog(@"2");
-    }
+    self.vi = [[SiftView alloc]initWithSV:self.listHeaderView];
     
 }
+
+
+
 
 
 -(void)popView:(UIButton *)sender

@@ -272,7 +272,7 @@
     sender.hidden = YES;
 }
 
-#pragma 进度条
+#pragma mark     进度条
 - (void)sliderTouchDown:(UISlider *)sender{
     _isDragSlider = YES;
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hiddenProgressView:) object:self];

@@ -31,7 +31,7 @@
 {
     if (!_vidioView0) {
         
-        _vidioView0 = [[NewsCellView alloc]initWithFrame:CGRectMake(0, 120, SCREEN_WIDTH, 360)];
+        _vidioView0 = [[NewsCellView alloc]initWithFrame:CGRectMake(0, lunBoheight+DistanceForCell, SCREEN_WIDTH, 360)];
         _vidioView0.str = @"人气排行";
        
         
@@ -189,9 +189,9 @@
     }
     //封装的轮播view实现
     WYAutoCarusel *aut = [[WYAutoCarusel alloc]init];
-    [aut createCaruselWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 120) WithSuperView:self.headerView WithImageUrlArr:arr WithPlaceholderImageName:@"1" WithInterval:2];
+    [aut createCaruselWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, lunBoheight) WithSuperView:self.headerView WithImageUrlArr:arr WithPlaceholderImageName:@"1" WithInterval:2];
     
-    [aut createPageControlWithFrame:CGRectMake(Kwidth-60, 100, 30, 20) WithSuperView:self.headerView WithPageNum:arr.count WithCurrentColor:HWColor(248, 114, 1) WithTintColor:[UIColor whiteColor]];
+    [aut createPageControlWithFrame:CGRectMake(SCREEN_WIDTH-60, lunBoheight-30, 30, 20) WithSuperView:self.headerView WithPageNum:arr.count WithCurrentColor:HWColor(248, 114, 1) WithTintColor:[UIColor whiteColor]];
     
     aut.delegate = self;
 }

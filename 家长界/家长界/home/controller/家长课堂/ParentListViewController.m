@@ -18,7 +18,7 @@
 /*筛选按钮*/
 @property(nonatomic,strong)SiftView *vi;
 
-@property(nonatomic,strong)BackGroundListView *groundView;
+
 
 
 @end
@@ -58,18 +58,17 @@ static const int cellHeight = ParentCellHeight;
     
     return _ListTable;
 }
-
 //三级列表
--(BackGroundListView *)groundView
+-(SiftView *)vi
 {
-    if (!_groundView) {
-        
-        _groundView = [[BackGroundListView alloc]initWithFrame:CGRectMake(0, siftHeight+64, SCREEN_WIDTH, SCREEN_HEIGHT/3) andSPView:self.view];
-        _groundView.backGroundView.frame = CGRectMake(0, siftHeight+64, SCREEN_WIDTH, SCREEN_HEIGHT);
-    }
     
-    return _groundView;
+    if (!_vi) {
+        _vi = [[SiftView alloc]initWithSV:self.view];
+        _vi.backgroundColor = [UIColor whiteColor];
+    }
+    return _vi;
 }
+
 
 
 - (void)viewDidLoad {
@@ -121,71 +120,13 @@ static const int cellHeight = ParentCellHeight;
 
 -(void)createSiftView
 {
-    NSArray *arr = @[@"学龄段",@"课程类别",@"人气排行"];
-    self.vi = [[SiftView alloc]initWithFrame:self.headerView.bounds andArr:arr andAction:@selector(clickBtnSift:) andTaget:self];
-    [self.headerView addSubview:self.vi];
+//    NSArray *arr = @[@"学龄段",@"课程类别",@"人气排行"];
+    self.vi = [[SiftView alloc]initWithSV:self.headerView];
+   
 }
 
 
--(void)clickBtnSift:(UIButton *)sender
-{
-    sender.selected = !sender.selected;
-    if (sender.tag == 0) {
-        self.vi.btnS.selected = NO;
-        self.vi.btnT.selected = NO;
-        [self createListBackGroundView];
-        if (sender.selected == NO) {
-            [self cancleBtnAction];
-            
-        }
-        
-    }
-    
-    if (sender.tag == 1) {
-        
-        
-        self.vi.btnF.selected = NO;
-        self.vi.btnT.selected = NO;
-      
-    }
-    
-    if (sender.tag == 2) {
-        
-        
-        self.vi.btnS.selected = NO;
-        self.vi.btnF.selected = NO;
-       
-    }
-    
-}
 
-#pragma mark  ---------------创建三级联动列表
--(void)createListBackGroundView
-{
-    [self.view addSubview:self.groundView];
-    [self.view addSubview:self.groundView.backGroundView];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cancleBtnAction)];
-    [self.groundView.backGroundView addGestureRecognizer:tap];
-}
-
--(void)cancleBtnAction
-{
-    self.vi.btnF.selected = NO;
-    self.vi.btnS.selected = NO;
-    self.vi.btnT.selected = NO;
-    
-    [self.groundView.backGroundView removeFromSuperview];
-    self.groundView.backGroundView = nil;
-    [UIView animateWithDuration:0.25 animations:^{
-        
-        CGRect sf = self.groundView.frame;
-        sf.origin.y = siftHeight+64;
-        self.groundView.frame = sf;
-        
-    }completion:^(BOOL finished) {
-        [self.groundView removeFromSuperview];
-    }];
-}
 
 
 

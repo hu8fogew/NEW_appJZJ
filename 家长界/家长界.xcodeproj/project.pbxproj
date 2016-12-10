@@ -21,6 +21,8 @@
 		0411E61F1DF9798F0076FC69 /* PhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0411E61E1DF9798E0076FC69 /* PhotoViewCell.m */; };
 		0411E6211DF981340076FC69 /* child_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0411E6201DF981340076FC69 /* child_icon.jpg */; };
 		0411E6231DF9813A0076FC69 /* zm_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0411E6221DF9813A0076FC69 /* zm_icon.jpg */; };
+		0414C2DE1DFBB4FA00CA0774 /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 0414C2DB1DFBB4FA00CA0774 /* ico_make.png */; };
+		0414C2DF1DFBB4FA00CA0774 /* JSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0414C2DD1DFBB4FA00CA0774 /* JSDropDownMenu.m */; };
 		0424208A1DDFFB24002BDA40 /* ParentDetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042420891DDFFB24002BDA40 /* ParentDetailTopView.m */; };
 		0424208F1DE01E87002BDA40 /* relayHeigh.png in Resources */ = {isa = PBXBuildFile; fileRef = 0424208B1DE01E87002BDA40 /* relayHeigh.png */; };
 		042420901DE01E87002BDA40 /* relaynomal.png in Resources */ = {isa = PBXBuildFile; fileRef = 0424208C1DE01E87002BDA40 /* relaynomal.png */; };
@@ -361,6 +363,9 @@
 		0411E61E1DF9798E0076FC69 /* PhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewCell.m; sourceTree = "<group>"; };
 		0411E6201DF981340076FC69 /* child_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = child_icon.jpg; sourceTree = "<group>"; };
 		0411E6221DF9813A0076FC69 /* zm_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zm_icon.jpg; sourceTree = "<group>"; };
+		0414C2DB1DFBB4FA00CA0774 /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
+		0414C2DC1DFBB4FA00CA0774 /* JSDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDropDownMenu.h; sourceTree = "<group>"; };
+		0414C2DD1DFBB4FA00CA0774 /* JSDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDropDownMenu.m; sourceTree = "<group>"; };
 		042420881DDFFB24002BDA40 /* ParentDetailTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentDetailTopView.h; sourceTree = "<group>"; };
 		042420891DDFFB24002BDA40 /* ParentDetailTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentDetailTopView.m; sourceTree = "<group>"; };
 		0424208B1DE01E87002BDA40 /* relayHeigh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = relayHeigh.png; sourceTree = "<group>"; };
@@ -936,6 +941,16 @@
 			children = (
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		0414C2DA1DFBB4FA00CA0774 /* JSDropDownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				0414C2DB1DFBB4FA00CA0774 /* ico_make.png */,
+				0414C2DC1DFBB4FA00CA0774 /* JSDropDownMenu.h */,
+				0414C2DD1DFBB4FA00CA0774 /* JSDropDownMenu.m */,
+			);
+			path = JSDropDownMenu;
 			sourceTree = "<group>";
 		};
 		042420951DE03A05002BDA40 /* SGSegmentedControl */ = {
@@ -1560,6 +1575,7 @@
 		04FDBB3A1DD3010400D788FC /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				0414C2DA1DFBB4FA00CA0774 /* JSDropDownMenu */,
 				046313D81DFA887C009F9109 /* MLLabel */,
 				043D4C091DF2CB9C00294BEB /* CCPScrollView */,
 				04A5CDC21DE5C5D400E4115C /* XCAVPlayerView */,
@@ -2235,6 +2251,7 @@
 				9E319DAF1DD45AB1000C3178 /* sns_icon_weibo.png in Resources */,
 				04DF32DE1DEE6A6600B36424 /* pull.png in Resources */,
 				04F2EF271DE9B66E00DB0990 /* qptHeader.png in Resources */,
+				0414C2DE1DFBB4FA00CA0774 /* ico_make.png in Resources */,
 				044D105D1DE82F39004D7F53 /* cacalogdown.png in Resources */,
 				0411E6231DF9813A0076FC69 /* zm_icon.jpg in Resources */,
 				04F650441DDAEA0400DCC09D /* 13.png in Resources */,
@@ -2370,6 +2387,7 @@
 				04FDBC221DD3010400D788FC /* UIWindow+MainWindow.m in Sources */,
 				9E88B5441DDD461A00EE92D0 /* ParentViewController.m in Sources */,
 				9E88B5471DDD461A00EE92D0 /* MapTeachViewController.m in Sources */,
+				0414C2DF1DFBB4FA00CA0774 /* JSDropDownMenu.m in Sources */,
 				043D4C0C1DF2CB9C00294BEB /* CCPScrollView.m in Sources */,
 				046742B01DD57A5300E5F858 /* UIView+WebCacheOperation.m in Sources */,
 				9E90F0D51DF00C150027F7A7 /* AnswerQuestion.m in Sources */,
