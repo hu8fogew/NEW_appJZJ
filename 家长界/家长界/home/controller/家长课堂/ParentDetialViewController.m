@@ -41,9 +41,11 @@
 @property(nonatomic,copy)NSString *segStr;
 
 /*播放器*/
+//视频播放器
 @property(nonatomic,strong)XCAVPlayerView *playerView;
 @property(nonatomic,strong)UIImageView *backImage;
-
+//音频播放器
+@property(nonatomic,strong)XCAudioPlayer *audioPlayer;
 @end
 
 @implementation ParentDetialViewController
@@ -52,8 +54,6 @@ id allCell = nil;
 
 //头部描述内容的高度
 static const int topDiscViewHeight = 110;
-//播放器的高度
-static const int playViewHeight = 220;
 //底部播放、付费的高度
 static const int bottomViewHeight = 49;
 //左边距
@@ -353,6 +353,16 @@ int count = 0;
     
     self.backImage.image = [UIImage imageNamed:@"cellImage"];
     
+    
+    self.audioPlayer = [XCAudioPlayer shareAudioManager];
+//    self.audioPlayer.frame = CGRectMake(0, 0, SCREEN_WIDTH, playViewHeight);
+//    [self.playVidioView addSubview:self.audioPlayer];
+    self.audioPlayer.audioTitle = @"音频测试";
+    self.audioPlayer.autioPlayerUrl = @"http://mob.qipintong.com/video/zhangting1.mp3";
+    [XCAudioPlayer startAudioPlayInSuperView:self.playVidioView];
+    
+    
+    
 }
 
 
@@ -453,7 +463,7 @@ int count = 0;
 
 
 
-
+#pragma mark  /////////*添加播放器*/
 /*添加播放器*/
 -(void)addPlayerVidio
 {

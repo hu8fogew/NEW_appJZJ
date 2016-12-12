@@ -36,6 +36,7 @@
 
 #define marginLRWidth 10
 
+#define playViewHeight 220
 
 //打印NSLog的另一种写法
 #ifdef DEBUG // 处于开发阶段

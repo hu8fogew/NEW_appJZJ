@@ -113,6 +113,10 @@
 #import "XCMarqueeView.h"
 #import "XCSlideView.h"
 #import "JSDropDownMenu.h"
+
+
+
+#import "XCAudioPlayer.h"
 /**
  *  其他
  */
