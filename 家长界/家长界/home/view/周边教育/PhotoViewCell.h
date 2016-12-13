@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class YHWorkGroupPhotoContainer;
 @interface PhotoViewCell : UITableViewCell
 
 //@property(nonatomic,strong)UIImageView *imageVF;
-
+@property(nonatomic,strong)YHWorkGroupPhotoContainer *picContainerView;
 @end

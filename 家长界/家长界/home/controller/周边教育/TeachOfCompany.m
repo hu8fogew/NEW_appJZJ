@@ -36,6 +36,9 @@
 
 //相册数组
 @property(nonatomic,strong)NSArray *arrayPhoto;
+//展示图片的视图
+@property(nonatomic,strong)UIView *imageBackView;
+@property(nonatomic,strong)UIImageView *backImg;
 
 @end
 
@@ -64,7 +67,23 @@ id TeachDescCell = nil;
     return _arrayPhoto;
 }
 
-
+//展示图片的视图
+-(UIView *)imageBackView
+{
+    if (!_imageBackView) {
+        _imageBackView = [[UIView alloc]initWithFrame:self.view.bounds];
+        _imageBackView.backgroundColor = [UIColor blackColor];
+        _backImg = [[UIImageView alloc]initWithFrame:CGRectMake(80, 30, SCREEN_WIDTH-60, SCREEN_WIDTH-160)];
+        _backImg.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapImg = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cancelClick:)];
+        
+        [_backImg addGestureRecognizer:tapImg];
+        
+        [_imageBackView addSubview:_backImg];
+        
+    }
+    return _imageBackView;
+}
 
 
 
@@ -370,14 +389,16 @@ id TeachDescCell = nil;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //            cell.backgroundColor = HWRandomColor;
             TeachDescCell = cell;
-           
-            
+
+/*
             for (int i = 0; i<self.arrayPhoto.count; i++) {
                 UIImageView *image = [[UIImageView alloc]init];
+                image.userInteractionEnabled = YES;
+                UITapGestureRecognizer *tapImg = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(OpenClick:)];
+                [image addGestureRecognizer:tapImg];
                 if (i<3) {
                     image.frame = CGRectMake(10+((SCREEN_WIDTH-26)/3)*i+i*3, 0, (SCREEN_WIDTH-26)/3, (SCREEN_WIDTH-26)/3);
                 }
-                
                 if (i<6 && i>2) {
                     image.frame = CGRectMake(10+((SCREEN_WIDTH-26)/3)*(i-3)+(i-3)*3, (SCREEN_WIDTH-18)/3, (SCREEN_WIDTH-26)/3, (SCREEN_WIDTH-26)/3);
                 }
@@ -387,9 +408,32 @@ id TeachDescCell = nil;
                 }
                 NSString *str = [NSString stringWithFormat:@"%@", self.arrayPhoto[i]];
                 image.image = [UIImage imageNamed:str];
-                
+            
                 [cell addSubview:image];
             }
+*/
+            NSArray *oriPName = @[
+                                  @"https://testapp.gtax.cn/images/2016/08/25/2241c4b32b8445da87532d6044888f3d.jpg",
+                                  
+                                  @"https://testapp.gtax.cn/images/2016/08/25/0abd8670e96e4357961fab47ba3a1652.jpg",
+                                  
+                                  @"https://testapp.gtax.cn/images/2016/08/25/5cd8aa1f1b1f4b2db25c51410f473e60.jpg",
+                                  
+                                  @"https://testapp.gtax.cn/images/2016/08/25/5e8b978854ef4a028d284f6ddc7512e0.jpg",
+                                  
+                                  @"https://testapp.gtax.cn/images/2016/08/25/03c58da45900428796fafcb3d77b6fad.jpg",
+                                  
+                                  @"https://testapp.gtax.cn/images/2016/08/25/dbee521788da494683ef336432028d48.jpg",
+                                  
+                                  @"https://testapp.gtax.cn/images/2016/08/25/4cd95742b6744114ac8fa41a72f83257.jpg",
+                                  
+                                  ];
+//            @"https://testapp.gtax.cn/images/2016/08/25/4d49888355a941cab921c9f1ad118721.jpg",
+//            
+//            @"https://testapp.gtax.cn/images/2016/08/25/ea6a22e8b4794b9ba63fd6ee587be4d1.jpg"
+            cell.picContainerView.picUrlArray = oriPName;
+            cell.picContainerView.picOriArray = oriPName;
+//            cell.picContainerView.userInteractionEnabled = YES;
         }
     }
     if([self.segStr isEqualToString:@"动态"]){
@@ -416,7 +460,23 @@ id TeachDescCell = nil;
     return TeachDescCell;
 }
 
+#pragma mark -----------图片点击事件
+//显示
 
+-(void)OpenClick:(UITapGestureRecognizer *)tap
+{
+    HWLog(@"%@",tap);
+}
+
+
+
+-(void)cancelClick:(UITapGestureRecognizer *)tap
+{
+    
+    
+    
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

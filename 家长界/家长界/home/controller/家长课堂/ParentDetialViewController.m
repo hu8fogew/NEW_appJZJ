@@ -355,11 +355,16 @@ int count = 0;
     
     
     self.audioPlayer = [XCAudioPlayer shareAudioManager];
-//    self.audioPlayer.frame = CGRectMake(0, 0, SCREEN_WIDTH, playViewHeight);
-//    [self.playVidioView addSubview:self.audioPlayer];
+
     self.audioPlayer.audioTitle = @"魏琴老师主讲家庭教育";
-    self.audioPlayer.autioPlayerUrl = @"http://jzj.qipintong.com/video/zhangbaoqiang_2.mp3";
-    [XCAudioPlayer startAudioPlayInSuperView:self.playVidioView];
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        self.audioPlayer.autioPlayerUrl = @"http://jzj.qipintong.com/video/zhangbaoqiang_2.mp3";
+        [XCAudioPlayer startAudioPlayInSuperView:self.playVidioView];
+        
+    });
+//    self.audioPlayer.autioPlayerUrl = @"http://jzj.qipintong.com/video/zhangbaoqiang_2.mp3";
+//    [XCAudioPlayer startAudioPlayInSuperView:self.playVidioView];
     
     
     
