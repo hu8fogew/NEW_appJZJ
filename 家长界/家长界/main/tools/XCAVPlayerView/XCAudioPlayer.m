@@ -23,7 +23,7 @@
 @property (nonatomic, strong) AVPlayerItem            *playerItem;
 @property (nonatomic, strong) XCMarqueeView           *topVideoTitleView;//顶部视频标题view
 @property (nonatomic, strong) XZPlayProgressView      *progressView;//底部进度条
-@property (nonatomic, strong) UIActivityIndicatorView *activityView;
+@property (nonatomic, strong) UIActivityIndicatorView *activityView;//进度轮
 @property (nonatomic, strong) UIButton                *resumeBtn;
 //@property (nonatomic, strong) UIView                  *xzSuperView;
 @property (nonatomic, assign) BOOL                    canEditProgressView;
@@ -82,8 +82,8 @@
         _progressView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
         _progressView.frame = CGRectMake(0, playViewHeight - Bottom_Height, SCREEN_WIDTH, Bottom_Height);
         [_progressView.playBtn addTarget:self action:@selector(playBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [_progressView.fullBtn removeFromSuperview];
-        _progressView.fullBtn = nil;
+//        [_progressView.fullBtn removeFromSuperview];
+        [_progressView.fullBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
         [_progressView.progressSlider addTarget:self action:@selector(sliderTouchDown:) forControlEvents:UIControlEventTouchDown];
         [_progressView.progressSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
         [_progressView.progressSlider addTarget:self action:@selector(sliderCancled:) forControlEvents:UIControlEventTouchCancel];
@@ -245,7 +245,7 @@
         [[XCAudioPlayer shareAudioManager] mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(superView).with.insets(UIEdgeInsetsZero);
         }];
-        [[XCAudioPlayer shareAudioManager] play];
+        [[XCAudioPlayer shareAudioManager] pause];
     }
 }
 
@@ -311,25 +311,26 @@
     AVPlayerItem *playerItem = (AVPlayerItem *)object;
     if ([keyPath isEqualToString:@"status"]) {
         if ([playerItem status] == AVPlayerStatusReadyToPlay) {
-            NSLog(@"XCPlayerStatusReadyToPlay");
+            HWLog(@"XCPlayerStatusReadyToPlay");
             self.totalDuration = floorf(CMTimeGetSeconds(self.playerItem.duration));
             self.progressView.totalDurationLabel.text = [self convertTimeToString:self.totalDuration];
             self.progressView.progressSlider.maxValue = self.totalDuration;
             self.progressView.progressSlider.minValue = 0;
             self.canEditProgressView = YES;
+#warning mark  修改了是否显示底部播放视图
             [self showProgressView:NO];
             [self.activityView stopAnimating];
             if (self.delegate && [self.delegate respondsToSelector:@selector(xcAUPlayerView:reloadStatuesChanged:)]) {
                 [self.delegate xcAUPlayerView:self reloadStatuesChanged:XCAudioPlayerStatusReadyToPlay];
             }
         }else if ([playerItem status] == AVPlayerStatusFailed) {
-            NSLog(@"XCPlayerStatusFailed");
+            HWLog(@"XCPlayerStatusFailed");
             [self.activityView stopAnimating];
             if (self.delegate && [self.delegate respondsToSelector:@selector(xcAUPlayerView:reloadStatuesChanged:)]) {
                 [self.delegate xcAUPlayerView:self reloadStatuesChanged:XCAudioPlayerStatusFailed];
             }
         }else if ([playerItem status] == AVPlayerStatusUnknown){
-            NSLog(@"XCPlayerStatusUnknown");
+            HWLog(@"XCPlayerStatusUnknown");
             [self.activityView stopAnimating];
             if (self.delegate && [self.delegate respondsToSelector:@selector(xcAUPlayerView:reloadStatuesChanged:)]) {
                 [self.delegate xcAUPlayerView:self reloadStatuesChanged:XCAudioPlayerStatusUnknown];
@@ -339,7 +340,7 @@
         NSTimeInterval timeInterval = [self availableDuration];//计算缓冲进度
         self.timeInterval = timeInterval;
         self.progressView.progressSlider.cachesValue = self.timeInterval;
-        NSLog(@"Time Interval:%f",timeInterval);
+        HWLog(@"Time Interval:%f",timeInterval);
     }
 }
 
@@ -358,7 +359,7 @@
         self.progressView.progressSlider.currentProgress = self.currentPlayTime;
         self.progressView.currentTimeLabel.text = [self convertTimeToString:self.currentPlayTime];
     }
-    NSLog(@"current playTime:%f－－status:%zd",self.currentPlayTime,self.playerItem.status);
+    HWLog(@"current playTime:%f－－status:%zd",self.currentPlayTime,self.playerItem.status);
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(currentXCPlayerTime) object:nil];
     [self performSelector:@selector(currentXCPlayerTime) withObject:nil afterDelay:0.5];
 }
@@ -475,13 +476,13 @@
     if (animate) {
         [UIView animateWithDuration:0.2 animations:^{
             self.topVideoTitleView.frame = CGRectMake(0, 0, self.topVideoTitleView.bounds.size.width, TOP_TITLE_HEIGHT);
-            self.progressView.frame = CGRectMake(0, self.bounds.size.height - Bottom_Height, self.bounds.size.width, Bottom_Height);
+            self.progressView.frame = CGRectMake(0, playViewHeight - Bottom_Height, SCREEN_WIDTH, Bottom_Height);
         } completion:^(BOOL finished) {
             self.canEditProgressView = YES;
         }];
     }else{
         self.topVideoTitleView.frame = CGRectMake(0, 0, self.topVideoTitleView.bounds.size.width, TOP_TITLE_HEIGHT);
-        self.progressView.frame = CGRectMake(0, self.bounds.size.height - Bottom_Height, self.bounds.size.width, Bottom_Height);
+        self.progressView.frame = CGRectMake(0, playViewHeight - Bottom_Height, SCREEN_WIDTH, Bottom_Height);
         self.canEditProgressView = YES;
     }
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hiddenProgressView:) object:self];
@@ -491,7 +492,7 @@
 #pragma notification
 /** 视频播放结束 */
 - (void)playerPlayToEnd:(NSNotification *)notification{
-    NSLog(@"play end");
+    HWLog(@"play end");
     [self pause];
     [self.auPlayer seekToTime:kCMTimeZero];
     [self.progressView.playBtn setImage:[UIImage imageNamed:@"icon_play"] forState:UIControlStateNormal];

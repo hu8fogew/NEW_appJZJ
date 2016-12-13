@@ -353,7 +353,7 @@
     AVPlayerItem *playerItem = (AVPlayerItem *)object;
     if ([keyPath isEqualToString:@"status"]) {
         if ([playerItem status] == AVPlayerStatusReadyToPlay) {
-            NSLog(@"XCPlayerStatusReadyToPlay");
+            HWLog(@"XCPlayerStatusReadyToPlay");
             self.totalDuration = floorf(CMTimeGetSeconds(self.playerItem.duration));
             self.progressView.totalDurationLabel.text = [self convertTimeToString:self.totalDuration];
             self.progressView.progressSlider.maxValue = self.totalDuration;
@@ -365,13 +365,13 @@
                 [self.delegate xcAVPlayerView:self reloadStatuesChanged:XCPlayerStatusReadyToPlay];
             }
         }else if ([playerItem status] == AVPlayerStatusFailed) {
-            NSLog(@"XCPlayerStatusFailed");
+            HWLog(@"XCPlayerStatusFailed");
             [self.activityView stopAnimating];
             if (self.delegate && [self.delegate respondsToSelector:@selector(xcAVPlayerView:reloadStatuesChanged:)]) {
                 [self.delegate xcAVPlayerView:self reloadStatuesChanged:XCPlayerStatusFailed];
             }
         }else if ([playerItem status] == AVPlayerStatusUnknown){
-            NSLog(@"XCPlayerStatusUnknown");
+            HWLog(@"XCPlayerStatusUnknown");
             [self.activityView stopAnimating];
             if (self.delegate && [self.delegate respondsToSelector:@selector(xcAVPlayerView:reloadStatuesChanged:)]) {
                 [self.delegate xcAVPlayerView:self reloadStatuesChanged:XCPlayerStatusUnknown];
@@ -381,7 +381,7 @@
         NSTimeInterval timeInterval = [self availableDuration];//计算缓冲进度
         self.timeInterval = timeInterval;
         self.progressView.progressSlider.cachesValue = self.timeInterval;
-        NSLog(@"Time Interval:%f",timeInterval);
+        HWLog(@"Time Interval:%f",timeInterval);
     }
 }
 
@@ -400,7 +400,7 @@
         self.progressView.progressSlider.currentProgress = self.currentPlayTime;
         self.progressView.currentTimeLabel.text = [self convertTimeToString:self.currentPlayTime];
     }
-    NSLog(@"current playTime:%f－－status:%zd",self.currentPlayTime,self.playerItem.status);
+    HWLog(@"current playTime:%f－－status:%zd",self.currentPlayTime,self.playerItem.status);
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(currentXCPlayerTime) object:nil];
     [self performSelector:@selector(currentXCPlayerTime) withObject:nil afterDelay:0.5];
 }
@@ -533,7 +533,7 @@
 #pragma notification
 /** 视频播放结束 */
 - (void)playerPlayToEnd:(NSNotification *)notification{
-    NSLog(@"play end");
+    HWLog(@"play end");
     [self pause];
     [self.avPlayer seekToTime:kCMTimeZero];
     [self.progressView.playBtn setImage:[UIImage imageNamed:@"icon_play"] forState:UIControlStateNormal];

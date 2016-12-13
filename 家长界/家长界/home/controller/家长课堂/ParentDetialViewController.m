@@ -357,8 +357,8 @@ int count = 0;
     self.audioPlayer = [XCAudioPlayer shareAudioManager];
 //    self.audioPlayer.frame = CGRectMake(0, 0, SCREEN_WIDTH, playViewHeight);
 //    [self.playVidioView addSubview:self.audioPlayer];
-    self.audioPlayer.audioTitle = @"音频测试";
-    self.audioPlayer.autioPlayerUrl = @"http://mob.qipintong.com/video/zhangting1.mp3";
+    self.audioPlayer.audioTitle = @"魏琴老师主讲家庭教育";
+    self.audioPlayer.autioPlayerUrl = @"http://jzj.qipintong.com/video/zhangbaoqiang_2.mp3";
     [XCAudioPlayer startAudioPlayInSuperView:self.playVidioView];
     
     

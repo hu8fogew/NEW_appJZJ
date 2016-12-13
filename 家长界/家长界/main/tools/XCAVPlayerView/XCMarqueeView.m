@@ -61,7 +61,7 @@
         [_raceTimer invalidate];
         _raceTimer = nil;
     }
-    NSString *raceStr = [NSString stringWithFormat:@"%@    ",raceTitle];
+    NSString *raceStr = [NSString stringWithFormat:@"%@",raceTitle];
     _raceLabelOne.frame = CGRectMake(0, 0, [self getStringWidth:raceStr], self.bounds.size.height);
     _raceLabelTwo.frame = CGRectMake(_raceLabelOne.frame.origin.x + _raceLabelOne.bounds.size.width, _raceLabelOne.frame.origin.y, _raceLabelOne.bounds.size.width, _raceLabelOne.bounds.size.height);
     _raceLabelOne.text = raceStr;
