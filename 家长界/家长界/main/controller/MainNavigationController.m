@@ -21,12 +21,12 @@
     //设置普通状态(选中的状态)
     //key : NS_____AttributeName
     NSMutableDictionary *textAttributes = [NSMutableDictionary dictionary];
-    textAttributes[NSFontAttributeName] = [UIFont systemFontOfSize:14];
+    textAttributes[NSFontAttributeName] = [UIFont systemFontOfSize:18];
     textAttributes[NSForegroundColorAttributeName] = [UIColor orangeColor];
     [item setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
     //设置未选中的状态
     NSMutableDictionary *disableTextAttrbutes = [NSMutableDictionary dictionary];
-    disableTextAttrbutes[NSFontAttributeName] = [UIFont systemFontOfSize:14];
+    disableTextAttrbutes[NSFontAttributeName] = [UIFont systemFontOfSize:18];
     disableTextAttrbutes[NSForegroundColorAttributeName] = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:0.8];
     [item setTitleTextAttributes:disableTextAttrbutes forState:UIControlStateDisabled];
     

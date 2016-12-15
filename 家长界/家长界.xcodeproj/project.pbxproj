@@ -82,6 +82,10 @@
 		046742B91DD5B80E00E5F858 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 046742B61DD5B80E00E5F858 /* 1.png */; };
 		046742BA1DD5B80E00E5F858 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 046742B71DD5B80E00E5F858 /* 2.png */; };
 		046742BB1DD5B80E00E5F858 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 046742B81DD5B80E00E5F858 /* 3.png */; };
+		04759D371E026EC6003995F6 /* OwnerDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04759D361E026EC6003995F6 /* OwnerDate.m */; };
+		04759D391E027B6D003995F6 /* placehode_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04759D381E027B6D003995F6 /* placehode_icon.png */; };
+		04759D3C1E029171003995F6 /* OwnerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04759D3B1E029171003995F6 /* OwnerHeaderView.m */; };
+		04759D3E1E029629003995F6 /* set_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 04759D3D1E029629003995F6 /* set_image.png */; };
 		048378831DD47CB50056148F /* WYAutoCarusel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048378821DD47CB50056148F /* WYAutoCarusel.m */; };
 		04988A3C1DFFE8C4008500EE /* UITableView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 04988A2B1DFFE8C4008500EE /* UITableView+FDIndexPathHeightCache.m */; };
 		04988A3D1DFFE8C4008500EE /* UITableView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 04988A2D1DFFE8C4008500EE /* UITableView+FDKeyedHeightCache.m */; };
@@ -472,6 +476,12 @@
 		046742B61DD5B80E00E5F858 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		046742B71DD5B80E00E5F858 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		046742B81DD5B80E00E5F858 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		04759D351E026EC6003995F6 /* OwnerDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwnerDate.h; sourceTree = "<group>"; };
+		04759D361E026EC6003995F6 /* OwnerDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OwnerDate.m; sourceTree = "<group>"; };
+		04759D381E027B6D003995F6 /* placehode_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placehode_icon.png; sourceTree = "<group>"; };
+		04759D3A1E029171003995F6 /* OwnerHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwnerHeaderView.h; sourceTree = "<group>"; };
+		04759D3B1E029171003995F6 /* OwnerHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OwnerHeaderView.m; sourceTree = "<group>"; };
+		04759D3D1E029629003995F6 /* set_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = set_image.png; sourceTree = "<group>"; };
 		048378811DD47CB50056148F /* WYAutoCarusel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYAutoCarusel.h; sourceTree = "<group>"; };
 		048378821DD47CB50056148F /* WYAutoCarusel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYAutoCarusel.m; sourceTree = "<group>"; };
 		04988A2A1DFFE8C4008500EE /* UITableView+FDIndexPathHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDIndexPathHeightCache.h"; sourceTree = "<group>"; };
@@ -960,6 +970,8 @@
 				9E90F0B61DEFFD7D0027F7A7 /* FirstRowTableViewCell.h */,
 				9E90F0B71DEFFD7D0027F7A7 /* FirstRowTableViewCell.m */,
 				9E90F0B81DEFFD7D0027F7A7 /* FirstRowTableViewCell.xib */,
+				04759D3A1E029171003995F6 /* OwnerHeaderView.h */,
+				04759D3B1E029171003995F6 /* OwnerHeaderView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -967,6 +979,8 @@
 		04057F221DDD41B90039B4CD /* model */ = {
 			isa = PBXGroup;
 			children = (
+				04759D351E026EC6003995F6 /* OwnerDate.h */,
+				04759D361E026EC6003995F6 /* OwnerDate.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1280,6 +1294,8 @@
 		04E09F8B1DD3137800CD8F6D /* imageIcon */ = {
 			isa = PBXGroup;
 			children = (
+				04759D381E027B6D003995F6 /* placehode_icon.png */,
+				04759D3D1E029629003995F6 /* set_image.png */,
 				0411E6201DF981340076FC69 /* child_icon.jpg */,
 				0411E6221DF9813A0076FC69 /* zm_icon.jpg */,
 				042D020B1DF501C00004F01E /* dian_image.png */,
@@ -2403,8 +2419,10 @@
 				042420A61DE04D43002BDA40 /* rightImage.png in Resources */,
 				04FDBC381DD3010500D788FC /* LICENSE.txt in Resources */,
 				049FBAB41DEC21910018018A /* white.png in Resources */,
+				04759D391E027B6D003995F6 /* placehode_icon.png in Resources */,
 				04A5CDE21DE5C5D500E4115C /* icon_play_hl@2x.png in Resources */,
 				04DF32E21DEEC07D00B36424 /* ywydSelectS.png in Resources */,
+				04759D3E1E029629003995F6 /* set_image.png in Resources */,
 				04E2E7A71DE6D67C00E7F674 /* play.png in Resources */,
 				04F650541DDB554800DCC09D /* smallLableImage.png in Resources */,
 				04F2EF1D1DE98B3400DB0990 /* NewsCollectionViewCell.xib in Resources */,
@@ -2516,6 +2534,7 @@
 				046313F61DFA887D009F9109 /* NSString+MLLabel.m in Sources */,
 				9E90F0B41DEFFD4A0027F7A7 /* RetrievePwdViewController.m in Sources */,
 				04FDBC5C1DD3010500D788FC /* MJRefreshBackFooter.m in Sources */,
+				04759D3C1E029171003995F6 /* OwnerHeaderView.m in Sources */,
 				046313D71DFA4999009F9109 /* BackGroundListView.m in Sources */,
 				9E90F0B31DEFFD4A0027F7A7 /* RegisterViewController.m in Sources */,
 				046313F81DFA887D009F9109 /* MLTextAttachment.m in Sources */,
@@ -2569,6 +2588,7 @@
 				046313FA1DFA887D009F9109 /* NSString+MLExpression.m in Sources */,
 				04FDBC781DD3010500D788FC /* DCWebImageManager.m in Sources */,
 				04FDBC501DD3010500D788FC /* MJFoundation.m in Sources */,
+				04759D371E026EC6003995F6 /* OwnerDate.m in Sources */,
 				046313FF1DFA887D009F9109 /* README.md in Sources */,
 				04FDBC5E1DD3010500D788FC /* MJRefreshFooter.m in Sources */,
 				04FDBC311DD3010400D788FC /* AFNetworkActivityIndicatorManager.m in Sources */,

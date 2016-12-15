@@ -26,7 +26,7 @@
     
     DiscoverViewController *discoverVc = [[DiscoverViewController alloc]init];
     
-    [self addChildVc:discoverVc title:@"发现" image:@"" selectedImage:@""];
+    [self addChildVc:discoverVc title:@"朋友圈" image:@"" selectedImage:@""];
     
     OwnerViewController *ownerVc = [[OwnerViewController alloc]init];
     [self addChildVc:ownerVc title:@"我" image:@"" selectedImage:@""];
@@ -63,8 +63,8 @@
     
     //设置文字的样式
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = HWColor(123, 123, 123);
-    
+    textAttrs[NSForegroundColorAttributeName] = HWColor(53, 53, 53);
+    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:18];
     NSMutableDictionary *selectedTextAttrs = [NSMutableDictionary dictionary];
     selectedTextAttrs[NSForegroundColorAttributeName] = [UIColor orangeColor];
     

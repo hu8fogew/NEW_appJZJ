@@ -185,6 +185,7 @@ id TeachDescCell = nil;
         }
     }
     
+    
     CELL_Height = 130;
     [self createTableView];
     [self.view addSubview:self.bottomView];
@@ -383,35 +384,7 @@ id TeachDescCell = nil;
     }
     if ([self.segStr isEqualToString:@"相册"]){
         
-        PhotoViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (cell == nil) {
-            cell = [[PhotoViewCell alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, CELL_Height)];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            cell.backgroundColor = HWRandomColor;
-            TeachDescCell = cell;
-
-/*
-            for (int i = 0; i<self.arrayPhoto.count; i++) {
-                UIImageView *image = [[UIImageView alloc]init];
-                image.userInteractionEnabled = YES;
-                UITapGestureRecognizer *tapImg = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(OpenClick:)];
-                [image addGestureRecognizer:tapImg];
-                if (i<3) {
-                    image.frame = CGRectMake(10+((SCREEN_WIDTH-26)/3)*i+i*3, 0, (SCREEN_WIDTH-26)/3, (SCREEN_WIDTH-26)/3);
-                }
-                if (i<6 && i>2) {
-                    image.frame = CGRectMake(10+((SCREEN_WIDTH-26)/3)*(i-3)+(i-3)*3, (SCREEN_WIDTH-18)/3, (SCREEN_WIDTH-26)/3, (SCREEN_WIDTH-26)/3);
-                }
-                
-                if (i<9 && i>5) {
-                    image.frame = CGRectMake(10+((SCREEN_WIDTH-26)/3)*(i-6)+(i-6)*3, (SCREEN_WIDTH-18)*2/3, (SCREEN_WIDTH-26)/3, (SCREEN_WIDTH-26)/3);
-                }
-                NSString *str = [NSString stringWithFormat:@"%@", self.arrayPhoto[i]];
-                image.image = [UIImage imageNamed:str];
-            
-                [cell addSubview:image];
-            }
-*/
+        PhotoViewCell *cell = [[PhotoViewCell alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, CELL_Height)];
             NSArray *oriPName = @[
                                   @"https://testapp.gtax.cn/images/2016/08/25/2241c4b32b8445da87532d6044888f3d.jpg",
                                   
@@ -431,10 +404,23 @@ id TeachDescCell = nil;
 //            @"https://testapp.gtax.cn/images/2016/08/25/4d49888355a941cab921c9f1ad118721.jpg",
 //            
 //            @"https://testapp.gtax.cn/images/2016/08/25/ea6a22e8b4794b9ba63fd6ee587be4d1.jpg"
-            cell.picContainerView.picUrlArray = oriPName;
-            cell.picContainerView.picOriArray = oriPName;
-//            cell.picContainerView.userInteractionEnabled = YES;
-        }
+            
+        
+            
+            
+       
+        cell.picContainerView.picUrlArray = oriPName;
+        cell.picContainerView.picOriArray = oriPName;
+
+//            UIImageView * imageArr = [[UIImageView alloc]initWithFrame:cell.bounds];
+//            imageArr.userInteractionEnabled = YES;
+//            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickTapBtn:)];
+//            [imageArr addGestureRecognizer:tap];
+//            imageArr.image = [UIImage imageNamed:@"cellImage"];
+//           imageArr.backgroundColor = [UIColor whiteColor];
+//            [cell addSubview:imageArr];
+            return cell;
+        
     }
     if([self.segStr isEqualToString:@"动态"]){
         
@@ -460,12 +446,15 @@ id TeachDescCell = nil;
     return TeachDescCell;
 }
 
+
+
+
 #pragma mark -----------图片点击事件
 //显示
 
--(void)OpenClick:(UITapGestureRecognizer *)tap
+-(void)clickTapBtn:(UITapGestureRecognizer *)tap
 {
-    HWLog(@"%@",tap);
+    HWLog(@"==========");
 }
 
 

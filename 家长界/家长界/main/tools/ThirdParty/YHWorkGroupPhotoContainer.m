@@ -22,6 +22,7 @@
     if (self = [super init]) {
         NSAssert(width>0, @"请设置图片容器的宽度");
         self.width = width;
+        
     }
     return self;
 }
@@ -30,6 +31,7 @@
 {
     if (self = [super initWithFrame:frame]) {
         [self setup];
+        self.userInteractionEnabled = YES;
     }
     return self;
 }

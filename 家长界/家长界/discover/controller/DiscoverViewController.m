@@ -21,9 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
- //    _titleArray = [[NSMutableArray alloc]initWithObjects:@"朋友动态",@"招聘助手",@"创投地带",@"生活圈",@"抢通币",@"通讯录", nil];
-//    _imgArray = [[NSMutableArray alloc]initWithObjects:@"sns_icon_qq.png",@"sns_icon_wechat.png",@"sns_icon_weibo.png",@"sns_icon_5.png",@"sns_icon_6.png",@"sns_icon_8.png", nil];
+    
+    self.navigationItem.title = @"朋友圈";
     
     self.view.backgroundColor = [UIColor whiteColor];
     

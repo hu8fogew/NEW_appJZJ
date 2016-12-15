@@ -10,12 +10,139 @@
 #import "FirstRowTableViewCell.h"
 
 @interface MemberCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
+//tableView
+@property (strong,nonatomic)UITableView *tableView;
 
-@property (strong,nonatomic) UITableView *tableView;
+//headerView
+@property (strong,nonatomic)UIView *headerView;
+
+//selectedView;
+@property (strong,nonatomic)UIView *selecteView;
+@property (strong,nonatomic)UILabel *gz_text;
+@property (strong,nonatomic)UILabel *fs_text;
+@property (strong,nonatomic)UILabel *sc_text;
+
+//OwnerView
+
+@property (strong,nonatomic)UIView *ownerView;
+
+//staticArrayImage&String
+@property(nonatomic,nullable,strong)NSArray *StaticArr;
 
 @end
 
 @implementation MemberCenterViewController
+
+#pragma mark =========懒加载
+
+-(NSArray *)StaticArr
+{
+    if (!_StaticArr) {
+        _StaticArr = [OwnerDate staticArrayForOwnerDate];
+    }
+    return _StaticArr;
+}
+
+-(UITableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.tableHeaderView = self.headerView;
+        _tableView.tableHeaderView.height = self.selecteView.y+self.selecteView.height;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.backgroundColor = HWColor(241, 241, 241);
+        [self.view addSubview:_tableView];
+    }
+    return _tableView;
+}
+
+//headerView
+-(UIView *)headerView
+{
+    if (!_headerView) {
+        _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 400)];
+        _headerView.backgroundColor = [UIColor whiteColor];
+        [_headerView addSubview:self.ownerView];
+    }
+    return _headerView;
+}
+
+//OwnerView
+-(UIView *)ownerView
+{
+    if (!_ownerView) {
+        _ownerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*2/5)];
+        _ownerView.backgroundColor = HWColor(94, 146, 239);
+        
+        OwnerHeaderView *vi = [[OwnerHeaderView alloc]initWithFrame:_ownerView.bounds];
+        vi.ownerImage.image = [UIImage imageNamed:@"require_image"];
+        vi.backgroundColor = [UIColor clearColor];
+        [_ownerView addSubview:vi];
+        
+    }
+    return _ownerView;
+}
+
+//选择按钮
+-(UIView *)selecteView
+{
+    if (!_selecteView) {
+        _selecteView = [[UIView alloc]initWithFrame:CGRectMake(0, self.ownerView.y+self.ownerView.height, SCREEN_WIDTH, (SCREEN_WIDTH-40)/4)];
+        _selecteView.backgroundColor = [UIColor whiteColor];
+        
+        for(int i = 0; i<3; i++)
+        {
+            UIView *vi = [[UIView alloc]initWithFrame:CGRectMake(10+i*((SCREEN_WIDTH-40)/3) + i*10, 0, (SCREEN_WIDTH-40)/3, (SCREEN_WIDTH-40)/4)];
+//            vi.backgroundColor = HWRandomColor;
+            [_selecteView addSubview:vi];
+            if(i == 0){
+                _gz_text = [self creatSelecteTextWithFrame:CGRectMake(0, vi.height/6, vi.width, vi.height/3) andSv:vi andText:@"0"];
+                UIButton *btnF = [self createSelecteBtnWithFrame:CGRectMake(0, _gz_text.y+_gz_text.height, vi.width, vi.height/3) andTitle:@"关注" andTag:i andSv:vi];
+                btnF.backgroundColor = [UIColor whiteColor];
+            }
+            
+            if(i == 1){
+                _fs_text = [self creatSelecteTextWithFrame:CGRectMake(0, vi.height/6, vi.width, vi.height/3) andSv:vi andText:@"0"];
+                UIButton *btS = [self createSelecteBtnWithFrame:CGRectMake(0, vi.height/6+vi.height/3, vi.width, vi.height/3) andTitle:@"粉丝" andTag:i andSv:vi];
+                btS.backgroundColor = [UIColor whiteColor];
+            }
+            if(i == 2){
+                _sc_text = [self creatSelecteTextWithFrame:CGRectMake(0, vi.height/6, vi.width, vi.height/3) andSv:vi andText:@"0"];
+                UIButton *btT = [self createSelecteBtnWithFrame:CGRectMake(0, vi.height/6+vi.height/3, vi.width, vi.height/3) andTitle:@"收藏" andTag:i andSv:vi];
+                btT.backgroundColor = [UIColor whiteColor];
+            }
+            
+        }
+        [self.headerView addSubview:_selecteView];
+    }
+    return _selecteView;
+}
+//创建选择按钮的Label；
+-(UILabel *)creatSelecteTextWithFrame:(CGRect)frame andSv:(UIView *)sv andText:(NSString *)text
+{
+    UILabel *lab = [[UILabel alloc]initWithFrame:frame];
+    lab.textColor = HWColor(80, 80, 80);
+    lab.font = [UIFont systemFontOfSize:18];
+    lab.textAlignment = NSTextAlignmentCenter;
+    lab.text = text;
+    [sv addSubview:lab];
+    return lab;
+}
+//创建选择按钮
+-(UIButton *)createSelecteBtnWithFrame:(CGRect)frame andTitle:(NSString *)string andTag:(NSInteger)tag andSv:(UIView *)sv
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = frame;
+    [button setTitle:string forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:17];
+    button.tag = tag;
+    [button setTitleColor:HWColor(153, 153, 153) forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(selectBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [sv addSubview:button];
+    return button;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,212 +153,67 @@
     
 }
 
+#pragma mark--------选择按钮的实现方法
+-(void)selectBtnClick:(UIButton *)sender
+{
+    switch (sender.tag) {
+        case 0:
+            HWLog(@"关注");
+            break;
+        case 1:
+            HWLog(@"粉丝");
+            break;
+        case 2:
+            HWLog(@"收藏");
+            break;
+        default:
+            break;
+    }
+}
+
+
 -(void)createTableView{
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, Kwidth, Kheight) style:UITableViewStyleGrouped];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    [self.view addSubview:_tableView];
-    _tableView.showsVerticalScrollIndicator = NO;
-    
+    self.tableView.showsVerticalScrollIndicator = NO;
     UINib *nib = [UINib nibWithNibName:@"FirstRowTableViewCell" bundle:nil];
-    [_tableView registerNib:nib forCellReuseIdentifier:@"FirstRowTableViewCell"];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"identifier"];
 
 }
 //返回分组数
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 6;
+    return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    //返回行数
-    NSInteger rows = 0;
-    
-    //根据不同分组 返回不同行数
-    switch (section) {
-        case 0:
-            rows = 1;
-            break;
-        case 1:
-            rows = 4;
-            break;
-        case 2:
-            rows = 3;
-            break;
-        case 3:
-            rows = 1;
-            break;
-        case 4:
-            rows = 3;
-            break;
-        default:
-            rows = 1;
-            break;
-    }
-    
-    return rows;
-    
+    return self.StaticArr.count;
 }
 //头视图高
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 10;
+    return DistanceForCell;
 }
-//脚视图高
+////脚视图高
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     
-    return 5;
+    return 10;
 }
 //行内容
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (indexPath.section == 0) {
-        
-        FirstRowTableViewCell *firstCell = [tableView dequeueReusableCellWithIdentifier:@"FirstRowTableViewCell" forIndexPath:indexPath];
-        firstCell.imgView.image = [UIImage imageNamed:@"owner_normal.png"];
-        firstCell.firstLabel.text = @"我爱北京天安门";
-        firstCell.secondLabel.text = @"努力，加油";
-        firstCell.personLabel.text = @"0";
-        firstCell.companyLabel.text = @"0";
-        firstCell.personFansLabel.text = @"0";
-        firstCell.companyFansLabel.text = @"0";
-        firstCell.selectionStyle = UITableViewCellSelectionStyleNone;
-        firstCell.personView.userInteractionEnabled = YES;
-        
-        UITapGestureRecognizer *tapGesture1=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickPersonView:)];
-        [firstCell.personView addGestureRecognizer:tapGesture1];
-        firstCell.personView.layer.borderColor = [[UIColor grayColor]CGColor];
-        firstCell.personView.layer.borderWidth = 0.5;
-        
-        UITapGestureRecognizer *tapGesture2=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickCompanyView:)];
-        [firstCell.companyView addGestureRecognizer:tapGesture2];
-        firstCell.companyView.layer.borderColor = [[UIColor grayColor]CGColor];
-        firstCell.companyView.layer.borderWidth = 0.5;
-        
-        UITapGestureRecognizer *tapGesture3=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickPersonFansView:)];
-        [firstCell.personFansView addGestureRecognizer:tapGesture3];
-        firstCell.personFansView.layer.borderWidth = 0.5;
-        firstCell.personFansView.layer.borderColor = [[UIColor grayColor]CGColor];
-        
-        UITapGestureRecognizer *tapGesture4=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickCompanyFansView:)];
-        [firstCell.companyFansView addGestureRecognizer:tapGesture4];
-        firstCell.companyFansView.layer.borderWidth = 0.5;
-        firstCell.companyFansView.layer.borderColor = [[UIColor grayColor]CGColor];
-        return firstCell;
-    }
-    
-    else if (indexPath.section == 1){
-          UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mycell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"mycell"];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"详细资料";
-            cell.imageView.image = [UIImage imageNamed:@"sns_icon_5.png"];
-        }
-        else if (indexPath.row == 1){
-            cell.textLabel.text = @"相册管理";
-            cell.imageView.image = [UIImage imageNamed:@"sns_icon_5.png"];
- 
-        }
-        else if (indexPath.row == 2){
-            cell.textLabel.text = @"有才有貌";
-            cell.imageView.image = [UIImage imageNamed:@"sns_icon_5.png"];
-            
-        }
-        else{
-            cell.textLabel.text = @"实名认证";
-            cell.imageView.image = [UIImage imageNamed:@"sns_icon_5.png"];
-            
-        }
-        return  cell;
-    }
-    else if (indexPath.section == 2){
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mycell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"mycell"];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"简历管理";
-            cell.imageView.image = [UIImage imageNamed:@"sns_icon_5.png"];
-        }
-        else if (indexPath.row == 1){
-            cell.textLabel.text = @"我收到的邀请";
-            cell.imageView.image = [UIImage imageNamed:@"sns_icon_5.png"];
-            
-        }
-    
-        else{
-            cell.textLabel.text = @"我投递的简历";
-            cell.imageView.image = [UIImage imageNamed:@"sns_icon_5.png"];
-            
-        }
-        return  cell;
-    }
-    else if (indexPath.section == 3){
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mycell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"mycell"];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        
-        cell.textLabel.text = @"我的动态";
-        cell.imageView.image = [UIImage imageNamed:@"sns_icon_5.png"];
-        
-        return cell;
-    }
-    else if (indexPath.section == 4){
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mycell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"mycell"];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"我的收益";
-            cell.imageView.image = [UIImage imageNamed:@"sns_icon_5.png"];
-        }
-        else if (indexPath.row == 1){
-            cell.textLabel.text = @"我的通币";
-            cell.imageView.image = [UIImage imageNamed:@"sns_icon_5.png"];
-        }
- 
-        else{
-            cell.textLabel.text = @"结算记录";
-            cell.imageView.image = [UIImage imageNamed:@"sns_icon_5.png"];
-            
-        }
-        return  cell;
-    }
-    else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mycell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"mycell"];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        
-        cell.textLabel.text = @"设置";
-        cell.imageView.image = [UIImage imageNamed:@"sns_icon_5.png"];
-        
-        return cell;
-    }
-
-    return 0;
+    FirstRowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier"];
+    cell.kindImage.image = [UIImage imageNamed:self.StaticArr[indexPath.row][@"kindImage"]];
+    cell.descKind.text = self.StaticArr[indexPath.row][@"kindTitle"];
+    return cell;
 }
 //行高
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
-        return 130;
-    }
     return 50;
+}
+
+#pragma mark -----------TableViewDelegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
 }
 
 - (void)clickPersonView:(UITapGestureRecognizer *)gesture {
