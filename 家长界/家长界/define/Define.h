@@ -55,9 +55,23 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
 blue:((float)(rgbValue & 0xFF))/255.0 \
 alpha:1.0]
 
+
+//朋友圈
+#define kPopViewBGColor HWColor(224.0f, 224.0f, 224.0f)       //collectionView背景颜色
+#define kMaskBGColor [HWColor(0, 0, 0) colorWithAlphaComponent:0.5] //遮罩背景颜色
+#define kTextColor [UIColor blackColor]
+#define kCancelBtnColor HWColor(0.f, 191.0f, 143.f)
+
 // 随机色
 #define HWRandomColor HWColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 #endif /* Define_h */
+
+
+//获取应用
+#define KEYWINDOW [UIApplication sharedApplication].keyWindow
+
+
+#define WeakSelf  __weak __typeof(&*self)weakSelf = self;
 
 /**
  *define:获取屏幕的宽

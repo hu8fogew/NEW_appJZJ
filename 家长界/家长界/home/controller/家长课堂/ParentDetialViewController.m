@@ -472,7 +472,7 @@ int count = 0;
 /*添加播放器*/
 -(void)addPlayerVidio
 {
-    [XCAVPlayerView shareManager].playerUrl = [NSURL URLWithString:@"http://mob.qipintong.com/video/haiwenying_v1.mp4"];
+    [XCAVPlayerView shareManager].playerUrl = [NSURL URLWithString:@"http://jzj.qipintong.com/video/haiwenying_v1.mp4"];
     
     [XCAVPlayerView shareManager].videoTitle = @"测试视频";
     [XCAVPlayerView startPlayInSuperView:self.playVidioView];

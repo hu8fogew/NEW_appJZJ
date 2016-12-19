@@ -19,7 +19,7 @@
         
         self.backgroundColor = [UIColor whiteColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+       /*
         //图片视图
         self.userInteractionEnabled = YES;
         _picContainerView = [[YHWorkGroupPhotoContainer alloc]initWithWidth:SCREEN_WIDTH-20];
@@ -34,7 +34,7 @@
         [_picContainerView setContentCompressionResistancePriority:749 forAxis:UILayoutConstraintAxisVertical];
         
         
-        
+        */
         
     }
     

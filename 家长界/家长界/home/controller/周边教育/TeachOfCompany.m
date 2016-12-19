@@ -409,8 +409,8 @@ id TeachDescCell = nil;
             
             
        
-        cell.picContainerView.picUrlArray = oriPName;
-        cell.picContainerView.picOriArray = oriPName;
+//        cell.picContainerView.picUrlArray = oriPName;
+//        cell.picContainerView.picOriArray = oriPName;
 
 //            UIImageView * imageArr = [[UIImageView alloc]initWithFrame:cell.bounds];
 //            imageArr.userInteractionEnabled = YES;

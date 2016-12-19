@@ -11,7 +11,7 @@
 @interface PhotoViewCell : UITableViewCell
 
 //@property(nonatomic,strong)UIImageView *imageVF;
-@property(nonatomic,strong)YHWorkGroupPhotoContainer *picContainerView;
+//@property(nonatomic,strong)YHWorkGroupPhotoContainer *picContainerView;
 
 @property(nonatomic,strong)NSArray *arrUrl;
 //@property(nonatomic,strong)UIImageView *imageArr;

@@ -24,7 +24,7 @@
     MessageViewController *messageVc = [[MessageViewController alloc]init];
     [self addChildVc:messageVc title:@"消息" image:@"" selectedImage:@""];
     
-    DiscoverViewController *discoverVc = [[DiscoverViewController alloc]init];
+    YHTimeLineListController *discoverVc = [[YHTimeLineListController alloc]init];
     
     [self addChildVc:discoverVc title:@"朋友圈" image:@"" selectedImage:@""];
     

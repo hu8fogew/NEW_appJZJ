@@ -212,6 +212,31 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (indexPath.row) {
+        case 0:
+            HWLog(@"我的动态");
+            break;
+        case 1:
+            HWLog(@"我的问题");
+            break;
+        case 2:
+            HWLog(@"我的回答");
+        {
+            MyAnswerController *vc = [[MyAnswerController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 3:
+            HWLog(@"我的咨询");
+            break;
+        case 4:
+            HWLog(@"我的报名");
+            break;
+        default:
+            break;
+    }
+    
+    
     
     
 }
