@@ -8,7 +8,7 @@
 
 #import "QinZiViewController.h"
 #import "QZdetailViewController.h"
-@interface QinZiViewController ()<UITableViewDelegate,UITableViewDataSource,WYAutoCaruselDelegate>
+@interface QinZiViewController ()<UITableViewDelegate,UITableViewDataSource,WYAutoCaruselDelegate,UIScrollViewDelegate>
 
 /*筛选条*/
 @property(nonatomic,strong)UIView *headerView;
@@ -127,52 +127,28 @@
     [self createAdsPageWithArr:self.arr];
     //添加筛选条目
     [self createSiftView];
-    //监听tableview的偏移量变化
-    [self createObserverObject];
 }
 
 
-#pragma mark /*********监听tableView的头部高度**********/
--(void)createObserverObject
-{
-    //添加监听者
-    [self.Qintable addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    
-    
-}
+#pragma mark /*********scrollViewDelegate监听tableView**********/
 
-//监听的回调方法
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
     CGFloat offset = self.Qintable.contentOffset.y;
     
     if (offset > lunBoheight-64-siftHeight ) {
-//        HWLog(@"开始显示");
-//        [UIView animateWithDuration:0.5 animations:^{
-            [self.view addSubview:self.backgroundSiftView];
-            
-            [self.Qintable reloadData];
-            [self.backgroundSiftView addSubview:self.QZSiftView];
-//        }];
+        [self.view addSubview:self.backgroundSiftView];
+        
+        [self.Qintable reloadData];
+        [self.backgroundSiftView addSubview:self.QZSiftView];
     }
     if ((offset<lunBoheight-64-siftHeight) && (0<=offset)) {
-//        [UIView animateWithDuration:0.1 animations:^{
-        
-            [self.backgroundSiftView removeFromSuperview];
-            self.backgroundSiftView = nil;
-            [self.Qintable reloadData];
-//        }];
-        
+        [self.backgroundSiftView removeFromSuperview];
+        self.backgroundSiftView = nil;
+        [self.Qintable reloadData];
     }
-    
-}
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [self.Qintable removeObserver:self forKeyPath:@"contentOffset"];
 }
-
 
 
 #pragma mark  筛选条件的按钮执行方法

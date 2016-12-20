@@ -43,7 +43,6 @@
     
     self.navigationItem.title = @"朋友圈";
 //    self.title = @"朋友圈";
-    
 //    //设置导航栏背景颜色
 //    UIColor * color = [UIColor colorWithRed:0.f green:191.f / 255 blue:143.f / 255 alpha:1];
 //    self.navigationController.navigationBar.barTintColor = color;

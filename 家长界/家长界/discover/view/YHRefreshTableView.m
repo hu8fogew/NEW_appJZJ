@@ -53,7 +53,6 @@
     if (!self.mj_header) {
          self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNew)];
     }
-   
 }
 
 - (void)removeHeaderView{

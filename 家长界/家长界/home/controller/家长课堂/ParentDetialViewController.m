@@ -8,7 +8,7 @@
 
 #import "ParentDetialViewController.h"
 
-@interface ParentDetialViewController ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate,SGSegmentedControlDelegate>
+@interface ParentDetialViewController ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate,SGSegmentedControlDelegate,UIScrollViewDelegate>
 /*tableView的headerView*/
 @property(nonatomic,strong)UIView *DetailheaderView;
 
@@ -242,11 +242,6 @@ int count = 0;
 
 
 
-
-
-
-
-
 /*加载视图*/
 -(void)createView
 {
@@ -267,48 +262,40 @@ int count = 0;
     [self createVidioView];
     
     
-    NSArray *titleArr = @[@"介绍",@"目录",@"评价"];
+    NSArray *titleArr = @[@"课程介绍",@"相关课程",@"评价(0)"];
     [self createSeleBarViewWithArr:titleArr];
     
     // 添加通知中心
     [self createNotificationCenter];
     
-    //添加监听者
-    [self addObserveHeaderView];
 }
 
 
 
 
-#pragma mark ++++++++++添加TableView的监听者
--(void)addObserveHeaderView
-{
-    
-    [self.DetialTable addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    
-}
+#pragma mark ++++++++++ScrollViewDelegate监听tableView的变化来添加view
 
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
+    HWLog(@"========");
     CGFloat offset = self.DetialTable.contentOffset.y;
     
     if (offset > playViewHeight+self.descView.height+DistanceForCell ) {
-            [self.view addSubview:self.animationViewSeg];
-            self.segumentView.frame = CGRectMake(0, 0, SCREEN_WIDTH, siftHeight);
-            [self.animationViewSeg addSubview:self.segumentView];
-            
-            [self.DetialTable reloadData];
+        [self.view addSubview:self.animationViewSeg];
+        self.segumentView.frame = CGRectMake(0, 0, SCREEN_WIDTH, siftHeight);
+        [self.animationViewSeg addSubview:self.segumentView];
+        
+        [self.DetialTable reloadData];
         
     }
     if (0<offset && offset<playViewHeight+self.descView.height+DistanceForCell) {
-            [self.animationViewSeg removeFromSuperview];
-            self.animationViewSeg = nil;
-            
-            self.segumentView.frame = CGRectMake(0, self.discView.y+self.discView.height+DistanceForCell, SCREEN_WIDTH, siftHeight);
-            [self.DetailheaderView addSubview:self.segumentView];
-            [self.DetialTable reloadData];
-
+        [self.animationViewSeg removeFromSuperview];
+        self.animationViewSeg = nil;
+        
+        self.segumentView.frame = CGRectMake(0, self.discView.y+self.discView.height+DistanceForCell, SCREEN_WIDTH, siftHeight);
+        [self.DetailheaderView addSubview:self.segumentView];
+        [self.DetialTable reloadData];
+        
     }
 }
 
@@ -317,8 +304,9 @@ int count = 0;
 {
     
     [[XCAVPlayerView shareManager] pause];
-    [self.DetialTable removeObserver:self forKeyPath:@"contentOffset"];
 }
+
+
 
 
 
@@ -338,7 +326,7 @@ int count = 0;
 -(void)createBottomView
 {
     //客服
-    UIButton *requireBtn = [self createBottomButtonWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*2/5, bottomViewHeight) andTarget:self andImage:@"require" andTitle:@"客服" andBackgroundColor:HWColor(245, 245, 245) andAction:@selector(bottomButtonClick:) andTag:1 andTitleColor:HWColor(128, 128, 128) andTitleEdge:UIEdgeInsetsMake(bottomViewHeight/4, bottomViewHeight*5/9, bottomViewHeight/4, SCREEN_WIDTH*2/21)  andImageEdge:UIEdgeInsetsMake(bottomViewHeight/4, -bottomViewHeight*2/13, bottomViewHeight/4, bottomViewHeight*5/9)];
+    UIButton *requireBtn = [self createBottomButtonWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*2/5, bottomViewHeight) andTarget:self andImage:@"require" andTitle:@"评一下" andBackgroundColor:HWColor(245, 245, 245) andAction:@selector(bottomButtonClick:) andTag:1 andTitleColor:HWColor(128, 128, 128) andTitleEdge:UIEdgeInsetsMake(bottomViewHeight/4, bottomViewHeight*5/9, bottomViewHeight/4, SCREEN_WIDTH*2/21)  andImageEdge:UIEdgeInsetsMake(bottomViewHeight/4, -bottomViewHeight*2/13, bottomViewHeight/4, bottomViewHeight*5/9)];
     requireBtn.tintColor = HWColor(128, 128, 128);
     //播放
     UIButton *playBtn = [self createBottomButtonWithFrame:CGRectMake(SCREEN_WIDTH*2/5, 0, SCREEN_WIDTH*3/5, bottomViewHeight) andTarget:self andImage:@"" andTitle:@"立即播放" andBackgroundColor:HWColor(104, 157, 221) andAction:@selector(bottomButtonClick:) andTag:2 andTitleColor:[UIColor whiteColor] andTitleEdge: UIEdgeInsetsMake(bottomViewHeight/4, SCREEN_WIDTH/5+bottomViewHeight/4, bottomViewHeight/4, SCREEN_WIDTH*2/15) andImageEdge: UIEdgeInsetsMake(bottomViewHeight/4, -SCREEN_WIDTH/5, bottomViewHeight/4, SCREEN_WIDTH/5)];
