@@ -108,13 +108,13 @@
     [self.viewTopLine mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(weakSelf);
         make.left.right.equalTo(weakSelf);
-        make.height.mas_equalTo(0.5);
+        make.height.mas_equalTo(1.0);
     }];
     
     
     
     [self.viewVLine1 mas_makeConstraints:^(MASConstraintMaker *make) {
-         make.width.mas_equalTo(0.5);
+         make.width.mas_equalTo(1.0);
          make.centerY.equalTo(weakSelf.btnComment.mas_centerY);
         make.right.equalTo(weakSelf.btnComment.mas_right);
         make.top.equalTo(weakSelf).offset(10);
@@ -122,7 +122,7 @@
     }];
     
     [self.viewVLine2 mas_makeConstraints:^(MASConstraintMaker *make) {
-         make.width.mas_equalTo(0.5);
+         make.width.mas_equalTo(1.0);
          make.centerY.equalTo(weakSelf.btnComment.mas_centerY);
          make.right.equalTo(weakSelf.btnLike.mas_right);
          make.top.equalTo(weakSelf.viewVLine1.mas_top);

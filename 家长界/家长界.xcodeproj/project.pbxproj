@@ -118,6 +118,7 @@
 		049FBAB01DEBDFED0018018A /* ycymSearch.png in Resources */ = {isa = PBXBuildFile; fileRef = 049FBAAF1DEBDFED0018018A /* ycymSearch.png */; };
 		049FBAB31DEC21910018018A /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 049FBAB11DEC21910018018A /* blue.png */; };
 		049FBAB41DEC21910018018A /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = 049FBAB21DEC21910018018A /* white.png */; };
+		04A26BAA1E0A2B7100007BA7 /* sendIdea_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A26BA91E0A2B7100007BA7 /* sendIdea_icon.png */; };
 		04A5CD6B1DE3EC4D00E4115C /* AnswerTeacherQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A5CD6A1DE3EC4C00E4115C /* AnswerTeacherQuestion.m */; };
 		04A5CD701DE41E1500E4115C /* good.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A5CD6F1DE41E1500E4115C /* good.png */; };
 		04A5CD751DE4438900E4115C /* WH.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A5CD741DE4438900E4115C /* WH.png */; };
@@ -559,6 +560,7 @@
 		049FBAAF1DEBDFED0018018A /* ycymSearch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ycymSearch.png; sourceTree = "<group>"; };
 		049FBAB11DEC21910018018A /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
 		049FBAB21DEC21910018018A /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
+		04A26BA91E0A2B7100007BA7 /* sendIdea_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendIdea_icon.png; sourceTree = "<group>"; };
 		04A5CD691DE3EC4C00E4115C /* AnswerTeacherQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerTeacherQuestion.h; sourceTree = "<group>"; };
 		04A5CD6A1DE3EC4C00E4115C /* AnswerTeacherQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerTeacherQuestion.m; sourceTree = "<group>"; };
 		04A5CD6F1DE41E1500E4115C /* good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = good.png; sourceTree = "<group>"; };
@@ -1458,6 +1460,7 @@
 			isa = PBXGroup;
 			children = (
 				04759D381E027B6D003995F6 /* placehode_icon.png */,
+				04A26BA91E0A2B7100007BA7 /* sendIdea_icon.png */,
 				04759D3D1E029629003995F6 /* set_image.png */,
 				0411E6201DF981340076FC69 /* child_icon.jpg */,
 				0411E6221DF9813A0076FC69 /* zm_icon.jpg */,
@@ -2408,6 +2411,7 @@
 				TargetAttributes = {
 					04FDBAC21DD2FE7300D788FC = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = DS245SFK4D;
 						ProvisioningStyle = Automatic;
 					};
 					04FDBADB1DD2FE7300D788FC = {
@@ -2512,6 +2516,7 @@
 				04FDBC4E1DD3010500D788FC /* LICENSE in Resources */,
 				04A5CDDC1DE5C5D500E4115C /* icon_full@2x.png in Resources */,
 				9E319DAB1DD45AB1000C3178 /* sns_icon_6.png in Resources */,
+				04A26BAA1E0A2B7100007BA7 /* sendIdea_icon.png in Resources */,
 				04F2EF291DE9B6EA00DB0990 /* qpt_map_image.png in Resources */,
 				044D105E1DE82F39004D7F53 /* cacalogup.png in Resources */,
 				04D8867F1DF7B16600277465 /* relay_icon.png in Resources */,
@@ -2951,13 +2956,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DS245SFK4D;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/define/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = "${SDK_ROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = "家长界/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xibujialian.www;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jzj.qipintong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2966,13 +2971,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DS245SFK4D;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/define/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = "${SDK_ROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = "家长界/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xibujialian.www;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jzj.qipintong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

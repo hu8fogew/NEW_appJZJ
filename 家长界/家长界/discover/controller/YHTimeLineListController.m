@@ -24,11 +24,30 @@
 
 
 @property (nonatomic,strong) YHRefreshTableView *tableView;
+
+//悬浮按钮
+@property(nonatomic,strong)UIView *suspendView;
+
 @property (nonatomic,strong) NSMutableArray *dataArray;
 
 @end
 
 @implementation YHTimeLineListController
+
+-(UIView *)suspendView
+{
+    if (!_suspendView) {
+        _suspendView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH*0.84-10, SCREEN_HEIGHT-SCREEN_WIDTH*0.32, SCREEN_WIDTH*0.16, SCREEN_WIDTH*0.16)];
+        _suspendView.userInteractionEnabled = YES;
+        _suspendView.backgroundColor = [UIColor whiteColor];
+        _suspendView.layer.cornerRadius = SCREEN_WIDTH*0.08;
+        _suspendView.layer.masksToBounds = YES;
+        [self.view addSubview:_suspendView];
+        
+        
+    }
+    return _suspendView;
+}
 
 
 - (void)viewDidLoad{
@@ -37,26 +56,33 @@
     
     //设置UserId 
     [YHUserInfoManager sharedInstance].userInfo.uid = @"1";
+    
+    [self createSuspendButton];
 }
 
+#pragma mark **********添加悬浮按钮
+-(void)createSuspendButton
+{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = self.suspendView.bounds;
+    [btn setBackgroundImage:[UIImage imageNamed:@"sendIdea_icon"] forState:UIControlStateNormal];
+    btn.layer.cornerRadius = SCREEN_WIDTH*0.08;
+    btn.layer.masksToBounds = YES;
+    [btn addTarget:self action:@selector(sendIdeaClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.suspendView addSubview:btn];
+}
+
+//悬浮按钮实现方法
+-(void)sendIdeaClick:(UIButton *)sender
+{
+    HWLog(@"发布文章");
+}
+
+
+#pragma mark  -----加载视图（tableView）
 - (void)initUI{
     
     self.navigationItem.title = @"朋友圈";
-//    self.title = @"朋友圈";
-//    //设置导航栏背景颜色
-//    UIColor * color = [UIColor colorWithRed:0.f green:191.f / 255 blue:143.f / 255 alpha:1];
-//    self.navigationController.navigationBar.barTintColor = color;
-//    self.navigationController.navigationBar.translucent = NO;
-//    
-//    NSShadow *shadow = [[NSShadow alloc]init];
-//    shadow.shadowColor = [UIColor colorWithWhite:0.871 alpha:1.000];
-//    shadow.shadowOffset = CGSizeMake(0.5, 0.5);
-//
-//    //设置导航栏标题颜色
-//    NSDictionary *attributes = @{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:18],NSShadowAttributeName:shadow};
-//    self.navigationController.navigationBar.titleTextAttributes = attributes;
-    
-    
     
     self.tableView = [[YHRefreshTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.delegate   = self;
@@ -126,8 +152,6 @@
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-   
-    
     if (indexPath.row < self.dataArray.count) {
         
         //原创cell

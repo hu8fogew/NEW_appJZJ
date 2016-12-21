@@ -48,7 +48,7 @@ typedef void(^HHAlertCallback)(BOOL resultYes );
 /**
  *  获取iPhone机型
  *
- *  @return 
+ *  @return iPhone机型
  */
 + (NSString*)phoneType;
 
@@ -62,13 +62,13 @@ typedef void(^HHAlertCallback)(BOOL resultYes );
 /**
  *  appStore上的版本号
  *
- *  @return
+ *  @return 版本号
  */
 + (NSString *)appStoreNumber;
 /**
  *  app开发环境版本号
  *
- *  @return
+ *  @return 开发环境版本号
  */
 + (NSString *)appBulidNumber;
 

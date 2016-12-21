@@ -230,7 +230,7 @@ const CGFloat moreBtnWidth    = 60;
     self.labelJob.text      = _model.userInfo.job;
     
     /*************动态内容*************/
-    maxContentLabelHeight   = _labelContent.font.pointSize * 6;
+    maxContentLabelHeight   = _labelContent.font.pointSize * 4;
     self.labelContent.text  = _model.msgContent;
     WeakSelf
     //查看详情按钮
