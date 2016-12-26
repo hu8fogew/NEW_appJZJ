@@ -71,7 +71,7 @@
 #import "AwardView.h"
 #import "PhotoViewCell.h"
 #import "BackGroundListView.h"
-#import "MLLinkLabel.h"
+
 /**
  *  消息
  */
@@ -82,7 +82,7 @@
  *  发现
  */
 #import "DiscoverViewController.h"
-#import "YHTimeLineListController.h"
+#import "MomentsViewController.h"
 
 /**
  *  个人
@@ -99,7 +99,6 @@
 //segument选择条目
 #import "SGSegmentedControl.h"
 #import "CCPScrollView.h"
-#import "AdvertisingColumn.h"
 #import "UIImageView+WebCache.h"
 #import "WYAutoCarusel.h"
 #import "DCPicScrollView.h"
@@ -119,14 +118,14 @@
 #import "JSDropDownMenu.h"
 #import "XCAudioPlayer.h"
 
-
+#import "Gallop.h"
+#import "SDImageCache.h"
 
 /**
  *  其他
  */
-#import "WHC_StackView.h"
-#import "UIView+WHC_AutoLayout.h"
-#import "UITableViewCell+WHC_AutoHeightForCell.h"
+
+
 #import "UIBarButtonItem+Extension.h"
 #import "UIView+Extension.h"
 #import "MainNavigationController.h"

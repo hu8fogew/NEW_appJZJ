@@ -67,7 +67,7 @@
 //cell的高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [MyAnswerCell whc_CellHeightForIndexPath:indexPath tableView:tableView];
+    return 50;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

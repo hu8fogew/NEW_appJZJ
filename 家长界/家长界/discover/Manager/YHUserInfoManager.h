@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "YHUserInfo.h"
+
 
 @interface YHUserInfoManager : NSObject
 
 /**
  *  当前登录的用户信息(单例)
  */
-@property (nonatomic, strong)YHUserInfo *userInfo;
+//@property (nonatomic, strong)YHUserInfo *userInfo;
 
 + (instancetype)sharedInstance;
 

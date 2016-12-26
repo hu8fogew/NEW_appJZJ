@@ -38,6 +38,7 @@
 }
 
 #pragma mark - Getter
+/*
 - (YHUserInfo *)userInfo
 {
 	if (!_userInfo)
@@ -47,6 +48,6 @@
 	_userInfo.isSelfModel = YES;
 	return _userInfo;
 }
-
+*/
 
 @end

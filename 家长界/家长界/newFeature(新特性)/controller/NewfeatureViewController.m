@@ -129,6 +129,7 @@
 {
     //状态取反
     shareBtn.selected = !shareBtn.isSelected;
+    [self startClick];
     
 }
 
