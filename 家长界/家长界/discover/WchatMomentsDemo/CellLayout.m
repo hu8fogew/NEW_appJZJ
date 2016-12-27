@@ -12,7 +12,6 @@
 
 #import "CellLayout.h"
 #import "LWTextParser.h"
-#import "CommentModel.h"
 #import "Gallop.h"
 #import "HKPBotView.h"
 
@@ -219,7 +218,6 @@
         [self addStorage:dateTextStorage];
         [self addStorage:avatarStorage];
         [self addStorages:imageStorageArray];//通过一个数组来添加storage，使用这个方法
-        
         self.avatarPosition = CGRectMake(10, 20, 45, 45);//头像的位置
         self.menuPosition = menuPosition;//右下角菜单按钮的位置
         self.imagePostions = imagePositionArray;//保存图片位置的数组

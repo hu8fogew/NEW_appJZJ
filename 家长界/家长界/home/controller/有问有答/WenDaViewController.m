@@ -8,7 +8,7 @@
 
 #import "WenDaViewController.h"
 #import "QuestionTableViewCell.h"
-
+#import "AnswerQuestionController.h"
 @interface WenDaViewController ()<UITableViewDataSource,UITableViewDelegate,WYAutoCaruselDelegate>
 
 /*头部视图*/
@@ -407,7 +407,7 @@ int selectWDcellHeight = 0;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if ([selecteCell isMemberOfClass:[QuestionDescCell class]]) {
-        AnswerTeacherQuestion *vc = [[AnswerTeacherQuestion alloc]init];
+        AnswerQuestionController *vc = [[AnswerQuestionController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
         
     }

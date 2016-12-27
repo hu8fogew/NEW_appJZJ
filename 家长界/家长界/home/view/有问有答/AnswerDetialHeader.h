@@ -6,26 +6,16 @@
 //  Copyright © 2016年 西部家联. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "LWLayout.h"
 
-@interface AnswerDetialHeader : UIView
+@interface AnswerDetialHeader : LWLayout<NSCopying>
 
-/*问号图片*/
-@property(nonatomic,strong)UIImageView *imageWH;
-
-/*主标题*/
-@property(nonatomic,strong)UILabel *questionLabel;
-
-/*网友、浏览次数、日期*/
-@property(nonatomic,strong)UILabel *labelF;
-@property(nonatomic,strong)UILabel *labelS;
-@property(nonatomic,strong)UILabel *labelT;
-
-/*回答个数*/
-@property(nonatomic,strong)UILabel *numberOfAnswer;
-
-/*描述问题*/
-@property(nonatomic,strong)UILabel *discQuestion;
+@property (nonatomic,assign) CGFloat headerHeight;
+//@property (nonatomic,assign) CGRect lineRect;
+//@property (nonatomic,assign) CGRect menuPosition;
+//@property (nonatomic,assign) CGRect commentBgPosition;
+//@property (nonatomic,assign) CGRect avatarPosition;
+//@property (nonatomic,assign) CGRect websitePosition;
 
 
 

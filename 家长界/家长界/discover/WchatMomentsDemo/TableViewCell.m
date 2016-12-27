@@ -27,8 +27,6 @@
 
 @property (nonatomic,strong) LWAsyncDisplayView* asyncDisplayView;
 @property(nonatomic,strong)HKPBotView *buttonView;
-//@property (nonatomic,strong) UIButton* menuButton;
-//@property (nonatomic,strong) Menu* menu;
 @property (nonatomic,strong) UIView* line;
 @property (nonatomic,copy) NSString* preCopyText;
 
@@ -101,12 +99,7 @@
     didCilickedTextStorage:(LWTextStorage *)textStorage
                   linkdata:(id)data {
     //回复评论
-    if ([data isKindOfClass:[CommentModel class]]) {
-        if (self.clickedReCommentCallback) {
-            self.clickedReCommentCallback(self,data);
-        }
-    }
-    else if ([data isKindOfClass:[NSString class]]) {
+   if ([data isKindOfClass:[NSString class]]) {
         //折叠Cell
         if ([data isEqualToString:@"close"]) {
             if (self.clickedCloseCellCallback) {
