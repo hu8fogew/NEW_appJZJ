@@ -8,32 +8,64 @@
 
 #import "AnswerDetialHeader.h"
 #import "LWTextParser.h"
+#import "LWAsyncDisplayView.h"
+@interface AnswerDetialHeader()<LWAsyncDisplayViewDelegate>
+@property(nonatomic,strong)LWAsyncDisplayView *asyncView;
+@property(nonatomic,strong)UIView *vF;
+@property(nonatomic,strong)UIView *vS;
+@end
 @implementation AnswerDetialHeader
 
+-(LWAsyncDisplayView *)asyncView
+{
+    if (!_asyncView) {
+        _asyncView = [[LWAsyncDisplayView alloc]initWithFrame:CGRectZero];
+        _asyncView.delegate = self;
+    }
+    return _asyncView;
+}
+-(DetialQuestionLayout *)quetionLayout
+{
+    if (!_quetionLayout) {
+        _quetionLayout = [[DetialQuestionLayout alloc]initAnswerQuestion];
+        self.asyncView.layout = _quetionLayout;
+    }
+    return _quetionLayout;
+}
+
+
+-(UIView *)vF
+{
+    if (!_vF) {
+        _vF = [UIView new];
+        _vF.backgroundColor = HWColor(153, 153, 153);
+        
+    }
+    return _vF;
+}
+
+-(UIView *)vS
+{
+    if (!_vS) {
+        _vS = [UIView new];
+        _vS.backgroundColor = HWColor(153, 153, 153);
+        
+    }
+    return _vS;
+}
 
 -(instancetype)init
 {
     self = [super init];
     if (self) {
-        //问号
-        LWImageStorage *image = [[LWImageStorage alloc]init];
-        image.contents = [UIImage imageNamed:@"WH"];
-        image.frame = CGRectMake(10, 15, 20, 20);
-        image.backgroundColor = [UIColor whiteColor];
-        //问题主标题
-        LWTextStorage *mainQuestion = [[LWTextStorage alloc]init];
-        mainQuestion.text = @"如何实现现代化建设，是当代90、00后的伟大使命。所以从孩子抓起，那么怎么抓起呢？";
-        mainQuestion.font = [UIFont fontWithName:@"Heiti SC" size:15.0f];
-        mainQuestion.textColor = RGB(40, 40, 40, 1);
-        mainQuestion.frame = CGRectMake(image.left,
-                                              image.top,
-                                              SCREEN_WIDTH - 40.0f,
-                                              CGFLOAT_MAX);
         
-        [self addStorage:image];
-        [self addStorage:mainQuestion];
+        [self addSubview:self.asyncView];
         
-        self.headerHeight = [self suggestHeightWithBottomMargin:10.0f];
+        
+        [self addSubview:self.vF];
+        
+        
+        [self addSubview:self.vS];
         
         
     }
@@ -41,6 +73,25 @@
 }
 
 
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.asyncView.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.quetionLayout.headerHeight);
+    //主线程runloop空闲时执行
+    LWTransaction* layerAsyncTransaction = self.layer.lw_asyncTransaction;
+    [layerAsyncTransaction
+     addAsyncOperationWithTarget:self
+     selector:@selector(_layouSubViews)
+     object:nil
+     completion:^(BOOL canceled) {}];
+    
+    
+}
+
+- (void)_layouSubViews {
+    self.vF.frame = self.quetionLayout.lineF;
+    self.vS.frame = self.quetionLayout.lineS;
+}
 
 
 

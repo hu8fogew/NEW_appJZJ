@@ -34,7 +34,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1];
+        self.backgroundColor = HWColor(232, 232, 232);
         [self.contentView addSubview:self.asyncDisplayView];
         [self.contentView addSubview:self.awardButton];
         [self.contentView addSubview:self.enjoyButton];
@@ -181,7 +181,7 @@
         return _awardButton;
     }
     _awardButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_awardButton setImage:[UIImage imageNamed:@"[menu]"] forState:UIControlStateNormal];
+    [_awardButton setImage:[UIImage imageNamed:@"award_image"] forState:UIControlStateNormal];
     _awardButton.imageEdgeInsets = UIEdgeInsetsMake(14.5f, 12.0f, 14.5f, 12.0f);
     [_awardButton addTarget:self action:@selector(didClickedMenuButton)
            forControlEvents:UIControlEventTouchUpInside];

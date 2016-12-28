@@ -7,20 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class DetialQuestionLayout;
 @interface QuestionDescCell : UITableViewCell
-//问答者的图片
-@property(nonatomic,strong)UIImageView *quesImage;
-//用户名称
-@property(nonatomic,strong)UILabel *userNameText;
-//用户发布时间
-@property(nonatomic,strong)UILabel *timeText;
-
-//问题标题
-@property(nonatomic,strong)UILabel *questionText;
-//问题详解
-@property(nonatomic,strong)UILabel *descQuesText;
-//回答人数
-@property(nonatomic,strong)UILabel *anserOfNum;
-
+@property(nonatomic,strong)DetialQuestionLayout *wdCellLayout;
+@property (nonatomic,strong) NSIndexPath* indexPath;
 @end

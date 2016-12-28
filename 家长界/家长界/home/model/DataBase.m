@@ -194,39 +194,39 @@
 {
     NSMutableArray *arr = [NSMutableArray array];
     NSDictionary *dic1 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"张苗是如何变美丽的？",@"mainTitle",
+                          @"孩子不听话怎么办？",@"mainTitle",
                           @"百度知道",@"smallTitle",
                           @"0评",@"commentTitle",
                           nil];
     
     NSDictionary *dic2 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"张苗胖一斤？",@"mainTitle",
-                          @"因为吃了老张家油糕",@"smallTitle",
+                          @"为什么孩子吃饭不香，看起来木有胃口？",@"mainTitle",
+                          @"快使用江中牌健胃消食片",@"smallTitle",
                           @"1评",@"commentTitle",
                           
                           nil];
     
     NSDictionary *dic3 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"张苗瘦四斤？",@"mainTitle",
-                          @"因为喝老王家瘦身药水！",@"smallTitle",
+                          @"孩子为什么考不上终点学校？",@"mainTitle",
+                          @"快来咨询课堂吧！",@"smallTitle",
                           @"2评",@"commentTitle",
                           
                           nil];
     NSDictionary *dic4 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"张苗的美丽是如何炼成的？",@"mainTitle",
-                          @"每天爬16楼，一口气！能做到吗？",@"smallTitle",
+                          @"学习方式有问题怎么办？",@"mainTitle",
+                          @"天天矫正，有个良好的生活习惯",@"smallTitle",
                           @"3评",@"commentTitle",
                           
                           nil];
     NSDictionary *dic5 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"愿天堂没有肥胖，只有苗条！",@"mainTitle",
-                          @"要么胖死，要么漂亮",@"smallTitle",
+                          @"生活不检点怎么办？",@"mainTitle",
+                          @"张医生为您答疑解惑",@"smallTitle",
                           @"4评",@"commentTitle",
                           
                           nil];
     NSDictionary *dic6 = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"张苗老师教你如何变瘦",@"mainTitle",
-                          @"请百度张苗老师，付款知道哦！",@"smallTitle",
+                          @"孩子早恋如何对待？",@"mainTitle",
+                          @"关于孩子早恋快来腾讯课堂",@"smallTitle",
                           @"5评",@"commentTitle",
                           
                           nil];

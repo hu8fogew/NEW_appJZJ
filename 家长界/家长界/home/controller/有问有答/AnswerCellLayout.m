@@ -41,19 +41,21 @@
         //名字模型 nameTextStorage
         LWTextStorage* nameTextStorage = [[LWTextStorage alloc] init];
         nameTextStorage.text = statusModel.name;
-        nameTextStorage.font = [UIFont fontWithName:@"Heiti SC" size:15.0f];
+        nameTextStorage.font = [UIFont systemFontOfSize:17];
+        nameTextStorage.textColor = HWColor(52, 52, 52);
         nameTextStorage.frame = CGRectMake(60.0f, 20.0f, SCREEN_WIDTH - 100.0f, CGFLOAT_MAX);
-        [nameTextStorage lw_addLinkWithData:[NSString stringWithFormat:@"%@",statusModel.name]
-                                      range:NSMakeRange(0,statusModel.name.length)
-                                  linkColor:RGB(113, 129, 161, 1)
-                             highLightColor:RGB(0, 0, 0, 0.15)];
-        
+//        [nameTextStorage lw_addLinkWithData:[NSString stringWithFormat:@"%@",statusModel.name]
+//                                      range:NSMakeRange(0,statusModel.name.length)
+//                                  linkColor:RGB(113, 129, 161, 1)
+//                             highLightColor:RGB(0, 0, 0, 0.15)];
+//        
         
         //正文内容模型 contentTextStorage
         LWTextStorage* contentTextStorage = [[LWTextStorage alloc] init];
         contentTextStorage.maxNumberOfLines = 3;//设置最大行数，超过则折叠
         contentTextStorage.text = statusModel.content;
-        contentTextStorage.font = [UIFont fontWithName:@"Heiti SC" size:15.0f];
+        contentTextStorage.font = [UIFont systemFontOfSize:16];
+        contentTextStorage.textColor = HWColor(80, 80, 80);
         contentTextStorage.textColor = RGB(40, 40, 40, 1);
         contentTextStorage.frame = CGRectMake(nameTextStorage.left,
                                               nameTextStorage.bottom + 10.0f,
@@ -63,8 +65,8 @@
         //生成时间的模型 dateTextStorage
         LWTextStorage* dateTextStorage = [[LWTextStorage alloc] init];
         dateTextStorage.text = [dateFormatter stringFromDate:statusModel.date];
-        dateTextStorage.font = [UIFont fontWithName:@"Heiti SC" size:14.0f];
-        dateTextStorage.textColor = [UIColor grayColor];
+        dateTextStorage.font = [UIFont systemFontOfSize:13];
+        dateTextStorage.textColor = HWColor(153, 153, 153);
         dateTextStorage.frame = CGRectMake(nameTextStorage.left,
                                            contentTextStorage.bottom + 10.0f,
                                            SCREEN_WIDTH - 80.0f,
@@ -73,10 +75,10 @@
         //菜单按钮
         CGRect menuPosition = CGRectZero;
         if (![statusModel.type isEqualToString:MESSAGE_TYPE_VIDEO]) {
-            menuPosition = CGRectMake(SCREEN_WIDTH - 54.0f,
+            menuPosition = CGRectMake(SCREEN_WIDTH - 75.0f,
                                       10.0f + contentTextStorage.bottom - 14.5f,
-                                      44.0f,
-                                      44.0f);
+                                      65.0f,
+                                      50.0f);
             
             
         }
@@ -108,10 +110,10 @@
                                                openStorage.bottom + 10.0f,
                                                SCREEN_WIDTH - 80.0f,
                                                CGFLOAT_MAX);
-            menuPosition = CGRectMake(SCREEN_WIDTH - 54.0f,
+            menuPosition = CGRectMake(SCREEN_WIDTH - 75.0f,
                                       10.0f + openStorage.bottom - 14.5f,
-                                      44.0f,
-                                      44.0f);
+                                      65.0f,
+                                      50.0f);
         }
         //解析表情和主题
         //解析表情、主题、网址
@@ -160,18 +162,19 @@
         //名字模型 nameTextStorage
         LWTextStorage* nameTextStorage = [[LWTextStorage alloc] init];
         nameTextStorage.text = statusModel.name;
-        nameTextStorage.font = [UIFont fontWithName:@"Heiti SC" size:15.0f];
+        nameTextStorage.font = [UIFont systemFontOfSize:17];
+        nameTextStorage.textColor = HWColor(52, 52, 52);
         nameTextStorage.frame = CGRectMake(60.0f, 20.0f, SCREEN_WIDTH - 80.0f, CGFLOAT_MAX);
-        [nameTextStorage lw_addLinkWithData:[NSString stringWithFormat:@"%@",statusModel.name]
-                                      range:NSMakeRange(0,statusModel.name.length)
-                                  linkColor:RGB(113, 129, 161, 1)
-                             highLightColor:RGB(0, 0, 0, 0.15)];
+//        [nameTextStorage lw_addLinkWithData:[NSString stringWithFormat:@"%@",statusModel.name]
+//                                      range:NSMakeRange(0,statusModel.name.length)
+//                                  linkColor:RGB(113, 129, 161, 1)
+//                             highLightColor:RGB(0, 0, 0, 0.15)];
         
         //正文内容模型 contentTextStorage
         LWTextStorage* contentTextStorage = [[LWTextStorage alloc] init];
         contentTextStorage.text = statusModel.content;
-        contentTextStorage.font = [UIFont fontWithName:@"Heiti SC" size:15.0f];
-        contentTextStorage.textColor = RGB(40, 40, 40, 1);
+        contentTextStorage.font = [UIFont systemFontOfSize:16];
+        contentTextStorage.textColor = HWColor(80, 80, 80);
         contentTextStorage.frame = CGRectMake(nameTextStorage.left,
                                               nameTextStorage.bottom + 10.0f,
                                               SCREEN_WIDTH - 80.0f,
@@ -203,8 +206,8 @@
         //生成时间的模型 dateTextStorage
         LWTextStorage* dateTextStorage = [[LWTextStorage alloc] init];
         dateTextStorage.text = [dateFormatter stringFromDate:statusModel.date];
-        dateTextStorage.font = [UIFont fontWithName:@"Heiti SC" size:13.0f];
-        dateTextStorage.textColor = [UIColor grayColor];
+        dateTextStorage.font = [UIFont systemFontOfSize:13];
+        dateTextStorage.textColor = HWColor(153, 153, 153);
         dateTextStorage.frame = CGRectMake(nameTextStorage.left,
                                            closeStorage.bottom + 10.0f,
                                            SCREEN_WIDTH - 80.0f,
@@ -212,10 +215,10 @@
         //菜单按钮
         CGRect menuPosition = CGRectZero;
         if (![statusModel.type isEqualToString:@"video"]) {
-            menuPosition = CGRectMake(SCREEN_WIDTH - 54.0f,
+            menuPosition = CGRectMake(SCREEN_WIDTH - 75.0f,
                                       10.0f + closeStorage.bottom - 14.5f,
-                                      44.0f,
-                                      44.0f);
+                                      65.0f,
+                                      50.0f);
             
             
         }

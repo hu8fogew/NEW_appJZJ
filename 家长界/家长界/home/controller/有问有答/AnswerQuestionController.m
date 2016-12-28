@@ -12,10 +12,14 @@
 #import "AnswerModel.h"
 #import "AnswerCellLayout.h"
 #import "LWAlertView.h"
+#import "DetialQuestionLayout.h"
 @interface AnswerQuestionController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) NSArray* fakeDatasource;
 /*回答问题的视图*/
 @property(nonatomic,strong)UIView *answerView;
+//问题详情页面
+@property(nonatomic,strong)AnswerDetialHeader *headerView;
+@property(nonatomic,strong)DetialQuestionLayout *headerLayout;
 @property (nonatomic,strong) UITableView* tableView;
 @property (nonatomic,strong) NSMutableArray* dataSource;
 @property (nonatomic,assign,getter = isNeedRefresh) BOOL needRefresh;
@@ -97,7 +101,10 @@ const CGFloat RefreshBoundary = 170.0f;
     return cell;
 }
 
-
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 8;
+}
 
 - (void)confirgueCell:(AnswerQuestionCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -312,7 +319,21 @@ const CGFloat RefreshBoundary = 170.0f;
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.tableHeaderView = self.headerView;
+    _tableView.tableHeaderView.height = _headerView.quetionLayout.headerHeight;
     return _tableView;
+}
+
+
+//headerView的设置
+-(AnswerDetialHeader *)headerView
+{
+    if (!_headerView) {
+        _headerView = [[AnswerDetialHeader alloc]init];
+//        _headerView.backgroundColor = [UIColor greenColor];
+        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, _headerView.quetionLayout.headerHeight);
+    }
+    return _headerView;
 }
 
 //回答问题

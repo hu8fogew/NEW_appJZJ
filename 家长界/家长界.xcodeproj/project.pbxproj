@@ -114,6 +114,7 @@
 		042808C61DE2A46100B2FB09 /* qzImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 042808C51DE2A46100B2FB09 /* qzImage.png */; };
 		042808CB1DE2FC0900B2FB09 /* teacherImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 042808CA1DE2FC0900B2FB09 /* teacherImage.png */; };
 		042D020C1DF501C00004F01E /* dian_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 042D020B1DF501C00004F01E /* dian_image.png */; };
+		043A8CB71E13592900B5CA7C /* DetialQuestionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 043A8CB61E13592900B5CA7C /* DetialQuestionLayout.m */; };
 		043D4C011DF1471400294BEB /* require_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 043D4C001DF1471400294BEB /* require_image.png */; };
 		043D4C031DF14E1800294BEB /* answer_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 043D4C021DF14E1800294BEB /* answer_image.png */; };
 		043D4C051DF15C5500294BEB /* award_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 043D4C041DF15C5500294BEB /* award_image.png */; };
@@ -590,6 +591,8 @@
 		042808C51DE2A46100B2FB09 /* qzImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qzImage.png; sourceTree = "<group>"; };
 		042808CA1DE2FC0900B2FB09 /* teacherImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teacherImage.png; sourceTree = "<group>"; };
 		042D020B1DF501C00004F01E /* dian_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dian_image.png; sourceTree = "<group>"; };
+		043A8CB51E13592900B5CA7C /* DetialQuestionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetialQuestionLayout.h; sourceTree = "<group>"; };
+		043A8CB61E13592900B5CA7C /* DetialQuestionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetialQuestionLayout.m; sourceTree = "<group>"; };
 		043D4C001DF1471400294BEB /* require_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = require_image.png; sourceTree = "<group>"; };
 		043D4C021DF14E1800294BEB /* answer_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = answer_image.png; sourceTree = "<group>"; };
 		043D4C041DF15C5500294BEB /* award_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = award_image.png; sourceTree = "<group>"; };
@@ -2350,6 +2353,8 @@
 			children = (
 				9E90F0BC1DF00C150027F7A7 /* AnswerDetialHeader.h */,
 				9E90F0BD1DF00C150027F7A7 /* AnswerDetialHeader.m */,
+				043A8CB51E13592900B5CA7C /* DetialQuestionLayout.h */,
+				043A8CB61E13592900B5CA7C /* DetialQuestionLayout.m */,
 				9E90F0BE1DF00C150027F7A7 /* AnswerQuestion.h */,
 				9E90F0BF1DF00C150027F7A7 /* AnswerQuestion.m */,
 				04D886831DF8470700277465 /* AwardView.h */,
@@ -2761,6 +2766,7 @@
 				9E90F0DF1DF00C150027F7A7 /* TextQuestionView.m in Sources */,
 				04CF92A81DDF172D0088C211 /* SiftView.m in Sources */,
 				0411E61F1DF9798F0076FC69 /* PhotoViewCell.m in Sources */,
+				043A8CB71E13592900B5CA7C /* DetialQuestionLayout.m in Sources */,
 				0419F0581E10FA7700F1780D /* CellLayout.m in Sources */,
 				04649AA71E090D4000AD7CD5 /* MJRefreshBackFooter.m in Sources */,
 				0419EFB51E10EC2000F1780D /* LWHTMLTextConfig.m in Sources */,

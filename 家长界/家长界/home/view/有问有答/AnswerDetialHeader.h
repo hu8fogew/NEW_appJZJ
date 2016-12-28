@@ -7,16 +7,9 @@
 //
 
 #import "LWLayout.h"
-
-@interface AnswerDetialHeader : LWLayout<NSCopying>
-
-@property (nonatomic,assign) CGFloat headerHeight;
-//@property (nonatomic,assign) CGRect lineRect;
-//@property (nonatomic,assign) CGRect menuPosition;
-//@property (nonatomic,assign) CGRect commentBgPosition;
-//@property (nonatomic,assign) CGRect avatarPosition;
-//@property (nonatomic,assign) CGRect websitePosition;
-
-
+#import "DetialQuestionLayout.h"
+@class DetialQuestionLayout;
+@interface AnswerDetialHeader : UIView
+@property(nonatomic,strong)DetialQuestionLayout *quetionLayout;
 
 @end

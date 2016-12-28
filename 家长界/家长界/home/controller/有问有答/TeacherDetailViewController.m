@@ -69,7 +69,7 @@ id DescCell = nil;
         vi.commentLabel.text = @"88个好评";
         vi.consultLabel.text = @"93人咨询过";
         vi.likeLabel.text = @"452个赞";
-        
+        vi.imgView.image = [UIImage imageNamed:@"cellImage"];
         [_backView addSubview:vi];
         
     }
