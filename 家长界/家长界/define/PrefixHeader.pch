@@ -79,6 +79,8 @@
  */
 #import "DiscoverViewController.h"
 #import "MomentsViewController.h"
+#import "SendLifeController.h"
+#import "CommentViewController.h"
 
 /**
  *  个人
@@ -123,11 +125,12 @@
 
 #import "UIBarButtonItem+Extension.h"
 #import "UIView+Extension.h"
+#import "NSString+Extension.h"
 #import "MainNavigationController.h"
 #import "MainTabBarController.h"
 #import "NewfeatureViewController.h"
 #import "UIWindow+MainWindow.h"
-
+#import "UIImage+Extension.h"
 
 
 #endif /* PrefixHeader_pch */

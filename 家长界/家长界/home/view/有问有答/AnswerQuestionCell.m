@@ -9,7 +9,7 @@
 #import "AnswerQuestionCell.h"
 #import "LWImageStorage.h"
 #import "LWAlertView.h"
-
+#import "YHWorkGroupButton.h"
 
 
 @interface AnswerQuestionCell ()<LWAsyncDisplayViewDelegate>
@@ -20,7 +20,9 @@
 @property (nonatomic,strong) UIButton* awardButton;
 //点赞按钮
 @property(nonatomic,strong) UIButton *enjoyButton;
+@property(nonatomic,strong)YHWorkGroupButton *enjoyBtn;
 @property (nonatomic,copy) NSString* preCopyText;
+@property (nonatomic,copy) NSString* numText;
 
 @end
 
@@ -111,8 +113,10 @@
 }
 #pragma mark - Actions
 //点赞按钮
--(void)enjoyClickedBtn
+-(void)enjoyClickedBtn:(UIButton *)sender
 {
+    sender.selected = !sender.selected;
+    
     if (self.clickedEnjoyBtn) {
         self.clickedEnjoyBtn(self);
     }
@@ -192,8 +196,12 @@
 {
     if (!_enjoyButton) {
         _enjoyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_enjoyButton addTarget:self action:@selector(enjoyClickedBtn) forControlEvents:UIControlEventTouchUpInside];
-        _enjoyButton.backgroundColor = [UIColor purpleColor];
+        [_enjoyButton setTitle:@"0" forState:UIControlStateNormal];
+        [_enjoyButton setTitle:@"1" forState:UIControlStateSelected];
+        [_enjoyButton setImage:[UIImage imageNamed:@"timeline_icon_unlike"] forState:UIControlStateNormal];
+        [_enjoyButton setImage:[UIImage imageNamed:@"timeline_icon_like"] forState:UIControlStateSelected];
+        [_enjoyButton addTarget:self action:@selector(enjoyClickedBtn:) forControlEvents:UIControlEventTouchUpInside];
+//        _enjoyButton.backgroundColor = [UIColor purpleColor];
     }
     return _enjoyButton;
 }

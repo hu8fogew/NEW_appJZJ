@@ -174,7 +174,6 @@
     [super viewDidLoad];
    
     self.navigationItem.title = @"家长界";
-    self.navigationController.navigationBar.tintColor = [UIColor grayColor];
     /*广告栏*/
     [self createView];
     

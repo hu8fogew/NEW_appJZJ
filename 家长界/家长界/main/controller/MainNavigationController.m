@@ -16,27 +16,54 @@
 
 +(void)initialize
 {
-    //设置整个项目所有的item的主题样式
-    UIBarButtonItem *item = [UIBarButtonItem appearance];
-    //设置普通状态(选中的状态)
-    //key : NS_____AttributeName
-    NSMutableDictionary *textAttributes = [NSMutableDictionary dictionary];
-    textAttributes[NSFontAttributeName] = [UIFont systemFontOfSize:18];
-    textAttributes[NSForegroundColorAttributeName] = [UIColor orangeColor];
-    [item setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
-    //设置未选中的状态
-    NSMutableDictionary *disableTextAttrbutes = [NSMutableDictionary dictionary];
-    disableTextAttrbutes[NSFontAttributeName] = [UIFont systemFontOfSize:18];
-    disableTextAttrbutes[NSForegroundColorAttributeName] = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:0.8];
-    [item setTitleTextAttributes:disableTextAttrbutes forState:UIControlStateDisabled];
     
+    [self setupBarButtonItemTheme];
+    [self setupNavigationBarTheme];
+    
+}
+//设置UINavigationBarTheme主题
++ (void)setupNavigationBarTheme {
+    
+    UINavigationBar *appearance = [UINavigationBar appearance];
+    //设置文字属性
+    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+    textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:17];
+    //设置导航栏背景
+    if (!iOS7){
+        [appearance setBackgroundImage:[UIImage imageWithName:@"navigationbar_background"] forBarMetrics:UIBarMetricsDefault];
+        textAttrs[NSShadowAttributeName] = [[NSShadow alloc] init];
+    }
+    
+    [appearance setTitleTextAttributes:textAttrs];
     
 }
 
+//设置UIBarButtonItem的主题
++ (void)setupBarButtonItemTheme
+{
+    // 通过appearance对象能修改整个项目中所有UIBarButtonItem的样式
+    UIBarButtonItem *appearance = [UIBarButtonItem appearance];
+    
+    /**设置文字属性**/
+    // 设置普通状态的文字属性
+    [appearance setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:DSCommonColor, NSForegroundColorAttributeName,[UIFont systemFontOfSize:15],NSFontAttributeName,nil] forState:UIControlStateNormal];
+    
+    
+    // 设置高亮状态的文字属性
+    //    [appearance setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:SWCommonColor, NSForegroundColorAttributeName,[UIFont systemFontOfSize:15],NSFontAttributeName,nil] forState:UIControlStateHighlighted];
+    
+    // 设置不可用状态(disable)的文字属性
+    [appearance setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor lightGrayColor], NSForegroundColorAttributeName,[UIFont systemFontOfSize:15],NSFontAttributeName,nil] forState:UIControlStateDisabled];
+    /**设置背景**/
+    // 技巧: 为了让某个按钮的背景消失, 可以设置一张完全透明的背景图片
+    [appearance setBackgroundImage:[UIImage imageWithName:@"navigationbar_button_background"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,13 +83,13 @@
         //这时候push进来的控制器viewController，不是第一个子控制器（不是根控制器）
         /*自动显示和隐藏tabbar*/
         viewController.hidesBottomBarWhenPushed = YES;
-        
+        UINavigationItem *vcBtnItem = [viewController navigationItem];
         /*设置导航栏上面的内容*/
         //设置左边的按钮
-        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"back" highImage:@"back"];
+        vcBtnItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"navigationbar_back_withtext" highImage:@"navigationbar_back_withtext" andTitle:[[self.childViewControllers lastObject] title]];
         
         //设置右边的按钮
-        viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(more) image:@"" highImage:@""];
+//        viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(more) image:@"" highImage:@""];
     }
     
     [super pushViewController:viewController animated:animated];
@@ -76,11 +103,11 @@
     
 }
 
--(void)more
-{
-    [self popToRootViewControllerAnimated:YES];
-    
-}
+//-(void)more
+//{
+//    [self popToRootViewControllerAnimated:YES];
+//    
+//}
 
 /*
 #pragma mark - Navigation

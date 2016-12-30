@@ -42,7 +42,7 @@
         //头像模型 avatarImageStorage
         LWImageStorage* avatarStorage = [[LWImageStorage alloc] initWithIdentifier:AVATAR_IDENTIFIER];
         avatarStorage.contents = statusModel.avatar;
-        avatarStorage.cornerRadius = 20.0f;
+        avatarStorage.cornerRadius = 22.5f;
         avatarStorage.cornerBackgroundColor = [UIColor whiteColor];
         avatarStorage.backgroundColor = [UIColor whiteColor];
         avatarStorage.frame = CGRectMake(10, 20, 45, 45);

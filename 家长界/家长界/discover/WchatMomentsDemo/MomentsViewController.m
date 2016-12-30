@@ -133,25 +133,32 @@ const CGFloat kRefreshBoundary = 170.0f;
 
 - (void)onCommentInCell:(TableViewCell *)cell{
     
-    NSLog(@"评论");
+    HWLog(@"评论");
     
+    CommentViewController *vc = [[CommentViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)onLikeInCell:(TableViewCell *)cell{
-    NSLog(@"点赞");
+    HWLog(@"点赞");
 }
 
 - (void)onShareInCell:(TableViewCell *)cell{
-    NSLog(@"转发");
+    HWLog(@"转发");
 }
-
-
-
 
 //-----编辑问题
 -(void)editClickBtn:(UITapGestureRecognizer *)tap
 {
     HWLog(@"我来编辑");
+    
+    SendLifeController *vc = [SendLifeController new];
+    
+    vc.editingType = @"compose";
+    
+    MainNavigationController *nav = [[MainNavigationController alloc]initWithRootViewController:vc];
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
+    
 }
 
 

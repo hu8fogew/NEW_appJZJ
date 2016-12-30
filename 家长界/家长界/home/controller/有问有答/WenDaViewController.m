@@ -129,8 +129,6 @@ int selectWDcellHeight = 0;
     [self createRequireButton];
     [self.wdHeaderView addSubview:self.selectedBtnView];
     [self.wdHeaderView addSubview:self.selecteCellView];
-    
-    
     self.seleBarArr = @[@"最新问题",@"在线老师"];
     [self createSelecteActivityWithArr:self.seleArr];
     [self createAdsPageWithArr:self.seleArr];
@@ -200,6 +198,7 @@ int selectWDcellHeight = 0;
      
         HWLog(@"精选问答");
         self.cellId = @"精选问答";
+        
         [self.wdTableView reloadData];
     }
     
@@ -318,18 +317,20 @@ int selectWDcellHeight = 0;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"identifier";
+    
     if ([self.cellId isEqualToString:@"精选问答"]) {
+        
+        
+        
+        NSString *identifier = @"identifier";
         QuestionDescCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (cell == nil) {
+        if (cell==nil) {
             cell = [[QuestionDescCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             selecteCell = cell;
-            [self confirgueCell:cell atIndexPath:indexPath];
         }
-        
     }
     if ([self.cellId isEqualToString:@"专家一对一"]) {
-        
+        NSString *identifier = @"cellId";
         TeacherOfDescCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
             cell = [[TeacherOfDescCell alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.55)];
@@ -348,13 +349,6 @@ int selectWDcellHeight = 0;
        return selecteCell;
 }
 
-- (void)confirgueCell:(QuestionDescCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.indexPath = indexPath;
-}
-
-
-
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return DistanceForCell;
@@ -363,8 +357,8 @@ int selectWDcellHeight = 0;
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.cellId isEqualToString:@"精选问答"]) {
-        DetialQuestionLayout *layoutDetail = [[DetialQuestionLayout alloc]initQuestionDeatail];
-        selectWDcellHeight = layoutDetail.wdCellHeight+2;
+        DetialQuestionLayout *layout = [[DetialQuestionLayout alloc]initQuestionDeatail];
+        selectWDcellHeight = layout.wdCellHeight+2;
     }
     
     if ([self.cellId isEqualToString:@"专家一对一"]) {

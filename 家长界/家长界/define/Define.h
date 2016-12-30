@@ -38,6 +38,28 @@
 
 #define playViewHeight 220
 
+//评论中的个人名称的字体大小
+#define CommentNameFont [UIFont systemFontOfSize:14]
+//问题主标题的大小
+#define MainQuestionFont [UIFont systemFontOfSize:17]
+//正文的大小
+#define MainAnswerFont [UIFont systemFontOfSize:15]
+//日期大小
+#define dateFont [UIFont systemFontOfSize:13]
+
+//左边边距
+#define leftToMargin 10
+//顶边距
+#define topToMargin 15
+//头像大小
+#define imageWH 40
+
+
+//主标题的颜色
+#define MainColor HWColor(51.0f, 51.0f, 51.0f)
+//父文本颜色
+#define SecondTitleColor HWColor(153.0f, 153.0f, 153.0f)
+
 //打印NSLog的另一种写法
 #ifdef DEBUG // 处于开发阶段
 #define HWLog(...) NSLog(__VA_ARGS__)
@@ -67,11 +89,20 @@ alpha:1.0]
 #endif /* Define_h */
 
 
+//导航选中的颜色
+#define DSCommonColor [UIColor colorWithRed:254/255.0  green:129/255.0 blue:0 alpha:1.0]
+
+
 //获取应用
 #define KEYWINDOW [UIApplication sharedApplication].keyWindow
 
 
 #define WeakSelf  __weak __typeof(&*self)weakSelf = self;
+
+
+#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
+//是否为iOS8及以上系统
+#define iOS8 ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0)
 
 /**
  *define:获取屏幕的宽

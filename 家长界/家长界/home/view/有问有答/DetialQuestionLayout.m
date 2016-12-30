@@ -13,8 +13,8 @@
 
 - (id)copyWithZone:(NSZone *)zone {
     DetialQuestionLayout* one = [[DetialQuestionLayout alloc] init];
-    
     one.headerHeight = self.headerHeight;
+    one.wdCellHeight = self.wdCellHeight;
     return one;
 }
 
@@ -82,11 +82,11 @@
         LWImageStorage *image = [[LWImageStorage alloc]init];
         image.cornerRadius = 15;
         image.contents = [UIImage imageNamed:@"teacherImage"];
-        image.frame = CGRectMake(10, 15, 40, 40);
+        image.frame = CGRectMake(10, 15, 30, 30);
         
         
         //教育类型
-        LWTextStorage *nameStorsge = [self createTextWithTextColor:HWColor(153, 153, 153) andTextFont:14 andFrame:CGRectMake(image.right+5, 25, CGFLOAT_MAX, 30)];
+        LWTextStorage *nameStorsge = [self createTextWithTextColor:HWColor(153, 153, 153) andTextFont:14 andFrame:CGRectMake(image.right+5, 20, CGFLOAT_MAX, 30)];
         nameStorsge.text = @"西部家联教育";
         
         //发布的时间
@@ -95,12 +95,18 @@
         
         //主标题问题
         LWTextStorage *mainQues = [self createTextWithTextColor:HWColor(51, 51, 51) andTextFont:17 andFrame:CGRectMake(image.left, image.bottom+10, SCREEN_WIDTH-20, 40)];
-        mainQues.font = [UIFont fontWithName:@"ArialMT" size:16];
-        mainQues.text = @"从业十余年来，精通各种技术的人么有都少，运用自如的人更是少之又少，之所以成为这样的情况，是因为快餐时代的充斥，是大部分人习惯了快餐的节奏，没有精益求精的耐心去学习，深造。使得一些古老工艺的遗失，而人们内心又渴望那个有着高潮精湛的艺术品。";
-        mainQues.maxNumberOfLines = 3;
+        mainQues.font = [UIFont fontWithName:@"ArialMT" size:17];
+        mainQues.text = @"为什么快餐时代的充斥导致现代的人们不能静下心来酿一壶好酒呢？";
+        
+        //问题回答
+        LWTextStorage *detialStorsge = [self createTextWithTextColor:HWColor(153, 153, 153) andTextFont:15 andFrame:CGRectMake(mainQues.left, mainQues.bottom+8, mainQues.width, CGFLOAT_MAX)];
+        detialStorsge.maxNumberOfLines = 3;
+        
+        detialStorsge.text = @"从业十余年来，精通各种技术的人么有都少，运用自如的人更是少之又少，之所以成为这样的情况，是因为快餐时代的充斥，是大部分人习惯了快餐的节奏，没有精益求精的耐心去学习，深造。使得一些古老工艺的遗失，而人们内心又渴望那个有着高潮精湛的艺术品。";
+        
         
         //回答问题的个数
-        LWTextStorage *numStorsge = [self createTextWithTextColor:HWColor(153, 153, 153) andTextFont:14 andFrame:CGRectMake(image.left, mainQues.bottom+10, mainQues.width, 30)];
+        LWTextStorage *numStorsge = [self createTextWithTextColor:HWColor(153, 153, 153) andTextFont:14 andFrame:CGRectMake(image.left, detialStorsge.bottom+10, mainQues.width, 30)];
         numStorsge.text = @"102个回答";
         numStorsge.textAlignment = NSTextAlignmentRight;
         self.wdCellHeight = [self suggestHeightWithBottomMargin:10];
@@ -118,6 +124,7 @@
     text.textColor = color;
     text.font = [UIFont systemFontOfSize:size];
     text.frame = rect;
+    text.linespacing = 4.0f;
     [self addStorage:text];
     return text;
 }

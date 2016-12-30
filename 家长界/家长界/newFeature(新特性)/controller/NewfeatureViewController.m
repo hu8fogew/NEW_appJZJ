@@ -93,7 +93,7 @@
     imageView.userInteractionEnabled = YES;
     
     // 1.分享给大家（checkbox）
-    UIButton *shareBtn = [[UIButton alloc] init];
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareBtn setImage:[UIImage imageNamed:@"new_feature_share_false"] forState:UIControlStateNormal];
     [shareBtn setImage:[UIImage imageNamed:@"new_feature_share_true"] forState:UIControlStateSelected];
     [shareBtn setTitle:@"分享给大家" forState:UIControlStateNormal];
@@ -138,28 +138,14 @@
     
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     window.rootViewController = [[MainTabBarController alloc]init];
-    
 }
-/*
--(void)dealloc
-{
-    
-    HWLog(@"NewFeatureViewController已经dealloc");
-}
-*/
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

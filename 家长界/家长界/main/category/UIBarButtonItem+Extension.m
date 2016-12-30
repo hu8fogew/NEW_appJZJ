@@ -19,13 +19,27 @@
  *
  *  @return 创建完的item
  */
-+ (UIBarButtonItem *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image highImage:(NSString *)highImage
++ (UIBarButtonItem *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image highImage:(NSString *)highImage andTitle:(NSString *)title
 {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     // 设置图片
-    [btn setBackgroundImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage imageNamed:highImage] forState:UIControlStateHighlighted];
+    [btn setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:highImage] forState:UIControlStateHighlighted];
+    
+    
+    if (title) {
+        [btn setTitle:title forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:15];
+        [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [btn setTitleColor:HWColor(254, 129, 0) forState:UIControlStateHighlighted];
+        
+        
+    }
+    // 设置按钮的尺寸为背景图片的尺寸+文字大小
+    btn.width = btn.currentImage.size.width +[title sizeWithFont:btn.titleLabel.font maxSize:CGSizeMake(MAXFLOAT, MAXFLOAT)].width;
+    btn.height = btn.currentImage.size.height;
+    
     // 设置尺寸
 //    btn.size = btn.currentBackgroundImage.size;
     return [[UIBarButtonItem alloc] initWithCustomView:btn];

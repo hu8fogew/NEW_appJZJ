@@ -24,22 +24,23 @@
         [self addSubview:backView];
         
         UIView *vi = [[UIView alloc]initWithFrame:CGRectMake(10, SCREEN_WIDTH*0.06, SCREEN_WIDTH-20, SCREEN_WIDTH*0.42)];
-//        vi.backgroundColor = [UIColor greenColor];
         [backView addSubview:vi];
         
         //老师名称
         _teacherName = [self createLabelWithSize:16 andTextColor:HWColor(51, 51, 51) andAlpha:1 andSuperView:vi andTextAligment:NSTextAlignmentLeft andFrame:CGRectMake(0, 0, 50, vi.height*0.18)];
+        //老师教育类型
         _teachKind = [self createLabelWithSize:14 andTextColor:HWColor(151, 151, 151) andAlpha:1 andSuperView:vi andTextAligment:NSTextAlignmentLeft andFrame:CGRectMake(_teacherName.x+_teacherName.width, 0, SCREEN_WIDTH*2/5, _teacherName.height)];
-        
+        //咨询次数
         _requireNum = [self createLabelWithSize:13 andTextColor:HWColor(215, 137, 60) andAlpha:1 andSuperView:vi andTextAligment:NSTextAlignmentRight andFrame:CGRectMake(SCREEN_WIDTH*3/4, 0, SCREEN_WIDTH/14, _teacherName.height)];
+        //咨询人
         _peopleText = [self createLabelWithSize:14 andTextColor:HWColor(153, 153, 153) andAlpha:1 andSuperView:vi andTextAligment:NSTextAlignmentLeft andFrame:CGRectMake(_requireNum.x+_requireNum.width, 0, SCREEN_WIDTH-(_requireNum.x+_requireNum.width+10), _teacherName.height)];
         _teacherBackImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, _teacherName.y+_teacherName.height, vi.width, vi.height*0.82)];
         [vi addSubview:_teacherBackImage];
-        
+        //名言
         _mottoText = [self createLabelWithSize:14 andTextColor:[UIColor whiteColor] andAlpha:1 andSuperView:vi andTextAligment:NSTextAlignmentLeft andFrame:CGRectMake(0, vi.height-_teacherName.height, vi.width*2/3, _teacherName.height)];
         
         
-        
+        //地区
         _areaText = [self createLabelWithSize:14 andTextColor:[UIColor whiteColor] andAlpha:1 andSuperView:vi andTextAligment:NSTextAlignmentLeft andFrame:CGRectMake(vi.width-40, _mottoText.y, 40, _mottoText.height)];
         _mapImage = [[UIImageView alloc]initWithFrame:CGRectMake(_areaText.x-_areaText.height*2/3, _areaText.y+_areaText.height/4, _areaText.height/2, _areaText.height/2)];
         
@@ -48,7 +49,6 @@
     }
     return self;
 }
-
 
 
 -(UILabel *)createLabelWithSize:(CGFloat)textSize andTextColor:(UIColor *)color andAlpha:(CGFloat)alpha andSuperView:(UIView *)sv andTextAligment:(NSTextAlignment)textAligment andFrame:(CGRect)frame

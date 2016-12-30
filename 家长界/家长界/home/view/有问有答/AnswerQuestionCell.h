@@ -20,4 +20,5 @@
 @property (nonatomic,copy) void(^clickedEnjoyBtn)(AnswerQuestionCell* cell);
 //打赏
 @property (nonatomic,copy) void(^clickedLikeBtn)(AnswerQuestionCell* cell);
+
 @end
