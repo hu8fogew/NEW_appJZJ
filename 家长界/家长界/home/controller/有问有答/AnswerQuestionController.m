@@ -330,7 +330,6 @@ const CGFloat RefreshBoundary = 170.0f;
 {
     if (!_headerView) {
         _headerView = [[AnswerDetialHeader alloc]init];
-//        _headerView.backgroundColor = [UIColor greenColor];
         _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, _headerView.quetionLayout.headerHeight);
     }
     return _headerView;

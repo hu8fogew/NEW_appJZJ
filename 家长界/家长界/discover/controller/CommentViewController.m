@@ -20,11 +20,11 @@
 -(UITableView *)commentTable
 {
     if (!_commentTable) {
-        _commentTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStylePlain];
+        _commentTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
         _commentTable.delegate = self;
         _commentTable.dataSource = self;
         _commentTable.backgroundColor = [UIColor whiteColor];
-        
+        _commentTable.separatorStyle = UITableViewCellAccessoryNone;
     }
     return _commentTable;
 }
@@ -73,7 +73,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 10;
 }
 
 
@@ -95,7 +95,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ComentLayout *lay = [[ComentLayout alloc]initCommentCell];
-    return lay.commentHeight;
+    return lay.commentHeight+1.5;
 }
 
 

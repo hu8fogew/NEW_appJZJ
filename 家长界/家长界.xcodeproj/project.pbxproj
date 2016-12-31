@@ -119,6 +119,9 @@
 		042808C61DE2A46100B2FB09 /* qzImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 042808C51DE2A46100B2FB09 /* qzImage.png */; };
 		042808CB1DE2FC0900B2FB09 /* teacherImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 042808CA1DE2FC0900B2FB09 /* teacherImage.png */; };
 		042D020C1DF501C00004F01E /* dian_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 042D020B1DF501C00004F01E /* dian_image.png */; };
+		0433E83E1E178DEB0005D62C /* TeachDescLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0433E83D1E178DEB0005D62C /* TeachDescLayout.m */; };
+		0433E8461E17A79E0005D62C /* line_icon_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 0433E8451E17A79E0005D62C /* line_icon_image.png */; };
+		0433E8491E17B2450005D62C /* PhotoViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0433E8481E17B2450005D62C /* PhotoViewLayout.m */; };
 		043A8CB71E13592900B5CA7C /* DetialQuestionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 043A8CB61E13592900B5CA7C /* DetialQuestionLayout.m */; };
 		043D4C011DF1471400294BEB /* require_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 043D4C001DF1471400294BEB /* require_image.png */; };
 		043D4C031DF14E1800294BEB /* answer_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 043D4C021DF14E1800294BEB /* answer_image.png */; };
@@ -368,7 +371,7 @@
 		9E90F0D81DF00C150027F7A7 /* teacherCosultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E90F0C51DF00C150027F7A7 /* teacherCosultTableViewCell.m */; };
 		9E90F0D91DF00C150027F7A7 /* TeacherDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E90F0C71DF00C150027F7A7 /* TeacherDetailView.m */; };
 		9E90F0DA1DF00C150027F7A7 /* teacherDynamicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E90F0C91DF00C150027F7A7 /* teacherDynamicTableViewCell.m */; };
-		9E90F0DB1DF00C150027F7A7 /* teacherHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E90F0CB1DF00C150027F7A7 /* teacherHeaderView.m */; };
+		9E90F0DB1DF00C150027F7A7 /* TeacherHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E90F0CB1DF00C150027F7A7 /* TeacherHeaderView.m */; };
 		9E90F0DC1DF00C150027F7A7 /* teacherHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E90F0CD1DF00C150027F7A7 /* teacherHomeTableViewCell.m */; };
 		9E90F0DD1DF00C150027F7A7 /* TeacherOfDescCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E90F0CF1DF00C150027F7A7 /* TeacherOfDescCell.m */; };
 		9E90F0DE1DF00C150027F7A7 /* TeacherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E90F0D11DF00C150027F7A7 /* TeacherTableViewCell.m */; };
@@ -610,6 +613,11 @@
 		042808C51DE2A46100B2FB09 /* qzImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qzImage.png; sourceTree = "<group>"; };
 		042808CA1DE2FC0900B2FB09 /* teacherImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teacherImage.png; sourceTree = "<group>"; };
 		042D020B1DF501C00004F01E /* dian_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dian_image.png; sourceTree = "<group>"; };
+		0433E83C1E178DEB0005D62C /* TeachDescLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeachDescLayout.h; sourceTree = "<group>"; };
+		0433E83D1E178DEB0005D62C /* TeachDescLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeachDescLayout.m; sourceTree = "<group>"; };
+		0433E8451E17A79E0005D62C /* line_icon_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line_icon_image.png; sourceTree = "<group>"; };
+		0433E8471E17B2450005D62C /* PhotoViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewLayout.h; sourceTree = "<group>"; };
+		0433E8481E17B2450005D62C /* PhotoViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewLayout.m; sourceTree = "<group>"; };
 		043A8CB51E13592900B5CA7C /* DetialQuestionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetialQuestionLayout.h; sourceTree = "<group>"; };
 		043A8CB61E13592900B5CA7C /* DetialQuestionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetialQuestionLayout.m; sourceTree = "<group>"; };
 		043D4C001DF1471400294BEB /* require_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = require_image.png; sourceTree = "<group>"; };
@@ -1030,8 +1038,8 @@
 		9E90F0C71DF00C150027F7A7 /* TeacherDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherDetailView.m; sourceTree = "<group>"; };
 		9E90F0C81DF00C150027F7A7 /* teacherDynamicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = teacherDynamicTableViewCell.h; sourceTree = "<group>"; };
 		9E90F0C91DF00C150027F7A7 /* teacherDynamicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = teacherDynamicTableViewCell.m; sourceTree = "<group>"; };
-		9E90F0CA1DF00C150027F7A7 /* teacherHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = teacherHeaderView.h; sourceTree = "<group>"; };
-		9E90F0CB1DF00C150027F7A7 /* teacherHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = teacherHeaderView.m; sourceTree = "<group>"; };
+		9E90F0CA1DF00C150027F7A7 /* TeacherHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherHeaderView.h; sourceTree = "<group>"; };
+		9E90F0CB1DF00C150027F7A7 /* TeacherHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherHeaderView.m; sourceTree = "<group>"; };
 		9E90F0CC1DF00C150027F7A7 /* teacherHomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = teacherHomeTableViewCell.h; sourceTree = "<group>"; };
 		9E90F0CD1DF00C150027F7A7 /* teacherHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = teacherHomeTableViewCell.m; sourceTree = "<group>"; };
 		9E90F0CE1DF00C150027F7A7 /* TeacherOfDescCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherOfDescCell.h; sourceTree = "<group>"; };
@@ -1579,6 +1587,8 @@
 				04CF928F1DDE9E910088C211 /* SchoolTableViewCell.m */,
 				0411E61D1DF9798E0076FC69 /* PhotoViewCell.h */,
 				0411E61E1DF9798E0076FC69 /* PhotoViewCell.m */,
+				0433E8471E17B2450005D62C /* PhotoViewLayout.h */,
+				0433E8481E17B2450005D62C /* PhotoViewLayout.m */,
 			);
 			path = "周边教育";
 			sourceTree = "<group>";
@@ -2297,6 +2307,7 @@
 		9E319DA31DD45A7A000C3178 /* icon_image */ = {
 			isa = PBXGroup;
 			children = (
+				0433E8451E17A79E0005D62C /* line_icon_image.png */,
 				9EEEBBCC1DE292FC00DE421A /* hh.png */,
 				9EEEBBCA1DE28B5500DE421A /* qinzi.png */,
 				9E319DA41DD45AB1000C3178 /* sns_icon_5.png */,
@@ -2364,6 +2375,8 @@
 				9EEEBBC21DE2879B00DE421A /* WenDaViewController.m */,
 				9E90F0E01DF00C760027F7A7 /* TeacherDetailViewController.h */,
 				9E90F0E11DF00C760027F7A7 /* TeacherDetailViewController.m */,
+				0433E83C1E178DEB0005D62C /* TeachDescLayout.h */,
+				0433E83D1E178DEB0005D62C /* TeachDescLayout.m */,
 				04A5CD7C1DE476AA00E4115C /* AnswerEidttingView.h */,
 				04A5CD7D1DE476AA00E4115C /* AnswerEidttingView.m */,
 				0462DEB41E12433900724386 /* AnswerQuestionController.h */,
@@ -2410,8 +2423,8 @@
 				9E90F0C71DF00C150027F7A7 /* TeacherDetailView.m */,
 				9E90F0C81DF00C150027F7A7 /* teacherDynamicTableViewCell.h */,
 				9E90F0C91DF00C150027F7A7 /* teacherDynamicTableViewCell.m */,
-				9E90F0CA1DF00C150027F7A7 /* teacherHeaderView.h */,
-				9E90F0CB1DF00C150027F7A7 /* teacherHeaderView.m */,
+				9E90F0CA1DF00C150027F7A7 /* TeacherHeaderView.h */,
+				9E90F0CB1DF00C150027F7A7 /* TeacherHeaderView.m */,
 				9E90F0CC1DF00C150027F7A7 /* teacherHomeTableViewCell.h */,
 				9E90F0CD1DF00C150027F7A7 /* teacherHomeTableViewCell.m */,
 				9E90F0CE1DF00C150027F7A7 /* TeacherOfDescCell.h */,
@@ -2558,6 +2571,7 @@
 				04F650441DDAEA0400DCC09D /* 13.png in Resources */,
 				042D020C1DF501C00004F01E /* dian_image.png in Resources */,
 				9E90F0BA1DEFFD7D0027F7A7 /* FirstRowTableViewCell.xib in Resources */,
+				0433E8461E17A79E0005D62C /* line_icon_image.png in Resources */,
 				041067F51DD6150E001E83C5 /* 5.png in Resources */,
 				04F650471DDAEA0400DCC09D /* 14.png in Resources */,
 				04A5CD751DE4438900E4115C /* WH.png in Resources */,
@@ -2721,6 +2735,7 @@
 				0419EFBF1E10EC2000F1780D /* LWTextParser.m in Sources */,
 				9EEEBBB31DE286CB00DE421A /* secondSectionTableViewCell.m in Sources */,
 				04FDBC421DD3010500D788FC /* MASConstraintMaker.m in Sources */,
+				0433E83E1E178DEB0005D62C /* TeachDescLayout.m in Sources */,
 				9E90F0DE1DF00C150027F7A7 /* TeacherTableViewCell.m in Sources */,
 				041CD4311E037DD100140050 /* MyAnswerController.m in Sources */,
 				0419EF4E1E10CA9900F1780D /* SDImageCache.m in Sources */,
@@ -2836,6 +2851,7 @@
 				04759D371E026EC6003995F6 /* OwnerDate.m in Sources */,
 				0419EF5A1E10CA9900F1780D /* UIImageView+WebCache.m in Sources */,
 				0419F0591E10FA7700F1780D /* MomentsViewController.m in Sources */,
+				0433E8491E17B2450005D62C /* PhotoViewLayout.m in Sources */,
 				0419F0421E10F9C900F1780D /* LWProgeressHUD.m in Sources */,
 				04242AAC1E16586E00FA447B /* ComentLayout.m in Sources */,
 				04649AB51E090D4000AD7CD5 /* MJRefreshConst.m in Sources */,
@@ -2851,7 +2867,7 @@
 				9E88B5451DDD461A00EE92D0 /* HomeViewController.m in Sources */,
 				0419EFB81E10EC2000F1780D /* LWStorage.m in Sources */,
 				0419EFC21E10EC2000F1780D /* LWTransaction.m in Sources */,
-				9E90F0DB1DF00C150027F7A7 /* teacherHeaderView.m in Sources */,
+				9E90F0DB1DF00C150027F7A7 /* TeacherHeaderView.m in Sources */,
 				04649AB01E090D4000AD7CD5 /* MJRefreshBackStateFooter.m in Sources */,
 				043D4C081DF1C1F000294BEB /* ScrollAdView.m in Sources */,
 				0419EFB41E10EC2000F1780D /* LWHTMLParser.m in Sources */,

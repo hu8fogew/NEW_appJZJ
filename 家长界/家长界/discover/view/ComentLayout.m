@@ -32,13 +32,14 @@
         image.backgroundColor = [UIColor whiteColor];
         image.cornerBorderWidth = 1.5f;
         image.cornerBorderColor = HWColor(222, 222, 222);
+        image.contents = [UIImage imageNamed:@"teacherImage"];
         
         //用户名
-        LWTextStorage *name = [self createTextWithTextColor:SecondTitleColor andTextFont:CommentNameFont andFrame:CGRectMake(image.right + 5, image.top, CGFLOAT_MAX, imageWH/2)];
+        LWTextStorage *name = [self createTextWithTextColor:MainColor andTextFont:CommentNameFont andFrame:CGRectMake(image.right + 5, image.top+5, CGFLOAT_MAX, CGFLOAT_MAX)];
         name.text = @"老司机上路";
         
         //日期
-        LWTextStorage *date = [self createTextWithTextColor:SecondTitleColor andTextFont:dateFont andFrame:CGRectMake(name.left, name.bottom, CGFLOAT_MAX, imageWH/2)];
+        LWTextStorage *date = [self createTextWithTextColor:SecondTitleColor andTextFont:dateFont andFrame:CGRectMake(name.left, name.bottom+3, CGFLOAT_MAX, CGFLOAT_MAX)];
         date.text = @"2016-08-29 11:30";
         //点赞按钮
         
@@ -47,10 +48,11 @@
         
         
         //评论
-        LWTextStorage *comment = [[LWTextStorage alloc]init];
+        LWTextStorage *comment = [self createTextWithTextColor:SecondTitleColor andTextFont:MainAnswerFont andFrame:CGRectMake(image.left, image.bottom+5, SCREEN_WIDTH-leftToMargin*2, CGFLOAT_MAX)];
         comment.text = @"这个老师讲的好，对于问题的分析非常的透彻，一下子让人们的眉头轻松了许多，对于孩子的教育方式、以及教育习惯有了眉目，很感谢老师的讲解，让我能够在教育孩子当中或多这么多的新解。";
+        comment.linespacing = 4.0f;
         
-        
+        self.commentHeight = [self suggestHeightWithBottomMargin:10.0f];
         [self addStorage:image];
         
     }

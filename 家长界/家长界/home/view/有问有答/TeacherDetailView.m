@@ -20,7 +20,7 @@ static const int teacherIconCornRadius = 97.5;
         
         [self addSubview:vi];
         UIImageView *imgView = [[UIImageView alloc]initWithFrame:vi.bounds];;
-        imgView.image = [UIImage imageNamed:@"backImage.jpg"];
+        imgView.image = [UIImage imageNamed:@"zm_icon.jpg"];
         
         [vi addSubview:imgView];
         

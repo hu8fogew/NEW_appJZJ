@@ -319,21 +319,12 @@ int selectWDcellHeight = 0;
 {
     
     if ([self.cellId isEqualToString:@"精选问答"]) {
-        
-        
-        
-        NSString *identifier = @"identifier";
-        QuestionDescCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (cell==nil) {
-            cell = [[QuestionDescCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-            selecteCell = cell;
-        }
+        QuestionDescCell *cell = [[QuestionDescCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"answerId"];
+        selecteCell = cell;
     }
     if ([self.cellId isEqualToString:@"专家一对一"]) {
         NSString *identifier = @"cellId";
-        TeacherOfDescCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (cell == nil) {
-            cell = [[TeacherOfDescCell alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*0.55)];
+            TeacherOfDescCell *cell = [[TeacherOfDescCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             selecteCell = cell;
             cell.teacherName.text = @"曹雪芹";
             cell.teachKind.text = @"／家庭教育指导师";
@@ -343,7 +334,7 @@ int selectWDcellHeight = 0;
             cell.mottoText.text = @"老吾老以及人之老，幼吾幼以及人之幼";
             cell.areaText.text = @"西安";
             cell.mapImage.image = [UIImage imageNamed:@"map_image"];
-        }
+        
     }
     
        return selecteCell;

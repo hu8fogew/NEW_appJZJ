@@ -58,7 +58,7 @@
 #import "RegisterViewController.h"
 #import "MemberCenterViewController.h"
 #import "TeacherDetailView.h"
-#import "teacherHeaderView.h"
+#import "TeacherHeaderView.h"
 #import "teacherHomeTableViewCell.h"
 #import "teacherCosultTableViewCell.h"
 #import "teacherDynamicTableViewCell.h"

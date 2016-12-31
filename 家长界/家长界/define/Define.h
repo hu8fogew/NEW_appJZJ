@@ -23,6 +23,8 @@
 /*选择按钮的一行高度*/
 #define selecteButtonHeight SCREEN_WIDTH*0.28
 
+//底部视图（评一下、播放等）
+#define BottomView_Height 50
 /*问题主标题的高度*/
 #define quesMainTextView 70
 

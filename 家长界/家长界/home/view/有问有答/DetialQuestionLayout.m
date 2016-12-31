@@ -59,7 +59,6 @@
         //问题详情
         LWTextStorage *detialStorsge = [self createTextWithTextColor:HWColor(80, 80, 80) andTextFont:16 andFrame:CGRectMake(mainQuestion.left, dateStorsge.bottom+5, mainQuestion.width, CGFLOAT_MAX)];
         detialStorsge.text = @"问题描述：孩子碰到不顺心的事情就喜欢摔东西、骂人等烦躁的行为。造成脾气越来越大，没有人能管的了的地步。对于这种行为的解决方式是怎么解决的？";
-        detialStorsge.font = [UIFont fontWithName:@"ArialMT" size:16];
         //回答个数
         LWTextStorage *answerNumStorsge = [self createTextWithTextColor:HWColor(153, 153, 153) andTextFont:15 andFrame:CGRectMake(detialStorsge.left, detialStorsge.bottom+8, detialStorsge.width, 30)];
         answerNumStorsge.text = @"35个回答";
@@ -82,11 +81,14 @@
         LWImageStorage *image = [[LWImageStorage alloc]init];
         image.cornerRadius = 15;
         image.contents = [UIImage imageNamed:@"teacherImage"];
-        image.frame = CGRectMake(10, 15, 30, 30);
+        image.frame = CGRectMake(10, 15, imageWH, imageWH);
+        image.cornerBorderWidth = 1.0f;
+        image.cornerBorderColor = HWColor(241, 241, 241);
+        image.cornerBackgroundColor = [UIColor whiteColor];
         
         
         //教育类型
-        LWTextStorage *nameStorsge = [self createTextWithTextColor:HWColor(153, 153, 153) andTextFont:14 andFrame:CGRectMake(image.right+5, 20, CGFLOAT_MAX, 30)];
+        LWTextStorage *nameStorsge = [self createTextWithTextColor:HWColor(153, 153, 153) andTextFont:14 andFrame:CGRectMake(image.right+5, 25, CGFLOAT_MAX, 30)];
         nameStorsge.text = @"西部家联教育";
         
         //发布的时间
@@ -94,10 +96,8 @@
         dateStorsge.text = @"10小时前";
         
         //主标题问题
-        LWTextStorage *mainQues = [self createTextWithTextColor:HWColor(51, 51, 51) andTextFont:17 andFrame:CGRectMake(image.left, image.bottom+10, SCREEN_WIDTH-20, 40)];
-        mainQues.font = [UIFont fontWithName:@"ArialMT" size:17];
+        LWTextStorage *mainQues = [self createTextWithTextColor:HWColor(51, 51, 51) andTextFont:17 andFrame:CGRectMake(image.left, image.bottom+6, SCREEN_WIDTH-20, 40)];
         mainQues.text = @"为什么快餐时代的充斥导致现代的人们不能静下心来酿一壶好酒呢？";
-        
         //问题回答
         LWTextStorage *detialStorsge = [self createTextWithTextColor:HWColor(153, 153, 153) andTextFont:15 andFrame:CGRectMake(mainQues.left, mainQues.bottom+8, mainQues.width, CGFLOAT_MAX)];
         detialStorsge.maxNumberOfLines = 3;

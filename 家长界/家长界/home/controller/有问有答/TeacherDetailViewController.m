@@ -7,17 +7,20 @@
 //
 
 #import "TeacherDetailViewController.h"
-
-@interface TeacherDetailViewController ()<UITableViewDelegate,UITableViewDataSource,SGSegmentedControlDelegate>
+#import "DetialQuestionLayout.h"
+#import "ComentLayout.h"
+#import "CommentCell.h"
+#import "QuestionDescCell.h"
+@interface TeacherDetailViewController ()<UITableViewDelegate,UITableViewDataSource,SGSegmentedControlDelegate,UIScrollViewDelegate>
 
 /*头部背景视图*/
-@property (nonatomic,strong) UIView *backView;
-
+@property (nonatomic,strong) TeacherDetailView *backView;
+@property(nonatomic,strong) TeacherHeaderView *detialView;
 /*主页headview*/
 @property (nonatomic,strong) UIView *headerView;
-
+@property(nonatomic,strong)UIView *seleView;
 /*切换按钮*/
-@property (nonatomic,strong) UISegmentedControl *segmentControl;
+@property (nonatomic,strong) SGSegmentedControl *segment;
 
 /*底部按钮视图*/
 @property (nonatomic,strong) UIView *bottomView;
@@ -36,59 +39,88 @@
 
 @implementation TeacherDetailViewController
 static const int bottomViewHeight = 50;
-static const int imgViewHeight = 250;
-static const int backViewHeight = 240;
 
 id DescCell = nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [self createTableView];
+    self.seleBarArr = @[@"主页",@"咨询",@"动态"];
+    [self.view addSubview:self.tableView];
     [self.view addSubview:self.bottomView];
+    [self.headerView addSubview:self.backView];
+    [self.headerView addSubview:self.seleBar];
+    [self.headerView addSubview:self.detialView];
+    [self.seleBar addSubview:self.segment];
     [self createView];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.backView addSubview:self.seleBar];
-    [self.backView addSubview:self.headerView];
-    self.seleBarArr = @[@"主页",@"咨询",@"动态"];
-    [self createSeleBarView];
-    //self.tableView.allowsSelection = NO;
+    self.segStr = @"主页";
     
-//    self.tableView.estimatedRowHeight = 300;
-//    self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
+
 #pragma mark -----顶部背景视图-----
--(UIView *)backView{
+
+-(UITableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView.delegate =self;
+        _tableView.dataSource = self;
+        _tableView.backgroundColor = [UIColor whiteColor];
+        _tableView.tableHeaderView = self.headerView;
+        _tableView.tableHeaderView.height = self.detialView.botoom;
+        _tableView.separatorStyle = UITableViewCellAccessoryNone;
+    }
+    return _tableView;
+}
+
+-(UIView *)seleView
+{
+    if (!_seleView) {
+        _seleView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, siftHeight)];
+        _seleView.backgroundColor = [UIColor whiteColor];
+    }
+    return _seleView;
+}
+
+-(SGSegmentedControl *)segment
+{
+    if (!_segment) {
+        _segment = [SGSegmentedControl segmentedControlWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, siftHeight) delegate:self segmentedControlType:SGSegmentedControlTypeStatic titleArr:self.seleBarArr];
+        _segment.backgroundColor = [UIColor whiteColor];
+        _segment.titleColorStateSelected = HWColor(96, 136, 186);
+        _segment.indicatorColor = HWColor(96, 136, 186);
+    }
+    return _segment;
+}
+
+
+-(TeacherDetailView *)backView{
     if (!_backView) {
-        _backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, imgViewHeight)];
-        _backView.backgroundColor = HWColor(242, 242, 242);
-        TeacherDetailView *vi = [[TeacherDetailView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, backViewHeight)];
-        vi.nameLabel.text = @"张老师";
-        vi.titleLabel.text = @"资深心理咨询师";
-        vi.commentLabel.text = @"88个好评";
-        vi.consultLabel.text = @"93人咨询过";
-        vi.likeLabel.text = @"452个赞";
-        vi.imgView.image = [UIImage imageNamed:@"cellImage"];
-        [_backView addSubview:vi];
-        
+        _backView = [[TeacherDetailView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 240)];
+        _backView.nameLabel.text = @"张老师";
+        _backView.titleLabel.text = @"资深心理咨询师";
+        _backView.commentLabel.text = @"88个好评";
+        _backView.consultLabel.text = @"93人咨询过";
+        _backView.likeLabel.text = @"452个赞";
+        _backView.imgView.image = [UIImage imageNamed:@"cellImage"];
     }
     return _backView;
+}
+-(TeacherHeaderView *)detialView
+{
+    if (!_detialView) {
+        _detialView =[[TeacherHeaderView alloc]init];
+        _detialView.frame = CGRectMake(0, self.seleBar.botoom, SCREEN_WIDTH, _detialView.descViewLayout.descViewHeight);
+    }
+    return _detialView;
 }
 
 #pragma mark ====主页headview====
 -(UIView *)headerView{
     if (!_headerView) {
-        _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, self.seleBar.y+self.seleBar.height, SCREEN_WIDTH, 420)];
+        _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, self.seleBar.y+self.seleBar.height, SCREEN_WIDTH, 700)];
         _headerView.backgroundColor = HWColor(242, 242, 242);
-        teacherHeaderView *vi = [[teacherHeaderView alloc]initWithFrame:_headerView.bounds];
-        vi.titleLabel.text = @"获得了由美国一个名叫CCI GREENHEART组织授予的“全球领导人会议”奖学金。包括，去华盛顿特区的往返机票500美金，以及去了之后吃喝玩学习的所有花销";
-       vi.levelDetailLabel.text = @"国家二级咨询师";
-        vi.resumeDetailLabel.text = @"我的性格偏于内向，为人坦率、热情、讲求原则；处事乐观、专心、细致、头脑清醒；富有责任心、乐于助人。我还是一个正直忠诚、勤奋求实的人，会不断追求人格的自我完善；明显的特点是乐观自信、温和获得了由美国一个名叫CCI GREENHEART组织授予的“全球领导人会议”奖学金。包括，去华盛顿特区的往返机票500美金，以及去";
-        vi.goodDetailLabel.text = @"俯首甘为孺子牛";
-        
-        [_headerView addSubview:vi];
-    
     }
     return _headerView;
 }
@@ -106,18 +138,28 @@ id DescCell = nil;
 -(UIView *)seleBar
 {
     if (!_seleBar) {
-        _seleBar = [[UIView alloc]initWithFrame:CGRectMake(0, self.backView.y+self.backView.height+3, SCREEN_WIDTH, siftHeight)];
+        _seleBar = [[UIView alloc]initWithFrame:CGRectMake(0, self.backView.botoom+2, SCREEN_WIDTH, siftHeight+1.5)];
+        _seleView.backgroundColor = HWColor(240, 240, 240);
     }
     return _seleBar;
 }
-
-/*添加选项栏*/
--(void)createSeleBarView
+#pragma mark --------scrollerViewDeleage
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    SGSegmentedControl *segment = [SGSegmentedControl segmentedControlWithFrame:self.seleBar.bounds delegate:self segmentedControlType:SGSegmentedControlTypeStatic titleArr:self.seleBarArr];
-    segment.titleColorStateSelected = HWColor(96, 136, 186);
-    segment.indicatorColor = HWColor(96, 136, 186);
-    [self.seleBar addSubview:segment];
+    CGFloat contentOffset = self.tableView.contentOffset.y;
+    if (contentOffset>self.backView.botoom-64) {
+        [self.segment removeFromSuperview];
+        [self.view addSubview:self.seleView];
+        [self.seleView addSubview:self.segment];
+        
+    }
+    
+    if (0<=contentOffset && contentOffset<=self.backView.botoom-64) {
+        
+        [self.seleView removeFromSuperview];
+        [self.seleBar addSubview:self.segment];
+    }
+    
 }
 
 #pragma mark >>>>创建底部按钮<<<<
@@ -149,97 +191,63 @@ id DescCell = nil;
     
     if (index == 0) {
         self.segStr = @"主页";
-        self.headerView.hidden = NO;
-        self.headerView.y = self.seleBar.y+self.seleBar.height;
-        self.tableView.tableHeaderView.height = self.seleBar.y+self.seleBar.height+20;
+        [self.headerView addSubview:self.detialView];
+        self.tableView.tableHeaderView.height = self.detialView.botoom+1.5;
         [self.tableView reloadData];
     }
     else if (index == 1){
         self.segStr = @"咨询";
-        self.headerView.hidden = YES;
-        self.headerView.y = self.seleBar.y+self.seleBar.height;
-        self.tableView.tableHeaderView.height = self.seleBar.y+self.seleBar.height;
+        [self.detialView removeFromSuperview];
+        self.tableView.tableHeaderView.height = self.seleBar.botoom;
         [self.tableView reloadData];
     }
     else{
         self.segStr = @"动态";
-        self.headerView.hidden = YES;
-        self.headerView.y = self.seleBar.y+self.seleBar.height;
-        self.tableView.tableHeaderView.height = self.seleBar.y+self.seleBar.height;
+        [self.detialView removeFromSuperview];
+        self.tableView.tableHeaderView.height = self.seleBar.botoom;
         [self.tableView reloadData];
  
     }
 }
 
 #pragma mark ++++创建tableview及实现方法++++
--(void)createTableView{
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - bottomViewHeight) style:UITableViewStylePlain];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    _tableView.tableHeaderView = self.backView;
-    _tableView.tableHeaderView.height = self.backView.height+self.seleBar.height+self.headerView.height;
-    
-    [self.view addSubview:_tableView];
-    
-}
+
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return 4;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.segStr isEqualToString:@"主页"]){
-        return 130;
+        ComentLayout *lay = [[ComentLayout alloc]initCommentCell];
+        return lay.commentHeight+1.5;
     }
     else if ([self.segStr isEqualToString:@"咨询"]){
-       
-        return 150;
+        DetialQuestionLayout *layout = [[DetialQuestionLayout alloc]initQuestionDeatail];
+        return layout.wdCellHeight+2;
 
     }
-    return 180;
+    else{
+       return 180;
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
-   static NSString *identifier = @"identifier";
     if ([self.segStr isEqualToString:@"主页"]) {
-        
-            teacherHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-            if (cell == nil) {
-                cell = [[teacherHomeTableViewCell alloc]initWithFrame:cell.bounds];
-                DescCell = cell;
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.iconImage.image = [UIImage imageNamed:@"teacherImage"];
-                cell.dzImage.image = [UIImage imageNamed:@"good"];
-                cell.numOfPeople.text = @"25";
-                cell.titleLabel.text = @"taylorzhang";
-                cell.timeLabel.text = @"2016-11-23 12:00";
-                cell.questionLabel.text = @"谢谢老师，很专业，很有收获，必要时会再咨询,等你发的楼房的离开父母看来谢谢老师，很专业，很有收谢谢老师，很专业，很有收获";
-            }
+        NSString *identifier = @"commentId";
+        CommentCell *cell = [[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        DescCell = cell;
+    }
+    if ([self.segStr isEqualToString:@"咨询"]){
+        NSString *identifier = @"answerId";
+        QuestionDescCell *cell = [[QuestionDescCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        DescCell = cell;
         
     }
-    else if ([self.segStr isEqualToString:@"咨询"]){
-        
-            teacherCosultTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-            if (cell == nil) {
-                cell = [[teacherCosultTableViewCell alloc]initWithFrame:cell.bounds];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                DescCell = cell;
-                cell.imgView.image = [UIImage imageNamed:@"teacherImage"];
-                cell.iconImage.image = [UIImage imageNamed:@"good"];
-                cell.nameLabel.text = @"taylorzhang";
-                cell.numberLabel.text = @"23";
-                cell.questionLabel.text = @"如何做出生命中最重要的决定？";
-                cell.answerLabel.text = @"发现情况限制隐约显示高度的零表视图单元格的内容视图。我们考虑到意外崩溃,转而使用标准的高度";
-            }
-        
-    }
-    else{
-
-    teacherDynamicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
-        cell = [[teacherDynamicTableViewCell alloc]initWithFrame:cell.bounds];
+    if ([self.segStr isEqualToString:@"动态"]){
+        teacherDynamicTableViewCell *cell = [[teacherDynamicTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"lifeId"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         DescCell = cell;
         cell.imgView.image = [UIImage imageNamed:@"teacherImage"];
@@ -254,12 +262,14 @@ id DescCell = nil;
         cell.commentNoLabel.text = @"3万";
         cell.praiseNoLabel.text = @"72万";
     }
-        
-    }
     return DescCell;
 }
 
-
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    
+    return 0;
+}
 
 
 - (void)didReceiveMemoryWarning {
