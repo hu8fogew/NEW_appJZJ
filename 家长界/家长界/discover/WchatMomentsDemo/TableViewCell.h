@@ -37,7 +37,6 @@
 @property (nonatomic,copy) void(^clickedOpenCellCallback)(TableViewCell* cell);
 @property (nonatomic,copy) void(^clickedCloseCellCallback)(TableViewCell* cell);
 @property(nonatomic,assign)id<TableActionCellDelegate> delegate;
-@property (nonatomic , strong) NSIndexPath *indexpath;
 @end
 
 

@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-@class YHWorkGroupPhotoContainer;
+#import "PhotoViewLayout.h"
+
+//@class PhotoViewLayout;
 @interface PhotoViewCell : UITableViewCell
 
-//@property(nonatomic,strong)UIImageView *imageVF;
-//@property(nonatomic,strong)YHWorkGroupPhotoContainer *picContainerView;
-
-@property(nonatomic,strong)NSArray *arrUrl;
-//@property(nonatomic,strong)UIImageView *imageArr;
+@property(nonatomic,strong)PhotoViewLayout *photoLayout;
+@property (nonatomic,strong) NSIndexPath* indexPath;
+@property (nonatomic,copy) void(^clickedImageCallback)(PhotoViewCell* cell,NSInteger imageIndex);
 
 @end

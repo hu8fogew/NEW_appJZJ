@@ -101,7 +101,6 @@
         NSInteger imageCount = [statusModel.imgs count];
         NSMutableArray* imageStorageArray = [[NSMutableArray alloc] initWithCapacity:imageCount];
         NSMutableArray* imagePositionArray = [[NSMutableArray alloc] initWithCapacity:imageCount];
-        
         //图片类型
         if ([statusModel.type isEqualToString:MESSAGE_TYPE_IMAGE]) {
             NSInteger row = 0;

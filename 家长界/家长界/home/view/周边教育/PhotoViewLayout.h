@@ -12,4 +12,6 @@
 
 @property(nonatomic,assign) CGFloat photoCellHeight;
 @property (nonatomic,copy) NSArray* photoPosition;
+@property(nonatomic,strong) NSArray *imageArr;
+-(id)initPhotoCellLayout;
 @end

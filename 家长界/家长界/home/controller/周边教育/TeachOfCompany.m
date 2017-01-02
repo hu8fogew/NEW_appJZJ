@@ -9,8 +9,11 @@
 #import "TeachOfCompany.h"
 #import "DetialQuestionLayout.h"
 #import "ComentLayout.h"
+#import "PhotoViewCell.h"
 #import "CommentCell.h"
-#import "QuestionDescCell.h"
+#import "LWImageBrowserModel.h"
+#import "LWImageBrowser.h"
+#import "PhotoViewLayout.h"
 @interface TeachOfCompany ()<UITableViewDelegate,UITableViewDataSource,SGSegmentedControlDelegate,UIScrollViewDelegate>
 
 /*头部背景视图*/
@@ -61,7 +64,7 @@ id companyCell = nil;
 -(UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-BottomView_Height) style:UITableViewStylePlain];
         _tableView.delegate =self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor whiteColor];
@@ -194,7 +197,7 @@ id companyCell = nil;
         [self.tableView reloadData];
     }
     else if (index == 1){
-        self.segStr = @"咨询";
+        self.segStr = @"相册";
         [self.detialView removeFromSuperview];
         self.tableView.tableHeaderView.height = self.seleBar.botoom;
         [self.tableView reloadData];
@@ -213,6 +216,9 @@ id companyCell = nil;
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if ([self.segStr isEqualToString:@"相册"]) {
+        return 1;
+    }
     return 4;
 }
 
@@ -221,9 +227,9 @@ id companyCell = nil;
         ComentLayout *lay = [[ComentLayout alloc]initCommentCell];
         return lay.commentHeight+1.5;
     }
-    else if ([self.segStr isEqualToString:@"咨询"]){
-        DetialQuestionLayout *layout = [[DetialQuestionLayout alloc]initQuestionDeatail];
-        return layout.wdCellHeight+2;
+    else if ([self.segStr isEqualToString:@"相册"]){
+        PhotoViewLayout *layout = [[PhotoViewLayout alloc]initPhotoCellLayout];
+        return layout.photoCellHeight;
         
     }
     else{
@@ -236,11 +242,13 @@ id companyCell = nil;
         NSString *identifier = @"commentId";
         CommentCell *cell = [[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         companyCell = cell;
     }
-    if ([self.segStr isEqualToString:@"咨询"]){
+    if ([self.segStr isEqualToString:@"相册"]){
         NSString *identifier = @"answerId";
-        QuestionDescCell *cell = [[QuestionDescCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        PhotoViewCell *cell = [[PhotoViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        [self callbackWithCell:cell];
         companyCell = cell;
         
     }
@@ -267,6 +275,33 @@ id companyCell = nil;
 {
     
     return 0;
+}
+
+
+- (void)callbackWithCell:(PhotoViewCell *)cell {
+    
+    __weak typeof(self) weakSelf = self;
+    cell.clickedImageCallback = ^(PhotoViewCell* cell,NSInteger imageIndex) {
+        __strong typeof(weakSelf) sself = weakSelf;
+        [sself tableViewCell:cell showImageBrowserWithImageIndex:imageIndex];
+    };
+}
+//点击查看大图
+- (void)tableViewCell:(PhotoViewCell *)cell showImageBrowserWithImageIndex:(NSInteger)imageIndex {
+    NSMutableArray* tmps = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < cell.photoLayout.photoPosition.count; i ++) {
+        LWImageBrowserModel* model = [[LWImageBrowserModel alloc]
+                                      initWithplaceholder:nil
+                                      thumbnailURL:[NSURL URLWithString:[cell.photoLayout.imageArr objectAtIndex:i]]
+                                      HDURL:[NSURL URLWithString:[cell.photoLayout.imageArr  objectAtIndex:i]]
+                                      containerView:cell.contentView
+                                      positionInContainer:CGRectFromString(cell.photoLayout.photoPosition[i])
+                                      index:i];
+        [tmps addObject:model];
+    }
+    LWImageBrowser* browser = [[LWImageBrowser alloc] initWithImageBrowserModels:tmps
+                                                                    currentIndex:imageIndex];
+    [browser show];
 }
 
 
