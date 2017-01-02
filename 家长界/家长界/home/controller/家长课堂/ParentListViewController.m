@@ -77,6 +77,8 @@ static const int cellHeight = ParentCellHeight;
     
     self.navigationItem.title = @"视频列表";
     
+    [self.navigationItem.leftBarButtonItem setTitle:@"返回"];
+    
     self.navigationController.navigationBar.backgroundColor = HWColor(242, 242, 242);
     
     [self.view addSubview:self.headerView];

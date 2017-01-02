@@ -86,7 +86,15 @@
         UINavigationItem *vcBtnItem = [viewController navigationItem];
         /*设置导航栏上面的内容*/
         //设置左边的按钮
-        vcBtnItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"navigationbar_back_withtext" highImage:@"navigationbar_back_withtext" andTitle:[[self.childViewControllers lastObject] title]];
+        if (self.viewControllers.count>0 && self.viewControllers.count<2) {
+            vcBtnItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"navigationbar_back_withtext" highImage:@"navigationbar_back_withtext" andTitle:[[self.childViewControllers lastObject] title]];
+        }else
+        {
+            vcBtnItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"navigationbar_back_withtext" highImage:@"navigationbar_back_withtext" andTitle:@"返回"];
+        }
+        
+        
+        
         
         //设置右边的按钮
 //        viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(more) image:@"" highImage:@""];
